@@ -91,16 +91,12 @@
           </div>
           <div class="row">
             <div class="col-lg-12">
-              <p>We highly recommend that you use the new Aerial Companion for install. It will automatically install, and update, your screensaver. You can choose whether updates should happen automatically in the background, or if you prefer to be notified. You can also pick whether you want an icon in the menu bar to notify you or not! And you bet <a href="https://github.com/glouel/AerialCompanion">it's open source</a>!</p>
+              <p>Aerial comes packaged as an application called Aerial Companion that installs and keep the screensaver updated. This application also provides many of the extra features such as the video wallpaper integration. And you bet <a href="https://github.com/glouel/AerialCompanion">it's also open source</a>!</p>
 
-              <p>Installing this way is super easy, the Companion is now available in a more familiar dmg format and it's really just a drag and drop :</p>
-              <div class="text-center">
-                <img class="img-fluid" src="https://user-images.githubusercontent.com/18543749/90923714-24dc5e00-e3bc-11ea-9a24-a650f42ea734.gif">
-                <p>If you need more help, <a href=faq.html>check our FAQ here!</a></p>
-              </div>
-
-              <p>&nbsp;</p>
-              <center><a href="https://github.com/glouel/AerialCompanion/releases/latest/download/AerialCompanion.dmg" class="btn btn-xl">
+              <p>To install simply grab the <a href="https://github.com/glouel/AerialCompanion/releases/latest/download/Aerial.Companion.zip">latest release</a>, look for it in your user's <code>Downloads</code> folder, unzip (it may be already unzipped depending on your web browser/settings) and move <code>Aerial Companion.app</code> to your <code>/Applications</code> folder. Then launch it!</p>
+              
+              <p>At first launch, you will have the choice of having the updates automatically happening in the background, or to have the app in your menubar. If you want to try the video wallpaper integration, please pick the menubar option. 
+              <center><a href="https://github.com/glouel/AerialCompanion/releases/latest/download/Aerial.Companion.zip" class="btn btn-xl">
                 <button type="button" class="btn btn-primary">Download latest Aerial Companion</button>
               </a></center>
 
@@ -160,6 +156,44 @@
               </div>
             </div>
           </div>
+        <div class="row">
+            <div class="col-lg-3">
+              <div class="feature-item">
+                <i class="icon-people"></i>
+              </div>
+            </div>
+            <div class="col-lg-9">
+              <br><br>
+              <h2>Multiple users ?</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <p>Because of security changes in macOS, screensavers can't directly share settings or data between multiple user accounts and some (small) manual setup will be required from you. Please do the following on your first account:</p>
+
+                <ul>
+                <li>Open System Settings, go to the screen saver panel and open Aerial's settings using the option button top right of the screen.</li>
+                <li>If you haven't done so already, click <code>Advanced</code> and pick your video format. We recommend using <code>4K 240FPS</code> for all macs released after 2017. If your mac is older, check the help bubble for which setting is the most appropriate for you.</li>
+                <li>Click <code>Cache</code> on the left column.</li>
+                <li>Check <code>Manually pick cache location</code> and click <code>Pick folder</code>. This will open a folder picker.</li>
+                <li>Browse to <code>/Users/Shared</code> (please note that the folder name will be localized to your language) and press <code>New folder</code> at the bottom. Create an Aerial folder (this should be <code>/Users/Shared/Aerial</code>) then select it and pick <code>Choose</code>. Aerial will prompt you to reopen settings. </li>
+                </ul>
+
+                <p>On your secondary accounts, do the following:</p>
+                <ul>
+                <li>Open System Settings, go to the screen saver panel and open Aerial's settings using the option button top right of the screen.</li>
+                <li>Click <code>Advanced</code> and pick the same video format your did on your first account. </li>
+                <li>Click <code>Cache</code> on the left column.</li>
+                <li>Check <code>Manually pick cache location</code> and click <code>Pick folder</code>. This will open a folder picker.</li>
+                <li>Pick the <code>/Users/Shared/Aerial</code> that you created previously.</li>
+                <li>Uncheck <code>Automatically download videos</code></li>
+                </ul>
+
+              <p>Using this setup, Aerial will only download new videos from your primary account and they will be used and shared with all the users on your computer. </p>
+
+            </div>
+          </div>
+ 
           <div class="row">
             <div class="col-lg-3">
               <div class="feature-item">
@@ -203,10 +237,10 @@
             <div class="col-lg-12">
               <p>Yes, you can still do that:</p>
               <ol>
-                <li>Quit System Preferences.</li>
+                <li>Quit System Preferences (or System Settings on macOS 14+).</li>
                 <li>Download the <a href=https://github.com/JohnCoates/Aerial/releases/latest>latest release</a> of Aerial.saver.zip. Alternatively, you can try the latest beta version following <a href=https://github.com/JohnCoates/Aerial/releases>this link</a>.</li>
                 <li>Unzip the downloaded file (if you use Safari, it should already be done for you).</li>
-                <li>Double-click Aerial.saver; it will open in System Preferences > Desktop & Screen Saver and ask you if you want to install for all users or for your user only. I highly recommend you pick for your user only. Be aware that installing for all users will require a password at install and each subsequent update, including auto-updates and is not recommended for many reasons on 10.15 and after! Installing for all users will <b>not</b> make Aerial share the videos amongst multiple users post 10.15, since this is no longer possible with the security changes added by Apple.</li>
+                <li>Double-click Aerial.saver; it will open in System Preferences > Desktop & Screen Saver and ask you if you want to install for all users or for your user only. Pick for your user only. If you plan to use it in multiple accounts, it's highly recommended to install it for each user as settings cannot be shared. See the section about multiple users above for how to configure Aerial for this scenario.</li>
               </ol>
             </div>
           </div>
@@ -239,11 +273,11 @@
                 <li><code>~/Library/Caches/Aerial</code> (long time users)</li>
                 <li><code>~/Library/Application Support/Aerial</code> (if you installed for the first time after summer 2019)</li>
               </ul>
-              <p>Starting with macOS Catalina (10.15), each user has a cache in it's own sandbox at this location (cache cannot be shared between multiple users because of security restrictions):</p>
+              <p>Starting with macOS Catalina (10.15), each user has a cache in it's own sandbox at this location (cache cannot be shared between multiple users because of security restrictions, see the multiple users section above on how to workaround that):</p>
               <ul>
                 <li><code>~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Application Support/Aerial</code></li>
               </ul>
-
+                <p><b>Note:</b> If you installed for multiple users using our setup above, delete the Aerial folder you created, <code>/Users/Shared/Aerial</code>.
               <h3>Removing the preferences</h3>
               <p>The preference file is located either at:</p>
               <ul>
