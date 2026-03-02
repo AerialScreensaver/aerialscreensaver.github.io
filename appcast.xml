@@ -1,11 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"
-     xmlns:dc="http://purl.org/dc/elements/1.1/">
-  <channel>
-    <title>Aerial</title>
-    <link>https://aerialscreensaver.github.io/appcast.xml</link>
-    <description>Aerial Updates</description>
-    <language>en</language>
-    <!-- Items will be added by release.sh -->
-  </channel>
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Aerial</title>
+        <item>
+            <title>3.9.9a11</title>
+            <pubDate>Mon, 02 Mar 2026 16:12:31 +0100</pubDate>
+            <sparkle:version>260302.1610</sparkle:version>
+            <sparkle:shortVersionString>3.9.9a11</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:releaseNotesLink>https://aerialscreensaver.github.io/Aerial-3.9.9a11.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v3.9.9a11/Aerial-3.9.9a11.zip" length="6612696" type="application/octet-stream" sparkle:edSignature="MF+yyoQ/qUk7tU5HlAlPuDImwJ1RsO+ZLQnKla1U5wArU2G4ESmgLJp6hjtIMmUWkDNQfi2Yd6uCdkIszHwDAA=="/>
+            <sparkle:deltas>
+                <enclosure url="https://aerialscreensaver.github.io/Aerial260302.1610-3.9.9a10.delta" sparkle:deltaFrom="3.9.9a10" length="18018" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="OWImKNPxezaNWIyrhUiRxyulSTTtv0y1NC8xxRo4nOTZQ9Q/8b8lBToyeKG88KXcpulWUVzcYu3EKg4MJV+bCg=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
+            <title>3.9.9a10</title>
+            <pubDate>Mon, 02 Mar 2026 15:38:15 +0100</pubDate>
+            <sparkle:version>3.9.9a10</sparkle:version>
+            <sparkle:shortVersionString>3.9.9a10</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:releaseNotesLink>https://aerialscreensaver.github.io/Aerial-3.9.9a10.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v3.9.9a10/Aerial-3.9.9a10.zip" length="6612724" type="application/octet-stream" sparkle:edSignature="gwB/s2NU2ZAOPbr1WtGy6dgb01ub2ljVZyqvJTpciect+g23R/8MP3PXD3fqW5mTyzhIR0U5UOLdZ1zD2jrdDw=="/>
+        </item>
+    </channel>
 </rss>
