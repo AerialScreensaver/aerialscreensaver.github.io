@@ -2,7 +2,7 @@
 title: Playlists
 summary: Drag videos into curated playlists, share them across devices, and play exclusively from one if that's your mood.
 icon: list-music
-order: 80
+order: 90
 homepage: false
 ---
 

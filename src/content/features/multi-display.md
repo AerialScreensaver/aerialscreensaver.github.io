@@ -2,7 +2,7 @@
 title: Multi-display, including spanned mode
 summary: Run independent videos per screen, mirror one across many, share a playlist, or span a single 4K video across the whole desk.
 icon: monitor
-order: 50
+order: 60
 homepage: false
 ---
 

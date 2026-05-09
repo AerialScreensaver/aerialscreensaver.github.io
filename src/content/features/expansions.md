@@ -2,7 +2,7 @@
 title: Community video expansions
 summary: Browse and install curated video packs from creators like Joshua Michaels & Hal Bergman — right inside the app, no JSON editing.
 icon: package
-order: 60
+order: 80
 homepage: false
 ---
 

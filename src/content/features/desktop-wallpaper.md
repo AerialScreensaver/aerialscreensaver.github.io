@@ -2,7 +2,7 @@
 title: Live desktop wallpaper
 summary: Run the same engine behind your windows as a moving wallpaper. Auto-pauses when your desktop is mostly covered, so it never burns CPU on nothing.
 icon: monitor
-order: 40
+order: 50
 homepage: false
 ---
 

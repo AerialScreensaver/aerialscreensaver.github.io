@@ -2,7 +2,7 @@
 title: Bring your own videos
 summary: Drop any `.mov` or `.mp4` into a single folder and Aerial picks it up — title it, tag it, hide it, send it to a playlist.
 icon: film
-order: 30
+order: 10
 homepage: true
 ---
 
