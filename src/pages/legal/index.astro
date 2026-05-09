@@ -25,7 +25,7 @@ import Base from '../../layouts/Base.astro';
 
     <h2 class="text-aerial-text">Apple's videos</h2>
     <p class="text-aerial-text-muted">
-      The aerial videos played by Aerial are produced by Apple and fetched directly from Apple's
+      The macOS/tvOS aerial videos played by Aerial are produced by Apple and fetched directly from Apple's
       content-delivery network at first play, on each user's machine. Aerial does not host,
       mirror, or redistribute Apple's videos.
     </p>
@@ -42,11 +42,13 @@ import Base from '../../layouts/Base.astro';
 
     <h2 class="text-aerial-text">Privacy</h2>
     <p class="text-aerial-text-muted">
-      Aerial includes no telemetry, no analytics, no crash reporting tied to identifiers. The app
+      Aerial includes no telemetry, no analytics, no crash reporting of any kind. The app
       makes outbound HTTPS requests to: Apple's CDN (for videos), this site's
       <code class="text-aerial-text">appcast.xml</code> (for Sparkle update checks), and the
       expansions catalog when you open the Expansions browser. None of these requests carry user
-      identifiers.
+      identifiers. Some optional features (Weather forecast via OpenWeather, Youtube streaming 
+      via yt-dlp, etc) may individually track you in some limited form, we recommend you check 
+      their respective privacy policies for more details. 
     </p>
 
     <h2 class="text-aerial-text">Trademarks</h2>
@@ -58,7 +60,12 @@ import Base from '../../layouts/Base.astro';
     <h2 class="text-aerial-text">Thanks</h2>
     <p class="text-aerial-text-muted">
       Aerial uses <a href="https://sparkle-project.org/" class="text-aerial-link">Sparkle</a> for
-      auto-updates. The original project was started by John Coates in 2015 — see the
+      auto-updates and
+      <a href="https://github.com/sindresorhus/KeyboardShortcuts" class="text-aerial-link">
+        KeyboardShortcuts
+      </a>
+      by Sindre Sorhus for the global hotkeys feature. The original project was started by John
+      Coates in 2015 — see the
       <a href="https://github.com/JohnCoates/Aerial" class="text-aerial-link">historical repository</a>
       for the early commit history.
     </p>
