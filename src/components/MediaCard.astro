@@ -1,0 +1,185 @@
+---
+import { Image, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  image?: ImageMetadata;
+  video?: string; // basename in /public/videos/
+  videoPoster?: string; // basename in /public/posters/
+  alt: string;
+  class?: string;
+  // When set and no real image/video has landed, render a styled placeholder
+  // card with this label so the design is visualized end-to-end.
+  placeholder?: 'image' | 'video';
+  placeholderLabel?: string;
+}
+
+const {
+  image,
+  video,
+  videoPoster,
+  alt,
+  class: className = '',
+  placeholder,
+  placeholderLabel,
+} = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const videoSrc = video ? `${base}/videos/${video}` : null;
+const posterSrc = videoPoster ? `${base}/posters/${videoPoster}` : null;
+
+// For the lightbox, hand over a larger optimized variant of the image
+// (capped at the source's natural width so we don't upscale).
+let lightboxImageSrc: string | null = null;
+if (image && !video) {
+  const big = await getImage({ src: image, width: Math.min(image.width, 1920) });
+  lightboxImageSrc = big.src;
+}
+
+const lightboxSrc = video ? videoSrc : lightboxImageSrc;
+const lightboxType = video ? 'video' : 'image';
+const hasRealMedia = Boolean(video || image);
+const showPlaceholder = !hasRealMedia && Boolean(placeholder);
+const showMedia = hasRealMedia || showPlaceholder;
+---
+
+{
+  showMedia &&
+    (hasRealMedia ? (
+      <button
+        type="button"
+        data-lightbox
+        data-lightbox-type={lightboxType}
+        data-lightbox-src={lightboxSrc}
+        data-lightbox-poster={posterSrc ?? undefined}
+        data-lightbox-alt={alt}
+        aria-label={`Expand: ${alt}`}
+        class:list={[
+          'media-card group relative block w-full overflow-hidden rounded-xl border border-aerial-border bg-aerial-surface shadow-lg cursor-zoom-in',
+          'transition-all hover:border-aerial-accent/50',
+          className,
+        ]}
+      >
+        {video ? (
+          <video
+            class="block w-full h-auto aspect-video object-cover"
+            src={videoSrc!}
+            poster={posterSrc ?? undefined}
+            preload="metadata"
+            muted
+            loop
+            playsinline
+          />
+        ) : image ? (
+          <Image
+            src={image}
+            alt={alt}
+            class="block w-full h-auto aspect-video object-cover"
+            widths={[480, 800, 1200]}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            loading="lazy"
+          />
+        ) : null}
+
+        <span
+          aria-hidden="true"
+          class="pointer-events-none absolute bottom-2 right-2 inline-flex h-8 w-8 items-center justify-center rounded-md bg-aerial-bg-deep/70 text-aerial-text opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm"
+        >
+          <svg viewBox="0 0 16 16" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4" stroke-linecap="round" />
+          </svg>
+        </span>
+      </button>
+    ) : (
+      <div
+        role="img"
+        aria-label={`Placeholder for ${placeholderLabel ?? alt}`}
+        class:list={[
+          'media-card relative block w-full overflow-hidden rounded-xl border border-dashed border-aerial-border bg-gradient-to-br from-aerial-surface via-aerial-bg to-aerial-surface-hi aspect-video',
+          className,
+        ]}
+      >
+        {/* Subtle grid pattern */}
+        <div
+          aria-hidden="true"
+          class="absolute inset-0 opacity-30"
+          style="background-image: linear-gradient(oklch(60% 0.02 250 / 0.08) 1px, transparent 1px), linear-gradient(90deg, oklch(60% 0.02 250 / 0.08) 1px, transparent 1px); background-size: 28px 28px;"
+        />
+        <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center px-6">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-aerial-border bg-aerial-bg-deep/70 text-aerial-text-muted">
+            {placeholder === 'video' ? (
+              <svg viewBox="0 0 16 16" class="h-4 w-4" fill="currentColor" aria-hidden="true">
+                <path d="M5 3.5v9l7.5-4.5L5 3.5z" />
+              </svg>
+            ) : (
+              <svg
+                viewBox="0 0 16 16"
+                class="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                aria-hidden="true"
+              >
+                <rect x="2" y="3" width="12" height="10" rx="1.5" />
+                <circle cx="6" cy="7" r="1.2" fill="currentColor" />
+                <path d="M2 11l4-3 3 2 5-3" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            )}
+          </span>
+          <div class="text-sm font-medium text-aerial-text">
+            {placeholderLabel ?? alt}
+          </div>
+          <div class="text-[11px] uppercase tracking-widest text-aerial-text-dim">
+            {placeholder === 'video' ? 'Video placeholder' : 'Screenshot placeholder'}
+          </div>
+        </div>
+      </div>
+    ))
+}
+
+<script>
+  // Wires hover-on-desktop / inview-on-touch autoplay for every <video> inside
+  // a .media-card on the page. Idempotent: protected against double-init.
+  declare global {
+    interface Window {
+      __aerialMediaInit?: boolean;
+    }
+  }
+  if (!window.__aerialMediaInit) {
+    window.__aerialMediaInit = true;
+
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    const videos = Array.from(
+      document.querySelectorAll<HTMLVideoElement>('.media-card video'),
+    );
+
+    if (isTouch) {
+      const obs = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            const v = entry.target as HTMLVideoElement;
+            if (entry.isIntersecting) {
+              v.play().catch(() => {});
+            } else {
+              v.pause();
+            }
+          }
+        },
+        { threshold: 0.5 },
+      );
+      for (const v of videos) obs.observe(v);
+    } else {
+      for (const v of videos) {
+        const card = v.closest('.media-card');
+        if (!card) continue;
+        card.addEventListener('mouseenter', () => {
+          v.play().catch(() => {});
+        });
+        card.addEventListener('mouseleave', () => {
+          v.pause();
+          v.currentTime = 0;
+        });
+      }
+    }
+  }
+</script>

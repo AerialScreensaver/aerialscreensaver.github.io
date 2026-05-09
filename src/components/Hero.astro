@@ -1,43 +1,122 @@
 ---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import VersionBadge from './VersionBadge.astro';
 import DownloadCTA from './DownloadCTA.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Detect at build time whether the hero video / poster have landed.
+// Until they do, the bezel falls back to an aurora gradient placeholder.
+const heroVideoExists = existsSync(join(process.cwd(), 'public', 'videos', 'hero.mp4'));
+const heroPosterExists = existsSync(join(process.cwd(), 'public', 'posters', 'hero.jpg'));
+const videoSrc = `${base}/videos/hero.mp4`;
+const posterSrc = heroPosterExists ? `${base}/posters/hero.jpg` : undefined;
 ---
 
 <section class="aurora relative overflow-hidden">
-  <!-- subtle starfield/grain overlay -->
+  <!-- starfield/grain overlay -->
   <div
     class="pointer-events-none absolute inset-0 opacity-30 mix-blend-soft-light"
     style="background-image: radial-gradient(1px 1px at 12% 22%, white, transparent), radial-gradient(1px 1px at 78% 38%, white, transparent), radial-gradient(1px 1px at 35% 70%, white, transparent), radial-gradient(1px 1px at 88% 81%, white, transparent), radial-gradient(1px 1px at 55% 12%, white, transparent), radial-gradient(1px 1px at 18% 88%, white, transparent);"
     aria-hidden="true"
-  ></div>
+  >
+  </div>
 
-  <div class="relative mx-auto max-w-6xl px-6 pt-24 pb-32 md:pt-32 md:pb-40">
-    <div class="max-w-3xl">
-      <VersionBadge />
+  <div class="relative mx-auto max-w-7xl px-6 pt-24 pb-28 md:pt-28 md:pb-32">
+    <div class="grid items-center gap-12 lg:grid-cols-[1fr_1.05fr]">
+      <!-- text column -->
+      <div class="max-w-2xl">
+        <VersionBadge />
 
-      <h1
-        class="mt-6 text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-aerial-text leading-[1.05]"
-      >
-        The Apple TV screensaver,<br />
-        <span class="bg-gradient-to-r from-aerial-accent via-aerial-accent-hi to-aerial-link bg-clip-text text-transparent">
-          on your Mac. And then some.
-        </span>
-      </h1>
+        <h1
+          class="mt-6 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-aerial-text leading-[1.05]"
+        >
+          The Apple TV screensaver,<br />
+          <span
+            class="bg-gradient-to-r from-aerial-accent via-aerial-accent-hi to-aerial-link bg-clip-text text-transparent"
+          >
+            on your Mac. And then some.
+          </span>
+        </h1>
 
-      <p class="mt-7 text-lg md:text-xl text-aerial-text-muted leading-relaxed max-w-2xl">
-        Aerial plays Apple's high-fidelity aerial videos — cities, deserts, oceans, the ISS — as
-        your screensaver and live desktop wallpaper. Free, open source, with overlays, multi-display
-        layouts, your own videos, and community video packs. macOS only.
-      </p>
+        <p class="mt-7 text-lg md:text-xl text-aerial-text-muted leading-relaxed">
+          Aerial plays Apple's high-fidelity aerial videos — cities, deserts, oceans, the ISS — as
+          your screensaver and live desktop wallpaper. Free, open source, with overlays,
+          multi-display layouts, your own videos, and community video packs. macOS only.
+        </p>
 
-      <div class="mt-10 flex flex-wrap items-center gap-6">
-        <DownloadCTA variant="large" />
+        <div class="mt-10 flex flex-wrap items-center gap-6">
+          <DownloadCTA variant="large" />
+        </div>
+
+        <p class="mt-8 text-sm text-aerial-text-dim max-w-md">
+          Built for macOS&nbsp;15+ and updated continuously since 2015. The macOS built-in version
+          is nice — Aerial gives you the rest.
+        </p>
       </div>
 
-      <p class="mt-8 text-sm text-aerial-text-dim max-w-md">
-        Built for macOS&nbsp;15+ and updated continuously since 2015. The macOS built-in version is
-        nice — Aerial gives you the rest.
-      </p>
+      <!-- macbook column -->
+      <div class="relative mt-4 lg:mt-0">
+        <div class="mx-auto w-full max-w-[640px]">
+          <!-- bezel -->
+          <div
+            class="rounded-[1.4rem] bg-gradient-to-br from-zinc-700/80 via-zinc-800/85 to-zinc-950 p-[10px] ring-1 ring-aerial-border/70 shadow-[0_30px_80px_-25px_oklch(55%_0.13_185/0.45),_0_15px_50px_-15px_oklch(40%_0.1_250/0.5)]"
+          >
+            <!-- screen -->
+            <div
+              class="relative aspect-[16/10] w-full overflow-hidden rounded-[0.95rem] bg-aerial-bg-deep"
+            >
+              <!-- top-bar / camera notch hint -->
+              <div
+                class="absolute top-0 left-1/2 z-10 -translate-x-1/2 h-3 w-20 rounded-b-md bg-zinc-950/90 shadow-inner"
+                aria-hidden="true"
+              >
+              </div>
+
+              {
+                heroVideoExists ? (
+                  <video
+                    class="absolute inset-0 h-full w-full object-cover"
+                    src={videoSrc}
+                    poster={posterSrc}
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                  />
+                ) : (
+                  <div class="absolute inset-0 aurora">
+                    <div
+                      class="absolute inset-0 flex items-center justify-center text-aerial-text-dim text-sm"
+                      aria-hidden="true"
+                    >
+                      <span class="rounded-full border border-aerial-border bg-aerial-bg-deep/60 px-3 py-1">
+                        Hero video lands here
+                      </span>
+                    </div>
+                  </div>
+                )
+              }
+            </div>
+          </div>
+
+          <!-- base / keyboard hint -->
+          <div class="relative">
+            <div
+              class="mx-auto h-2 w-[112%] -translate-x-[6%] rounded-b-[14px] bg-gradient-to-b from-zinc-600/80 via-zinc-800 to-zinc-950 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.7)]"
+              aria-hidden="true"
+            >
+            </div>
+            <div
+              class="mx-auto mt-px h-1 w-[40%] -translate-x-[0%] rounded-b-md bg-zinc-900/80 shadow-inner"
+              aria-hidden="true"
+            >
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

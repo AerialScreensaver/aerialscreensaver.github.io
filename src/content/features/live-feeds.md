@@ -4,6 +4,7 @@ summary: Stream RTSP cameras, HLS feeds, or YouTube live URLs directly as your s
 icon: radio
 order: 30
 homepage: true
+placeholder: video
 ---
 
 Add a live URL — RTSP camera, HLS stream, or YouTube live — and Aerial transmuxes it on the fly into a screensaver-ready source. There's no caching: what you see is the stream as it happens. RTSP requires `ffmpeg` and YouTube live needs `yt-dlp`. Instructions provided. 

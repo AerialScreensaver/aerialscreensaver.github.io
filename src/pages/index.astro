@@ -57,6 +57,11 @@ const homepageFeatures = allFeatures
             title={f.data.title}
             summary={f.data.summary}
             href={link(`/features#${f.id}`)}
+            image={f.data.image}
+            video={f.data.video}
+            videoPoster={f.data.videoPoster}
+            alt={f.data.alt ?? f.data.title}
+            placeholder={f.data.placeholder}
           />
         ))
       }

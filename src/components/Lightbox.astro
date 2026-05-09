@@ -1,0 +1,96 @@
+---
+// Singleton lightbox. Mounted once in Base.astro.
+// Triggered by any [data-lightbox] element with these data attributes:
+//   data-lightbox-type="image" | "video"
+//   data-lightbox-src="<url>"
+//   data-lightbox-poster="<url>"  (optional, for video)
+//   data-lightbox-alt="<string>"  (optional)
+---
+
+<dialog
+  id="aerial-lightbox"
+  class="bg-transparent text-aerial-text p-0 m-auto backdrop:bg-aerial-bg-deep/85 backdrop:backdrop-blur-md"
+>
+  <div class="relative max-w-[92vw] max-h-[88vh]">
+    <button
+      type="button"
+      data-lightbox-close
+      aria-label="Close"
+      class="absolute -top-3 -right-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-aerial-surface-hi text-aerial-text border border-aerial-border hover:bg-aerial-accent hover:text-aerial-bg-deep transition-colors shadow-lg"
+    >
+      <svg viewBox="0 0 16 16" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 3l10 10M13 3L3 13" stroke-linecap="round" />
+      </svg>
+    </button>
+    <div
+      data-lightbox-content
+      class="rounded-xl overflow-hidden bg-aerial-bg-deep shadow-2xl border border-aerial-border"
+    >
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById('aerial-lightbox') as HTMLDialogElement | null;
+  if (dialog) {
+    const content = dialog.querySelector('[data-lightbox-content]') as HTMLElement;
+
+    function open(el: HTMLElement) {
+      const type = el.dataset.lightboxType;
+      const src = el.dataset.lightboxSrc;
+      if (!type || !src) return;
+
+      const alt = el.dataset.lightboxAlt ?? '';
+      const poster = el.dataset.lightboxPoster ?? '';
+
+      content.innerHTML = '';
+      if (type === 'image') {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = alt;
+        img.className = 'block max-w-[92vw] max-h-[88vh] w-auto h-auto';
+        content.appendChild(img);
+      } else if (type === 'video') {
+        const video = document.createElement('video');
+        video.src = src;
+        if (poster) video.poster = poster;
+        video.controls = true;
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.playsInline = true;
+        video.className = 'block max-w-[92vw] max-h-[88vh] w-auto h-auto';
+        content.appendChild(video);
+      }
+      dialog!.showModal();
+    }
+
+    function close() {
+      dialog!.close();
+    }
+
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      const trigger = target.closest('[data-lightbox]') as HTMLElement | null;
+      if (trigger) {
+        e.preventDefault();
+        open(trigger);
+        return;
+      }
+      if (target.closest('[data-lightbox-close]')) {
+        close();
+        return;
+      }
+    });
+
+    // Click outside the content (i.e. on the backdrop) closes.
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) close();
+    });
+
+    // Native <dialog> closes on Escape; clear the content when that happens.
+    dialog.addEventListener('close', () => {
+      content.innerHTML = '';
+    });
+  }
+</script>
