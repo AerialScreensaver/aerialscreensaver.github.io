@@ -1,0 +1,51 @@
+---
+import { getLatestRelease } from '../lib/appcast';
+
+interface Props {
+  variant?: 'primary' | 'large';
+  showMeta?: boolean;
+}
+
+const { variant = 'primary', showMeta = true } = Astro.props;
+const release = await getLatestRelease();
+
+const sizeClass =
+  variant === 'large'
+    ? 'px-8 py-4 text-base'
+    : 'px-6 py-3 text-sm';
+
+const sizeMb = release.downloadSize ? Math.round(release.downloadSize / 1024 / 1024) : 0;
+---
+
+<div class="flex flex-col items-start gap-3">
+  <a
+    href={release.downloadUrl}
+    class:list={[
+      'inline-flex items-center gap-2 rounded-md bg-aerial-accent text-aerial-bg-deep font-semibold transition-all',
+      'hover:bg-aerial-accent-hi hover:scale-[1.02] active:scale-[0.98]',
+      'shadow-[0_8px_30px_-8px_oklch(78%_0.15_70/0.6)]',
+      sizeClass,
+    ]}
+  >
+    <svg
+      class="h-4 w-4"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        d="M8 1.5a.5.5 0 0 1 .5.5v8.793l3.146-3.147a.5.5 0 1 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 10.793V2a.5.5 0 0 1 .5-.5Zm-6 12a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5Z"
+      ></path>
+    </svg>
+    Download Aerial {release.version}
+  </a>
+  {
+    showMeta && (
+      <p class="text-xs text-aerial-text-dim">
+        {sizeMb > 0 && <>{sizeMb}&nbsp;MB · </>}
+        Released {release.pubDateLabel} · macOS&nbsp;{release.minSystemVersion}+
+        · Apple Silicon and Intel
+      </p>
+    )
+  }
+</div>

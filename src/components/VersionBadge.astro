@@ -1,0 +1,14 @@
+---
+import { getLatestRelease } from '../lib/appcast';
+
+const release = await getLatestRelease();
+---
+
+<span
+  class="inline-flex items-center gap-2 rounded-full border border-aerial-border bg-aerial-surface/60 px-3 py-1 text-xs font-medium text-aerial-text-muted"
+>
+  <span class="inline-block h-1.5 w-1.5 rounded-full bg-aerial-accent" aria-hidden="true"></span>
+  Latest: {release.version}
+  <span class="text-aerial-text-dim">·</span>
+  <span class="text-aerial-text-dim">{release.pubDateLabel}</span>
+</span>

@@ -1,0 +1,66 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base
+  title="Legal — Aerial"
+  description="License, attribution, and privacy disclosures for Aerial."
+>
+  <section class="mx-auto max-w-3xl px-6 pt-24 pb-32 prose prose-invert">
+    <p class="text-sm font-semibold uppercase tracking-widest text-aerial-accent !mb-2 !mt-0">
+      Legal
+    </p>
+    <h1 class="!mt-3 text-4xl md:text-5xl !font-bold tracking-tight text-aerial-text">
+      License and attribution.
+    </h1>
+
+    <h2 class="text-aerial-text">Aerial license</h2>
+    <p class="text-aerial-text-muted">
+      Aerial is open-source software, released under the
+      <a href="https://github.com/AerialScreensaver/Aerial/blob/main/LICENSE" class="text-aerial-link">
+        MIT license
+      </a>. © Guillaume Louel and contributors. The full license text is available in the source
+      repository.
+    </p>
+
+    <h2 class="text-aerial-text">Apple's videos</h2>
+    <p class="text-aerial-text-muted">
+      The aerial videos played by Aerial are produced by Apple and fetched directly from Apple's
+      content-delivery network at first play, on each user's machine. Aerial does not host,
+      mirror, or redistribute Apple's videos.
+    </p>
+
+    <h2 class="text-aerial-text">Community expansions</h2>
+    <p class="text-aerial-text-muted">
+      Each community expansion ships with its own license, declared in its manifest. Installing
+      an expansion is opt-in. The featured expansion from Joshua Michaels &amp; Hal Bergman is
+      licensed under the terms at
+      <a href="https://jetsoncreative.com/aeriallicense" class="text-aerial-link">
+        jetsoncreative.com/aeriallicense
+      </a>.
+    </p>
+
+    <h2 class="text-aerial-text">Privacy</h2>
+    <p class="text-aerial-text-muted">
+      Aerial includes no telemetry, no analytics, no crash reporting tied to identifiers. The app
+      makes outbound HTTPS requests to: Apple's CDN (for videos), this site's
+      <code class="text-aerial-text">appcast.xml</code> (for Sparkle update checks), and the
+      expansions catalog when you open the Expansions browser. None of these requests carry user
+      identifiers.
+    </p>
+
+    <h2 class="text-aerial-text">Trademarks</h2>
+    <p class="text-aerial-text-muted">
+      Apple, macOS, tvOS, Apple TV, and Mac are trademarks of Apple Inc., registered in the U.S.
+      and other countries. Aerial is a third-party project unaffiliated with Apple.
+    </p>
+
+    <h2 class="text-aerial-text">Thanks</h2>
+    <p class="text-aerial-text-muted">
+      Aerial uses <a href="https://sparkle-project.org/" class="text-aerial-link">Sparkle</a> for
+      auto-updates. The original project was started by John Coates in 2015 — see the
+      <a href="https://github.com/JohnCoates/Aerial" class="text-aerial-link">historical repository</a>
+      for the early commit history.
+    </p>
+  </section>
+</Base>

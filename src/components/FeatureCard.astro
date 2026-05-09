@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  summary: string;
+  href?: string;
+}
+
+const { title, summary, href } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag
+  href={href}
+  class:list={[
+    'group block rounded-2xl border border-aerial-border bg-aerial-surface/60 p-7 transition-all',
+    href && 'hover:border-aerial-accent/50 hover:bg-aerial-surface-hi/60',
+  ]}
+>
+  <h3 class="text-xl font-semibold text-aerial-text">{title}</h3>
+  <p class="mt-3 text-aerial-text-muted leading-relaxed">{summary}</p>
+  {
+    href && (
+      <span class="mt-5 inline-flex items-center gap-1 text-sm text-aerial-link group-hover:text-aerial-link-hi">
+        Learn more
+        <svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+          <path d="M4.5 2.5 8 6l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </span>
+    )
+  }
+</Tag>

@@ -1,0 +1,70 @@
+---
+import Base from '../../layouts/Base.astro';
+import DownloadCTA from '../../components/DownloadCTA.astro';
+import { getLatestRelease } from '../../lib/appcast';
+
+const base = import.meta.env.BASE_URL;
+const link = (path: string) => `${base.replace(/\/$/, '')}${path}`;
+const release = await getLatestRelease();
+---
+
+<Base
+  title={`Download Aerial ${release.version}`}
+  description={`Aerial ${release.version} for macOS. Free, open source, auto-updates via Sparkle. macOS ${release.minSystemVersion}+.`}
+>
+  <section class="mx-auto max-w-3xl px-6 pt-24 pb-16">
+    <p class="text-sm font-semibold uppercase tracking-widest text-aerial-accent">Download</p>
+    <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight text-aerial-text">
+      Aerial {release.version}
+    </h1>
+    <p class="mt-6 text-aerial-text-muted text-lg leading-relaxed">
+      One zip. Drag the app into <code class="text-aerial-text">/Applications</code>. Open it once
+      and pick <em>Aerial4</em> in System Settings → Screen Saver.
+    </p>
+
+    <div class="mt-10">
+      <DownloadCTA variant="large" />
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-2 text-sm">
+      <div class="rounded-xl border border-aerial-border bg-aerial-surface/50 p-6">
+        <h2 class="text-aerial-text font-semibold">Compatibility</h2>
+        <ul class="mt-3 space-y-1 text-aerial-text-muted">
+          <li>macOS {release.minSystemVersion} (Sequoia) or later</li>
+          <li>Apple Silicon and Intel</li>
+          <li>Single-display and multi-display setups</li>
+        </ul>
+      </div>
+      <div class="rounded-xl border border-aerial-border bg-aerial-surface/50 p-6">
+        <h2 class="text-aerial-text font-semibold">Updates</h2>
+        <p class="mt-3 text-aerial-text-muted">
+          Aerial uses <a href="https://sparkle-project.org/" class="text-aerial-link">Sparkle</a> for
+          background auto-updates. You can switch between stable and beta channels in Settings.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-16 text-aerial-text-muted text-sm">
+      <h2 class="text-aerial-text font-semibold mb-3">After installing</h2>
+      <ol class="list-decimal list-inside space-y-2">
+        <li>Open <code class="text-aerial-text">Aerial.app</code> from <code class="text-aerial-text">/Applications</code>.</li>
+        <li>If macOS asks, allow it in System Settings → Privacy &amp; Security.</li>
+        <li>
+          Open System Settings → Screen Saver and pick <strong class="text-aerial-text">Aerial4</strong>.
+        </li>
+        <li>Back in the app, browse the Video Library and pick a few sources to download.</li>
+      </ol>
+      <p class="mt-6">
+        Stuck? Check the <a href={link('/faq')} class="text-aerial-link">FAQ</a> or open an issue on
+        <a href="https://github.com/AerialScreensaver/Aerial/issues" class="text-aerial-link">GitHub</a>.
+      </p>
+    </div>
+
+    <div class="mt-16 text-xs text-aerial-text-dim">
+      <p>
+        Direct download URL (also used by Sparkle):
+        <a href={release.downloadUrl} class="break-all text-aerial-text-muted">{release.downloadUrl}</a>
+      </p>
+    </div>
+  </section>
+</Base>

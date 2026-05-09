@@ -1,0 +1,101 @@
+name: Build and deploy /v4 to gh-pages
+
+# During the preview phase, this Action only writes inside `gh-pages:/v4/`.
+# The legacy site at the root of `gh-pages`, `appcast.xml`, every `Aerial-*.md`,
+# `community/`, `community-2020/`, and `thumbnails/` are never modified by this
+# workflow — they keep being managed by the AerialCompanion release script and
+# the thumbnails upload script.
+#
+# At cutover (when v4 replaces the legacy site at the root):
+#   1. Set BASE = '/' in astro.config.mjs.
+#   2. Replace the deploy step below with one that copies `dist/` to the
+#      gh-pages root, with a preserve-allowlist that keeps the files listed
+#      above. See plan §8.
+
+on:
+  push:
+    branches:
+      - main
+      - gh-pages
+    # Triggered when source files change on `main` (rebuild needed) OR when
+    # the release script touches appcast.xml / Aerial-*.md on gh-pages so
+    # the homepage and release-notes index stay current.
+    # NOT triggered when this workflow's own deploy step pushes to gh-pages:/v4
+    # because v4/** is not in the paths filter, breaking the recursion loop.
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'astro.config.mjs'
+      - 'tsconfig.json'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/deploy.yml'
+      - 'appcast.xml'
+      - 'Aerial-*.md'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-v4
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main (Astro source)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: source
+
+      - name: Checkout gh-pages (deploy target + appcast/release-notes)
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: deploy
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: source/package-lock.json
+
+      - name: Install dependencies
+        working-directory: source
+        run: npm ci
+
+      - name: Build Astro site
+        working-directory: source
+        env:
+          # Astro reads the live appcast + release notes from the gh-pages
+          # checkout instead of fetching over the network.
+          APPCAST_PATH: ${{ github.workspace }}/deploy/appcast.xml
+          RELEASE_NOTES_DIR: ${{ github.workspace }}/deploy
+        run: npm run build
+
+      - name: Replace /v4 in gh-pages with the new build
+        run: |
+          set -euo pipefail
+          rm -rf deploy/v4
+          mkdir -p deploy/v4
+          cp -R source/dist/. deploy/v4/
+
+      - name: Commit and push to gh-pages
+        working-directory: deploy
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add v4
+          if git diff --cached --quiet; then
+            echo "No changes in /v4 — skipping commit."
+            exit 0
+          fi
+          # Detect whether main HEAD is what triggered us, for a useful message.
+          MSG="Deploy /v4 from ${GITHUB_SHA::7} (${GITHUB_EVENT_NAME})"
+          git commit -m "$MSG"
+          git push origin gh-pages

@@ -1,0 +1,43 @@
+---
+import VersionBadge from './VersionBadge.astro';
+import DownloadCTA from './DownloadCTA.astro';
+---
+
+<section class="aurora relative overflow-hidden">
+  <!-- subtle starfield/grain overlay -->
+  <div
+    class="pointer-events-none absolute inset-0 opacity-30 mix-blend-soft-light"
+    style="background-image: radial-gradient(1px 1px at 12% 22%, white, transparent), radial-gradient(1px 1px at 78% 38%, white, transparent), radial-gradient(1px 1px at 35% 70%, white, transparent), radial-gradient(1px 1px at 88% 81%, white, transparent), radial-gradient(1px 1px at 55% 12%, white, transparent), radial-gradient(1px 1px at 18% 88%, white, transparent);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative mx-auto max-w-6xl px-6 pt-24 pb-32 md:pt-32 md:pb-40">
+    <div class="max-w-3xl">
+      <VersionBadge />
+
+      <h1
+        class="mt-6 text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-aerial-text leading-[1.05]"
+      >
+        The Apple TV screensaver,<br />
+        <span class="bg-gradient-to-r from-aerial-accent via-aerial-accent-hi to-aerial-link bg-clip-text text-transparent">
+          on your Mac. And then some.
+        </span>
+      </h1>
+
+      <p class="mt-7 text-lg md:text-xl text-aerial-text-muted leading-relaxed max-w-2xl">
+        Aerial plays Apple's high-fidelity aerial videos — cities, deserts, oceans, the ISS — as
+        your screensaver and live desktop wallpaper. Free, open source, with overlays, multi-display
+        layouts, your own videos, and community video packs. macOS only.
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center gap-6">
+        <DownloadCTA variant="large" />
+      </div>
+
+      <p class="mt-8 text-sm text-aerial-text-dim max-w-md">
+        Built for macOS&nbsp;15+ and updated continuously since 2015. The macOS built-in version is
+        nice — Aerial gives you the rest.
+      </p>
+    </div>
+  </div>
+</section>

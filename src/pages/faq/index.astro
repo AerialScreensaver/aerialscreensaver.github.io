@@ -1,0 +1,73 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const all = (await getCollection('faq')).sort((a, b) => a.data.order - b.data.order);
+
+const byCategory = new Map<string, typeof all>();
+for (const entry of all) {
+  const list = byCategory.get(entry.data.category) ?? [];
+  list.push(entry);
+  byCategory.set(entry.data.category, list);
+}
+
+const categories = Array.from(byCategory.entries());
+
+const rendered = new Map<string, Awaited<ReturnType<typeof render>>>();
+for (const entry of all) {
+  rendered.set(entry.id, await render(entry));
+}
+---
+
+<Base
+  title="FAQ — Aerial"
+  description="Common questions about Aerial: download, compatibility, your own videos, privacy, and known limitations."
+>
+  <header class="mx-auto max-w-3xl px-6 pt-24 pb-12">
+    <p class="text-sm font-semibold uppercase tracking-widest text-aerial-accent">FAQ</p>
+    <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight text-aerial-text">
+      Frequently asked.
+    </h1>
+    <p class="mt-6 text-aerial-text-muted text-lg leading-relaxed">
+      Quick answers. If yours isn't here, the
+      <a href="https://github.com/AerialScreensaver/Aerial/issues" class="text-aerial-link">
+        GitHub issues
+      </a>
+      and the project Discord are good places to ask.
+    </p>
+  </header>
+
+  <div class="mx-auto max-w-3xl px-6 pb-32 space-y-12">
+    {
+      categories.map(([category, entries]) => (
+        <section>
+          <h2 class="text-sm font-semibold uppercase tracking-widest text-aerial-link mb-6">
+            {category}
+          </h2>
+          <div class="space-y-6">
+            {entries.map((entry) => {
+              const r = rendered.get(entry.id)!;
+              const Content = r.Content;
+              return (
+                <details class="group rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 transition-colors">
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4 font-medium text-aerial-text">
+                    <span>{entry.data.question}</span>
+                    <span
+                      class="mt-1 text-aerial-text-muted transition-transform group-open:rotate-45"
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <div class="mt-4 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed">
+                    <Content />
+                  </div>
+                </details>
+              );
+            })}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</Base>

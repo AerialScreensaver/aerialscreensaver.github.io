@@ -1,0 +1,125 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import DownloadCTA from '../components/DownloadCTA.astro';
+
+const base = import.meta.env.BASE_URL;
+const link = (path: string) => `${base.replace(/\/$/, '')}${path}`;
+
+const allFeatures = await getCollection('features');
+const homepageFeatures = allFeatures
+  .filter((f) => f.data.homepage)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base hideNavBackdrop>
+  <Hero />
+
+  <!-- Why Aerial: positioning vs. macOS built-in -->
+  <section class="mx-auto max-w-5xl px-6 py-24">
+    <div class="grid gap-12 md:grid-cols-[1fr_2fr]">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-widest text-aerial-accent">
+          Why Aerial
+        </p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-aerial-text">
+          The power-user version of the screensaver Apple ships.
+        </h2>
+      </div>
+      <div class="space-y-5 text-aerial-text-muted text-lg leading-relaxed">
+        <p>
+          macOS already plays a few aerial videos out of the box — and they look great. But the
+          built-in version stops there: a small fixed library, no overlays, no multi-display tricks,
+          no community packs, no live wallpaper, no way to drop in your own footage.
+        </p>
+        <p>
+          Aerial picks up where Apple stopped. The full Apple library at full quality (HDR and 4K
+          240fps included), drag-and-drop overlays, per-monitor playback, your own videos in the
+          rotation, live camera feeds, and a curated catalog of community-made expansions — all in
+          a single small <code class="text-aerial-text">.app</code> that auto-updates itself.
+        </p>
+        <p class="text-aerial-text-dim">
+          Free, open source, no telemetry. Donations welcome but never asked twice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature highlights -->
+  <section class="mx-auto max-w-6xl px-6 py-12">
+    <div class="grid gap-6 md:grid-cols-3">
+      {
+        homepageFeatures.map((f) => (
+          <FeatureCard
+            title={f.data.title}
+            summary={f.data.summary}
+            href={link(`/features#${f.id}`)}
+          />
+        ))
+      }
+    </div>
+    <div class="mt-10 text-center">
+      <a
+        href={link('/features')}
+        class="inline-flex items-center gap-2 text-aerial-link hover:text-aerial-link-hi"
+      >
+        Every feature in detail
+        <svg class="h-3 w-3" viewBox="0 0 12 12" aria-hidden="true">
+          <path
+            d="M4.5 2.5 8 6l-3.5 3.5"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Heritage / since 2015 -->
+  <section class="mx-auto max-w-5xl px-6 py-24">
+    <div class="rounded-2xl border border-aerial-border bg-gradient-to-br from-aerial-surface to-aerial-bg p-10 md:p-14">
+      <p class="text-sm font-semibold uppercase tracking-widest text-aerial-link">Since 2015</p>
+      <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-aerial-text max-w-2xl">
+        Old project. New tricks.
+      </h2>
+      <p class="mt-6 text-aerial-text-muted text-lg leading-relaxed max-w-3xl">
+        Aerial was the first to bring the Apple&nbsp;TV aerials to the Mac, almost a decade before
+        Apple shipped a watered-down version of their own. It's still the most flexible, most
+        feature-rich way to use them — and Aerial&nbsp;4 is its biggest leap yet: a brand-new visual
+        overlay editor, the new private screensaver extension API for perfect modern macOS
+        compatibility, and HDR end-to-end.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a
+          href={link('/release-notes')}
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-aerial-border bg-aerial-surface-hi/60 text-sm text-aerial-text hover:border-aerial-accent/50 transition-colors"
+        >
+          What's new in 4.0
+        </a>
+        <a
+          href="https://github.com/AerialScreensaver/Aerial"
+          class="text-sm text-aerial-text-muted hover:text-aerial-text"
+        >
+          Browse the source on GitHub →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="mx-auto max-w-5xl px-6 py-24 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-aerial-text">
+      Make your Mac cinematic.
+    </h2>
+    <p class="mt-4 text-aerial-text-muted text-lg max-w-xl mx-auto">
+      One small download. Drag to <code class="text-aerial-text">/Applications</code>. That's it.
+    </p>
+    <div class="mt-8 inline-block">
+      <DownloadCTA variant="large" />
+    </div>
+  </section>
+</Base>

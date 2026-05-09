@@ -1,0 +1,97 @@
+---
+import Base from '../../layouts/Base.astro';
+import { readdirSync, readFileSync, existsSync } from 'node:fs';
+import { join } from 'node:path';
+
+interface ReleaseNote {
+  version: string;
+  body: string;
+  url: string;
+}
+
+function loadReleaseNotes(): ReleaseNote[] {
+  const candidates = [
+    process.env.RELEASE_NOTES_DIR,
+    join(process.cwd(), '..', 'aerialscreensaver.github.io'),
+    join(process.cwd(), '_deploy'),
+  ].filter(Boolean) as string[];
+
+  for (const dir of candidates) {
+    if (!existsSync(dir)) continue;
+    const entries = readdirSync(dir).filter((f) => /^Aerial-.+\.md$/.test(f));
+    if (entries.length === 0) continue;
+
+    const notes: ReleaseNote[] = entries.map((file) => {
+      const version = file.replace(/^Aerial-/, '').replace(/\.md$/, '');
+      const body = readFileSync(join(dir, file), 'utf8');
+      return {
+        version,
+        body,
+        url: `https://aerialscreensaver.github.io/${file}`,
+      };
+    });
+
+    notes.sort((a, b) => versionRank(b.version) - versionRank(a.version));
+    return notes;
+  }
+  return [];
+}
+
+// Crude version rank that puts higher major.minor.patch first, alphas after.
+// Works for the existing 3.9.9aNN scheme and future 4.x stable + alphas.
+function versionRank(v: string): number {
+  const m = v.match(/^(\d+)\.(\d+)\.(\d+)(?:a(\d+))?$/);
+  if (!m) return 0;
+  const [, major, minor, patch, alpha] = m;
+  return (
+    Number(major) * 1_000_000_000 +
+    Number(minor) * 1_000_000 +
+    Number(patch) * 1_000 +
+    (alpha ? Number(alpha) : 999) // stable releases sort above any alpha of the same version
+  );
+}
+
+const notes = loadReleaseNotes();
+---
+
+<Base
+  title="Release notes — Aerial"
+  description="Every Aerial release: what changed, when it shipped, and the markdown the auto-updater shows."
+>
+  <header class="mx-auto max-w-3xl px-6 pt-24 pb-12">
+    <p class="text-sm font-semibold uppercase tracking-widest text-aerial-accent">Release notes</p>
+    <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight text-aerial-text">
+      Every release.
+    </h1>
+    <p class="mt-6 text-aerial-text-muted text-lg leading-relaxed">
+      The same notes Sparkle shows when an update arrives. Most recent first.
+    </p>
+  </header>
+
+  <div class="mx-auto max-w-3xl px-6 pb-32 space-y-12">
+    {
+      notes.length === 0 ? (
+        <p class="text-aerial-text-muted">
+          No release notes found locally. In CI, this list is built from the gh-pages branch root.
+        </p>
+      ) : (
+        notes.map((n) => (
+          <article id={n.version} class="scroll-mt-24">
+            <header class="flex flex-wrap items-baseline justify-between gap-4 border-b border-aerial-border/60 pb-3">
+              <h2 class="text-2xl font-bold tracking-tight text-aerial-text">Aerial {n.version}</h2>
+              <a
+                href={n.url}
+                class="text-xs text-aerial-text-dim hover:text-aerial-text-muted"
+              >
+                Aerial-{n.version}.md ↗
+              </a>
+            </header>
+            <pre class="mt-4 whitespace-pre-wrap font-body text-aerial-text-muted leading-relaxed text-base">
+{n.body}
+            </pre>
+          </article>
+        ))
+      )
+    }
+  </div>
+</Base>

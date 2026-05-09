@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  hideNavBackdrop?: boolean;
+}
+
+const {
+  title = 'Aerial — cinematic screensavers and live wallpapers for macOS',
+  description = "Apple's high-fidelity aerial videos as your Mac screensaver and live wallpaper, with overlays, multi-display, expansions, and your own videos. Free and open source.",
+  ogImage,
+  hideNavBackdrop = false,
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImageUrl = ogImage
+  ? new URL(ogImage, Astro.site).toString()
+  : new URL(`${base}/og.jpg`, Astro.site).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <link rel="alternate icon" href={`${base}/favicon.ico`} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="theme-color" content="#0a0e16" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    />
+  </head>
+  <body>
+    <Nav hideBackdrop={hideNavBackdrop} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

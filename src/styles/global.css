@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Brand palette — cinematic dark, evoking Apple's aerials.
+     OKLCH for perceptually-uniform tones. */
+  --color-aerial-bg-deep: oklch(11% 0.02 250);
+  --color-aerial-bg: oklch(15% 0.02 250);
+  --color-aerial-surface: oklch(19% 0.02 250);
+  --color-aerial-surface-hi: oklch(24% 0.02 250);
+  --color-aerial-border: oklch(28% 0.02 250);
+  --color-aerial-text: oklch(96% 0.005 250);
+  --color-aerial-text-muted: oklch(72% 0.015 250);
+  --color-aerial-text-dim: oklch(52% 0.015 250);
+  --color-aerial-accent: oklch(78% 0.15 70);
+  --color-aerial-accent-hi: oklch(86% 0.13 70);
+  --color-aerial-link: oklch(80% 0.11 230);
+  --color-aerial-link-hi: oklch(88% 0.09 230);
+
+  /* Typography */
+  --font-display: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-aerial-bg-deep);
+    color: var(--color-aerial-text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background-color: var(--color-aerial-bg-deep);
+    color: var(--color-aerial-text);
+    min-height: 100vh;
+  }
+  ::selection {
+    background-color: var(--color-aerial-accent);
+    color: var(--color-aerial-bg-deep);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+  a {
+    color: var(--color-aerial-link);
+    transition: color 150ms ease;
+  }
+  a:hover {
+    color: var(--color-aerial-link-hi);
+  }
+}
+
+/* Reusable utility-pattern: aurora gradient for hero backgrounds */
+@utility aurora {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 0%, oklch(35% 0.15 250 / 0.45), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 20%, oklch(40% 0.18 200 / 0.35), transparent 60%),
+    radial-gradient(ellipse 100% 80% at 50% 100%, oklch(25% 0.12 290 / 0.4), transparent 70%),
+    var(--color-aerial-bg-deep);
+}
