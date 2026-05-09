@@ -2,14 +2,18 @@
 import Base from '../../layouts/Base.astro';
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { marked } from 'marked';
+import { getAllReleases } from '../../lib/appcast';
 
 interface ReleaseNote {
   version: string;
-  body: string;
+  bodyHtml: string;
   url: string;
+  pubDateLabel?: string;
+  pubDate?: Date;
 }
 
-function loadReleaseNotes(): ReleaseNote[] {
+function loadReleaseNoteFiles(): { version: string; body: string; url: string }[] {
   const candidates = [
     process.env.RELEASE_NOTES_DIR,
     join(process.cwd(), '..', 'aerialscreensaver.github.io'),
@@ -20,25 +24,16 @@ function loadReleaseNotes(): ReleaseNote[] {
     if (!existsSync(dir)) continue;
     const entries = readdirSync(dir).filter((f) => /^Aerial-.+\.md$/.test(f));
     if (entries.length === 0) continue;
-
-    const notes: ReleaseNote[] = entries.map((file) => {
-      const version = file.replace(/^Aerial-/, '').replace(/\.md$/, '');
-      const body = readFileSync(join(dir, file), 'utf8');
-      return {
-        version,
-        body,
-        url: `https://aerialscreensaver.github.io/${file}`,
-      };
-    });
-
-    notes.sort((a, b) => versionRank(b.version) - versionRank(a.version));
-    return notes;
+    return entries.map((file) => ({
+      version: file.replace(/^Aerial-/, '').replace(/\.md$/, ''),
+      body: readFileSync(join(dir, file), 'utf8'),
+      url: `https://aerialscreensaver.github.io/${file}`,
+    }));
   }
   return [];
 }
 
-// Crude version rank that puts higher major.minor.patch first, alphas after.
-// Works for the existing 3.9.9aNN scheme and future 4.x stable + alphas.
+// Sort: higher major.minor.patch first, stable above any alpha of the same patch.
 function versionRank(v: string): number {
   const m = v.match(/^(\d+)\.(\d+)\.(\d+)(?:a(\d+))?$/);
   if (!m) return 0;
@@ -47,11 +42,29 @@ function versionRank(v: string): number {
     Number(major) * 1_000_000_000 +
     Number(minor) * 1_000_000 +
     Number(patch) * 1_000 +
-    (alpha ? Number(alpha) : 999) // stable releases sort above any alpha of the same version
+    (alpha ? Number(alpha) : 999)
   );
 }
 
-const notes = loadReleaseNotes();
+const files = loadReleaseNoteFiles();
+const appcastByVersion = new Map(
+  (await getAllReleases().catch(() => [])).map((r) => [r.version, r]),
+);
+
+marked.setOptions({ gfm: true, breaks: false });
+
+const notes: ReleaseNote[] = files
+  .map((f) => {
+    const appcast = appcastByVersion.get(f.version);
+    return {
+      version: f.version,
+      bodyHtml: marked.parse(f.body) as string,
+      url: f.url,
+      pubDateLabel: appcast?.pubDateLabel,
+      pubDate: appcast?.pubDate,
+    };
+  })
+  .sort((a, b) => versionRank(b.version) - versionRank(a.version));
 ---
 
 <Base
@@ -61,36 +74,59 @@ const notes = loadReleaseNotes();
   <header class="mx-auto max-w-3xl px-6 pt-24 pb-12">
     <p class="text-sm font-semibold uppercase tracking-widest text-aerial-accent">Release notes</p>
     <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight text-aerial-text">
-      Every release.
+      Latest releases.
     </h1>
     <p class="mt-6 text-aerial-text-muted text-lg leading-relaxed">
-      The same notes Sparkle shows when an update arrives. Most recent first.
+      Release notes will show up in the app when a new version is available, prior to update. Updates are provided via <a href="https://sparkle-project.org/" class="text-aerial-link">Sparkle</a>. You can find the previous release notes below! 
     </p>
   </header>
 
-  <div class="mx-auto max-w-3xl px-6 pb-32 space-y-12">
+  <div class="mx-auto max-w-3xl px-6 pb-32">
     {
       notes.length === 0 ? (
         <p class="text-aerial-text-muted">
           No release notes found locally. In CI, this list is built from the gh-pages branch root.
         </p>
       ) : (
-        notes.map((n) => (
-          <article id={n.version} class="scroll-mt-24">
-            <header class="flex flex-wrap items-baseline justify-between gap-4 border-b border-aerial-border/60 pb-3">
-              <h2 class="text-2xl font-bold tracking-tight text-aerial-text">Aerial {n.version}</h2>
-              <a
-                href={n.url}
-                class="text-xs text-aerial-text-dim hover:text-aerial-text-muted"
-              >
-                Aerial-{n.version}.md ↗
-              </a>
-            </header>
-            <pre class="mt-4 whitespace-pre-wrap font-body text-aerial-text-muted leading-relaxed text-base">
-{n.body}
-            </pre>
-          </article>
-        ))
+        <div class="space-y-4">
+          {notes.map((n, i) => (
+            <details
+              id={n.version}
+              open={i === 0}
+              class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"
+            >
+              <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4">
+                <div class="flex items-baseline gap-3 flex-wrap">
+                  <span class="text-lg font-semibold text-aerial-text">Aerial {n.version}</span>
+                  {n.pubDateLabel && (
+                    <span class="text-sm text-aerial-text-dim">{n.pubDateLabel}</span>
+                  )}
+                  {i === 0 && (
+                    <span class="text-[10px] font-semibold uppercase tracking-widest text-aerial-accent border border-aerial-accent/40 rounded px-1.5 py-0.5">
+                      Latest
+                    </span>
+                  )}
+                </div>
+                <span
+                  class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none"
+                  aria-hidden="true"
+                >
+                  +
+                </span>
+              </summary>
+              <div
+                class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"
+                set:html={n.bodyHtml}
+              />
+              <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+                Source markdown:
+                <a href={n.url} class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+                  Aerial-{n.version}.md ↗
+                </a>
+              </div>
+            </details>
+          ))}
+        </div>
       )
     }
   </div>
