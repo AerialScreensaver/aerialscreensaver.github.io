@@ -29,10 +29,14 @@ const current = Astro.url.pathname.replace(/\/$/, '');
       href={link('/')}
       class="flex items-center gap-2 text-aerial-text font-semibold tracking-tight text-lg hover:text-aerial-accent-hi transition-colors"
     >
-      <span
-        class="inline-block h-7 w-7 rounded-md bg-gradient-to-br from-aerial-accent to-aerial-link"
-        aria-hidden="true"
-      ></span>
+      <img
+        src={link('/aerial-icon-64.png')}
+        srcset={`${link('/aerial-icon-64.png')} 1x, ${link('/icon-192.png')} 3x`}
+        width="32"
+        height="32"
+        alt=""
+        class="h-8 w-8"
+      />
       <span>Aerial</span>
     </a>
 
