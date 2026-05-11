@@ -1,286 +1,304 @@
 {
-   "assets":[
-      {
-         "timeOfDay":"sunset",
-         "accessibilityLabel":"Florida",
-         "title":"Miami",
-         "scene":"city",
-         "id":"video_inspire_florida_miami_brickell_sunset_00036",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_florida_miami_brickell_sunset_00036.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_florida_miami_brickell_sunset_00036.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_florida_miami_brickell_sunset_00036.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_florida_miami_brickell_sunset_00036.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Sunset flight around downtown Miami"
-         }
+  "assets": [
+    {
+      "accessibilityLabel": "Alabama",
+      "id": "video_inspire_alabama_montgomery_countryside_00007",
+      "pointsOfInterest": {
+        "0": "Morning mist drifts across emerald fields as a new day unfolds over the Alabama plains."
       },
-      {
-         "timeOfDay":"sunset",
-         "accessibilityLabel":"Nevada",
-         "title":"Las Vegas",
-         "scene":"city",
-         "id":"video_inspire_nevada_lasvegas_northstrip_021",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_nevada_lasvegas_northstrip_021.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_nevada_lasvegas_northstrip_021.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_nevada_lasvegas_northstrip_021.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_nevada_lasvegas_northstrip_021.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Rising over Las Vegas around sunset"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_alabama_montgomery_countryside_00007.png",
+      "scene": "countryside",
+      "timeOfDay": "day",
+      "title": "Montgomery Countryside",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_alabama_montgomery_countryside_00007.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_alabama_montgomery_countryside_00007.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "11eecf85f3ae90acbb55acbf26f481ae",
+      "url-4K-SDR-md5": "80bc4a0b514ba8ae002f0a059e0c95fc"
+    },
+    {
+      "accessibilityLabel": "California",
+      "id": "video_inspire_california_big-sur_2020_00001",
+      "pointsOfInterest": {
+        "0": "Rugged cliffs and turquoise waters define the wild California coastline."
       },
-      {
-         "timeOfDay":"day",
-         "accessibilityLabel":"Oregon",
-         "title":"Lone Ranch Beach",
-         "scene":"beach",
-         "id":"video_inspire_oregon_lone-ranch-beach_00015",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_oregon_lone-ranch-beach_00015.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_oregon_lone-ranch-beach_00015.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_oregon_lone-ranch-beach_00015.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_oregon_lone-ranch-beach_00015.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Flying around rocks on the Oregon Coast"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_california_big-sur_2020_00001.png",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "title": "Big Sur",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_california_big-sur_2020_00001.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_california_big-sur_2020_00001.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "dc2ff5c4a82fe39c8ccc5ccc45ee5150",
+      "url-4K-SDR-md5": "115c4f64754a3ba5753121e004f2243f"
+    },
+    {
+      "accessibilityLabel": "California",
+      "id": "video_inspire_california_big-sur_bixby_005",
+      "pointsOfInterest": {
+        "0": "Rugged cliffs plunge into the shimmering Pacific along California's wild and dramatic coastline."
       },
-      {
-         "timeOfDay":"day",
-         "accessibilityLabel":"Oregon",
-         "title":"Lone Ranch Beach",
-         "scene":"beach",
-         "id":"video_inspire_oregon_lone-ranch-beach_00001",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_oregon_lone-ranch-beach_00001.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_oregon_lone-ranch-beach_00001.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_oregon_lone-ranch-beach_00001.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_oregon_lone-ranch-beach_00001.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Exploring Lone Ranch Beach on the Oregon Coast"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_california_big-sur_bixby_005.png",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "title": "Big Sur",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_california_big-sur_bixby_005.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_california_big-sur_bixby_005.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "48e20b2e84c8b6c19f51991d6633d4a0",
+      "url-4K-SDR-md5": "4d95fc4bc01b6ab766fbec3f237437f7"
+    },
+    {
+      "accessibilityLabel": "California",
+      "id": "video_inspire_california_big-sur_landscape_054",
+      "pointsOfInterest": {
+        "0": "Rugged cliffs and emerald waters define this iconic stretch of the California coastline."
       },
-      {
-         "timeOfDay":"sunrise",
-         "accessibilityLabel":"California",
-         "title":"Sierra Mar",
-         "scene":"countryside",
-         "id":"video_inspire_california_vineyard_sierra-mar_sunrise_110",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_california_vineyard_sierra-mar_sunrise_110.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_california_vineyard_sierra-mar_sunrise_110.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_california_vineyard_sierra-mar_sunrise_110.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_california_vineyard_sierra-mar_sunrise_110.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Morning flight over Sierra Mar Vineyard"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_california_big-sur_landscape_054.png",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "title": "Big Sur",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_california_big-sur_landscape_054.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_california_big-sur_landscape_054.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "0e2a63fb3b1680cef8f4a39faac34037",
+      "url-4K-SDR-md5": "9442aa6b0c7f7a879f3568a5ba29add4"
+    },
+    {
+      "accessibilityLabel": "California",
+      "id": "video_inspire_california_catalina_00005",
+      "pointsOfInterest": {
+        "0": "Rugged cliffs rise from the deep blue Pacific waters surrounding Santa Catalina Island."
       },
-      {
-         "timeOfDay":"day",
-         "accessibilityLabel":"Italy",
-         "title":"Como Cerano d'Intelvi",
-         "scene":"countryside",
-         "id":"video_inspire_italy_como_cerano-dintelvi_006",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_italy_como_cerano-dintelvi_006.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_italy_como_cerano-dintelvi_006.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_italy_como_cerano-dintelvi_006.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_italy_como_cerano-dintelvi_006.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Exploring around Como Cerano d'Intelvi, Italy"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_california_catalina_00005.png",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "title": "Catalina",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_california_catalina_00005.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_california_catalina_00005.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "c215536e2a465fc52ff49553d36d063a",
+      "url-4K-SDR-md5": "7ca18f10b2818458b4c067267a429757"
+    },
+    {
+      "accessibilityLabel": "California",
+      "id": "video_inspire_california_catalina_avalon_00053",
+      "pointsOfInterest": {
+        "0": "Avalon's terracotta-domed Casino crowns the harbor of this storied island retreat."
       },
-      {
-         "timeOfDay":"sunset",
-         "accessibilityLabel":"Oregon",
-         "title":"Portland",
-         "scene":"city",
-         "id":"video_inspire_oregon_portland_00064",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_oregon_portland_00064.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_oregon_portland_00064.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_oregon_portland_00064.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_oregon_portland_00064.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Sunset flight around downtown Portland, Oregon"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_california_catalina_avalon_00053.png",
+      "scene": "city",
+      "timeOfDay": "day",
+      "title": "Catalina Avalon",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_california_catalina_avalon_00053.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_california_catalina_avalon_00053.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "533d92fb87524a19332f1caade5d89cb",
+      "url-4K-SDR-md5": "f0c6bc55ce4330aafb8506c6249b06fb"
+    },
+    {
+      "accessibilityLabel": "California",
+      "id": "video_inspire_california_santa-barbara_050",
+      "pointsOfInterest": {
+        "0": "Santa Barbara's historic pier extends into the golden harbor as the sun dips behind the coastal mountains."
       },
-      {
-         "timeOfDay":"day",
-         "accessibilityLabel":"California",
-         "title":"Big Sur",
-         "scene":"nature",
-         "id":"video_inspire_california_big-sur_2020_00001",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_california_big-sur_2020_00001.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_california_big-sur_2020_00001.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_california_big-sur_2020_00001.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_california_big-sur_2020_00001.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Morning flight along the coast of Big Sur"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_california_santa-barbara_050.png",
+      "scene": "beach",
+      "timeOfDay": "night",
+      "title": "Santa Barbara",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_california_santa-barbara_050.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_california_santa-barbara_050.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "2c7da7480c235fc3163497ca651d97bc",
+      "url-4K-SDR-md5": "96fafe09c4ec46ca87208214afdac41c"
+    },
+    {
+      "accessibilityLabel": "California",
+      "id": "video_inspire_california_vineyard_sierra-mar_sunrise_110",
+      "pointsOfInterest": {
+        "0": "Rolling vineyards catch the warm morning light as golden hills rise above California wine country."
       },
-      {
-         "timeOfDay":"day",
-         "accessibilityLabel":"California",
-         "title":"Avalon",
-         "scene":"countryside",
-         "id":"video_inspire_california_catalina_avalon_00053",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_california_catalina_avalon_00053.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_california_catalina_avalon_00053.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_california_catalina_avalon_00053.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_california_catalina_avalon_00053.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Flying over Avalon on Catalina Island"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_california_vineyard_sierra-mar_sunrise_110.png",
+      "scene": "countryside",
+      "timeOfDay": "day",
+      "title": "Sierra Mar",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_california_vineyard_sierra-mar_sunrise_110.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_california_vineyard_sierra-mar_sunrise_110.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "283c2e1ec943b4da5f88e0e3c45d01e9",
+      "url-4K-SDR-md5": "e99bee481ff185da293b044b332480f7"
+    },
+    {
+      "accessibilityLabel": "Florida",
+      "id": "video_inspire_florida_miami_brickell_sunset_00036",
+      "pointsOfInterest": {
+        "0": "Glass towers of Miami's financial district glow against a deep twilight sky over Biscayne Bay."
       },
-      {
-         "timeOfDay":"day",
-         "accessibilityLabel":"England",
-         "title":"London",
-         "scene":"city",
-         "id":"video_inspire_uk_london_hampstead-heath_003",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_uk_london_hampstead-heath_003.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_uk_london_hampstead-heath_003.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_uk_london_hampstead-heath_003.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_uk_london_hampstead-heath_003.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "London flyby from Hampstead Heath"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_florida_miami_brickell_sunset_00036.png",
+      "scene": "city",
+      "timeOfDay": "night",
+      "title": "Brickell",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_florida_miami_brickell_sunset_00036.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_florida_miami_brickell_sunset_00036.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "fd5714c0188d39539e018df7367f4adb",
+      "url-4K-SDR-md5": "806f3693186572907b04a0645e72fa30"
+    },
+    {
+      "accessibilityLabel": "Italy",
+      "id": "video_inspire_italy_como_cerano-dintelvi_006",
+      "pointsOfInterest": {
+        "0": "Terraced village homes spill down misty alpine slopes above the shimmering waters of Lake Como."
       },
-      {
-         "timeOfDay":"day",
-         "accessibilityLabel":"Texas",
-         "title":"Pecos",
-         "scene":"city",
-         "id":"video_inspire_texas_pecos_foggy-landscape_00018",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_texas_pecos_foggy-landscape_00018.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_texas_pecos_foggy-landscape_00018.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_texas_pecos_foggy-landscape_00018.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_texas_pecos_foggy-landscape_00018.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Fog clings to the landscape in West Texas near Pecos"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_italy_como_cerano-dintelvi_006.png",
+      "scene": "countryside",
+      "timeOfDay": "day",
+      "title": "Cerano d'Intelvi",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_italy_como_cerano-dintelvi_006.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_italy_como_cerano-dintelvi_006.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "529062406b2cf19c929acf5692e7a673",
+      "url-4K-SDR-md5": "b5b28d7e22a8338bfe5043a00a49b8ff"
+    },
+    {
+      "accessibilityLabel": "Nevada",
+      "id": "video_inspire_nevada_lasvegas_northstrip_021",
+      "pointsOfInterest": {
+        "0": "Neon signs and resort towers line the glittering expanse of the Las Vegas Strip at dusk."
       },
-      {
-         "timeOfDay":"day",
-         "accessibilityLabel":"California",
-         "title":"San Francisco",
-         "scene":"city",
-         "id":"video_inspire_sanfrancisco_castro_005",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_sanfrancisco_castro_005.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_sanfrancisco_castro_005.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_sanfrancisco_castro_005.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_sanfrancisco_castro_005.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Karl the Fog flows over Twin Peaks in San Francisco"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_nevada_lasvegas_northstrip_021.png",
+      "scene": "city",
+      "timeOfDay": "night",
+      "title": "Las Vegas",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_nevada_lasvegas_northstrip_021.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_nevada_lasvegas_northstrip_021.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "8aed507e40f7db480773d49c29a0dc8d",
+      "url-4K-SDR-md5": "8c850adfd53b0df1a6513b491bb989cf"
+    },
+    {
+      "accessibilityLabel": "Oregon",
+      "id": "video_inspire_oregon_lone-ranch-beach_00001",
+      "pointsOfInterest": {
+        "0": "Misty sea stacks rise from turquoise waters along Oregon's rugged southern coastline."
       },
-      {
-         "timeOfDay":"day",
-         "accessibilityLabel":"California",
-         "title":"Big Sur",
-         "scene":"nature",
-         "id":"video_inspire_california_big-sur_landscape_054",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_california_big-sur_landscape_054.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_california_big-sur_landscape_054.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_california_big-sur_landscape_054.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_california_big-sur_landscape_054.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Exploring Big Sur around Bixby Creek"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_oregon_lone-ranch-beach_00001.png",
+      "scene": "beach",
+      "timeOfDay": "day",
+      "title": "Lone Ranch Beach",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_oregon_lone-ranch-beach_00001.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_oregon_lone-ranch-beach_00001.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "5e000402e7547e780ae948c8f63659c9",
+      "url-4K-SDR-md5": "e4591e989297ab4f09c0a56f04a344a5"
+    },
+    {
+      "accessibilityLabel": "Oregon",
+      "id": "video_inspire_oregon_lone-ranch-beach_00015",
+      "pointsOfInterest": {
+        "0": "Rugged sea cliffs rise above the Pacific as misty islands fade into the Oregon horizon."
       },
-      {
-         "timeOfDay":"sunrise",
-         "accessibilityLabel":"Alabama",
-         "title":"Montgomery",
-         "scene":"countryside",
-         "id":"video_inspire_alabama_montgomery_countryside_00007",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_alabama_montgomery_countryside_00007.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_alabama_montgomery_countryside_00007.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_alabama_montgomery_countryside_00007.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_alabama_montgomery_countryside_00007.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Flight through the fog over grazing lands in rural Alabama"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_oregon_lone-ranch-beach_00015.png",
+      "scene": "beach",
+      "timeOfDay": "day",
+      "title": "Lone Ranch Beach",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_oregon_lone-ranch-beach_00015.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_oregon_lone-ranch-beach_00015.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "770924d26b39a2722d57621a6737b5fd",
+      "url-4K-SDR-md5": "aa13b0e3b43926f9f978c499a49aa4ba"
+    },
+    {
+      "accessibilityLabel": "Oregon",
+      "id": "video_inspire_oregon_lone-ranch-beach_00021",
+      "pointsOfInterest": {
+        "0": "Misty sea stacks rise from the rocky shores of Oregon's rugged southern coastline."
       },
-      {
-         "timeOfDay":"day",
-         "accessibilityLabel":"California",
-         "title":"Bixby Creek Bridge",
-         "scene":"nature",
-         "id":"video_inspire_california_big-sur_bixby_005",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_california_big-sur_bixby_005.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_california_big-sur_bixby_005.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_california_big-sur_bixby_005.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_california_big-sur_bixby_005.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Flight around Bixby Creek Bridge in Big Sur"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_oregon_lone-ranch-beach_00021.png",
+      "scene": "beach",
+      "timeOfDay": "day",
+      "title": "Lone Ranch Beach",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_oregon_lone-ranch-beach_00021.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_oregon_lone-ranch-beach_00021.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "8565e8eddbe13839e8c34d1226be9a1c",
+      "url-4K-SDR-md5": "12aa1051f96c65096d940a20e6e88a21"
+    },
+    {
+      "accessibilityLabel": "Oregon",
+      "id": "video_inspire_oregon_portland_00064",
+      "pointsOfInterest": {
+        "0": "City lights shimmer across the Willamette River as Portland's skyline glows at dusk."
       },
-      {
-         "timeOfDay":"sunset",
-         "accessibilityLabel":"California",
-         "title":"Santa Barbara Pier",
-         "scene":"beach",
-         "id":"video_inspire_california_santa-barbara_050",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_california_santa-barbara_050.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_california_santa-barbara_050.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_california_santa-barbara_050.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_california_santa-barbara_050.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Sunset flight around Santa Barbara Pier"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_oregon_portland_00064.png",
+      "scene": "city",
+      "timeOfDay": "night",
+      "title": "Portland",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_oregon_portland_00064.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_oregon_portland_00064.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "fee16d0201bac7d192c264bff20243e7",
+      "url-4K-SDR-md5": "0d609eddffbc5743687f1ec5f52fae78"
+    },
+    {
+      "accessibilityLabel": "California",
+      "id": "video_inspire_sanfrancisco_castro_005",
+      "pointsOfInterest": {
+        "0": "Marine fog spills over Twin Peaks as San Francisco's Castro neighborhood basks in morning light."
       },
-      {
-         "timeOfDay":"day",
-         "accessibilityLabel":"Oregon",
-         "title":"Lone Ranch Beach",
-         "scene":"beach",
-         "id":"video_inspire_oregon_lone-ranch-beach_00021",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_oregon_lone-ranch-beach_00021.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_oregon_lone-ranch-beach_00021.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_oregon_lone-ranch-beach_00021.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_oregon_lone-ranch-beach_00021.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Flying around rocks on the Oregon Coast"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_sanfrancisco_castro_005.png",
+      "scene": "city",
+      "timeOfDay": "day",
+      "title": "Castro",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_sanfrancisco_castro_005.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_sanfrancisco_castro_005.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "18126ef5e773a5f41b4c918be4b77691",
+      "url-4K-SDR-md5": "23bf314eee898f23156f2acc75d8e763"
+    },
+    {
+      "accessibilityLabel": "Texas",
+      "id": "video_inspire_texas_austin_oct2019_evening_00085",
+      "pointsOfInterest": {
+        "0": "City lights shimmer across the Austin skyline as twilight fades into the Texas night."
       },
-      {
-         "timeOfDay":"day",
-         "accessibilityLabel":"Scotland",
-         "title":"Edinburgh",
-         "scene":"city",
-         "id":"video_inspire_uk_edinburgh_arthursseat_010",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_uk_edinburgh_arthursseat_010.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_uk_edinburgh_arthursseat_010.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_uk_edinburgh_arthursseat_010.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_uk_edinburgh_arthursseat_010.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Edinburgh flyby around Salisbury Crags"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_texas_austin_oct2019_evening_00085.png",
+      "scene": "city",
+      "timeOfDay": "night",
+      "title": "Austin",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_texas_austin_oct2019_evening_00085.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_texas_austin_oct2019_evening_00085.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "ee534231a446a0b7f18962064134fcb4",
+      "url-4K-SDR-md5": "f9cdd04d231e0c9722e48577376af3fd"
+    },
+    {
+      "accessibilityLabel": "Texas",
+      "id": "video_inspire_texas_pecos_foggy-landscape_00018",
+      "pointsOfInterest": {
+        "0": "Morning fog drifts across vast Texas plains as mountain ridges emerge through the haze."
       },
-      {
-         "timeOfDay":"night",
-         "accessibilityLabel":"Texas",
-         "title":"Austin",
-         "scene":"city",
-         "id":"video_inspire_texas_austin_oct2019_evening_00085",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_texas_austin_oct2019_evening_00085.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_texas_austin_oct2019_evening_00085.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_texas_austin_oct2019_evening_00085.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_texas_austin_oct2019_evening_00085.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Evening flight through Austin, Texas"
-         }
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_texas_pecos_foggy-landscape_00018.png",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "title": "Pecos",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_texas_pecos_foggy-landscape_00018.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_texas_pecos_foggy-landscape_00018.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "6c0a9b3388df56a871979809bfbeb09d",
+      "url-4K-SDR-md5": "fee57321bae0b32575bec861a256addf"
+    },
+    {
+      "accessibilityLabel": "United Kingdom",
+      "id": "video_inspire_uk_edinburgh_arthursseat_010",
+      "pointsOfInterest": {
+        "0": "Edinburgh's ancient volcanic peak surveys a grand sweep of rooftops, spires, and the shimmering Firth of Forth."
       },
-      {
-         "timeOfDay":"day",
-         "accessibilityLabel":"California",
-         "title":"Catalina Island",
-         "scene":"nature",
-         "id":"video_inspire_california_catalina_00005",
-         "url-4K-SDR-240FPS":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_california_catalina_00005.4k-sdr-240fps.mov",
-         "url-4K-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_california_catalina_00005.4k-sdr.mov",
-         "url-1080-SDR":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-sdr/video_inspire_california_catalina_00005.1080-sdr.mov",
-         "url-1080-H264":"https://github.com/glouel/AerialCommunity/releases/download/mw2-1080p-h264/video_inspire_california_catalina_00005.1080-h264.mov",
-         "pointsOfInterest" : {
-            "0" : "Flying over the west end of Catalina Island"
-         }
-      }
-   ],
-   "version":1,
-   "initialAssetCount":0
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_uk_edinburgh_arthursseat_010.png",
+      "scene": "city",
+      "timeOfDay": "day",
+      "title": "Arthur's Seat",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_uk_edinburgh_arthursseat_010.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_uk_edinburgh_arthursseat_010.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "69c0208a632f2bd88e6d8f519630d77f",
+      "url-4K-SDR-md5": "6396c7cc9f60197b16462096b24a482c"
+    },
+    {
+      "accessibilityLabel": "United Kingdom",
+      "id": "video_inspire_uk_london_hampstead-heath_003",
+      "pointsOfInterest": {
+        "0": "London's skyline rises beyond ancient parkland, where the city meets its wildest green escape."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_uk_london_hampstead-heath_003.png",
+      "scene": "city",
+      "timeOfDay": "day",
+      "title": "Hampstead Heath",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr/video_inspire_uk_london_hampstead-heath_003.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/mw2-4k-sdr-240fps/video_inspire_uk_london_hampstead-heath_003.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "6107f63d6746296cd4a6e4a483637f83",
+      "url-4K-SDR-md5": "6107f63d6746296cd4a6e4a483637f83"
+    }
+  ]
 }
