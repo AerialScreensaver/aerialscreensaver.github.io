@@ -1,304 +1,304 @@
 {
-  "assets" : [
+  "assets": [
     {
-      "accessibilityLabel" : "",
-      "id" : "video_i3_ca_los-angeles_dtla_20251216_003",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "California",
+      "id": "video_i3_ca_los-angeles_dtla_20251216_003",
+      "pointsOfInterest": {
+        "0": "Morning fog rolls through downtown skyscrapers as golden sunrise light breaks across the skyline."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_los-angeles_dtla_20251216_003.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_ca_los-angeles_dtla_20251216_003.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_ca_los-angeles_dtla_20251216_003.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "8491c32f06b77bc7e41bb0171db092e1",
-      "url-4K-SDR-md5" : "9221bdad8e97c752852f698b6ee96062"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_los-angeles_dtla_20251216_003.png",
+      "scene": "city",
+      "timeOfDay": "day",
+      "title": "Los Angeles",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_ca_los-angeles_dtla_20251216_003.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_ca_los-angeles_dtla_20251216_003.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "8491c32f06b77bc7e41bb0171db092e1",
+      "url-4K-SDR-md5": "9221bdad8e97c752852f698b6ee96062"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_i3_ca_tiburon_20250502_030",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "California",
+      "id": "video_i3_ca_tiburon_20250502_030",
+      "pointsOfInterest": {
+        "0": "Tiburon's wooded peninsula reaches into the bay with the Golden Gate standing watch beyond."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_tiburon_20250502_030.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_ca_tiburon_20250502_030.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_ca_tiburon_20250502_030.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "0fca141adc11d3d7a7ad4314091faebc",
-      "url-4K-SDR-md5" : "9eacb0d9eaf634b99eaa5405e708bec6"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_tiburon_20250502_030.png",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "title": "Tiburon",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_ca_tiburon_20250502_030.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_ca_tiburon_20250502_030.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "0fca141adc11d3d7a7ad4314091faebc",
+      "url-4K-SDR-md5": "9eacb0d9eaf634b99eaa5405e708bec6"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_i3_fr_poussay_03_03",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "France",
+      "id": "video_i3_fr_poussay_03_03",
+      "pointsOfInterest": {
+        "0": "Rolling farmland and patchwork fields unfold beneath a summer sky in rural Lorraine."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_i3_fr_poussay_03_03.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_fr_poussay_03_03.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_fr_poussay_03_03.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "70dcdde949a7739e3343e0aefc46bb7a",
-      "url-4K-SDR-md5" : "3718b5fefb3e24a1cef40f187954ab16"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_fr_poussay_03_03.png",
+      "scene": "countryside",
+      "timeOfDay": "day",
+      "title": "Poussay",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_fr_poussay_03_03.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_fr_poussay_03_03.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "70dcdde949a7739e3343e0aefc46bb7a",
+      "url-4K-SDR-md5": "3718b5fefb3e24a1cef40f187954ab16"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_i3_in_jodhpur_gulabsagar_jaswantthada_20241128_010_013",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "India",
+      "id": "video_i3_in_jodhpur_gulabsagar_jaswantthada_20241128_010_013",
+      "pointsOfInterest": {
+        "0": "Jaswant Thada's white marble cenotaph gleams beside a tranquil lake in the golden light of Jodhpur."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_i3_in_jodhpur_gulabsagar_jaswantthada_20241128_010_013.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_in_jodhpur_gulabsagar_jaswantthada_20241128_010_013.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_in_jodhpur_gulabsagar_jaswantthada_20241128_010_013.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "f00cfa76c2a324edcb361f06eb9e9d17",
-      "url-4K-SDR-md5" : "9f1ea4ebfcba586893dbf83c080c0466"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_in_jodhpur_gulabsagar_jaswantthada_20241128_010_013.png",
+      "scene": "city",
+      "timeOfDay": "day",
+      "title": "Jaswant Thada",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_in_jodhpur_gulabsagar_jaswantthada_20241128_010_013.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_in_jodhpur_gulabsagar_jaswantthada_20241128_010_013.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "f00cfa76c2a324edcb361f06eb9e9d17",
+      "url-4K-SDR-md5": "9f1ea4ebfcba586893dbf83c080c0466"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_i3_is_westfjords_20240616_004",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "Iceland",
+      "id": "video_i3_is_westfjords_20240616_004",
+      "pointsOfInterest": {
+        "0": "Rugged coastal cliffs sweep along Iceland's remote Westfjords peninsula beneath a dramatic Arctic sky."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_i3_is_westfjords_20240616_004.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_is_westfjords_20240616_004.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_is_westfjords_20240616_004.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "5cb1bb2e09c641a61187ca98ecf4630a",
-      "url-4K-SDR-md5" : "1fde2b0d118255c55e7b97a1dfbbc794"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_is_westfjords_20240616_004.png",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "title": "Westfjords",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_is_westfjords_20240616_004.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_is_westfjords_20240616_004.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "5cb1bb2e09c641a61187ca98ecf4630a",
+      "url-4K-SDR-md5": "1fde2b0d118255c55e7b97a1dfbbc794"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_i3_la_lake-martin_20251019_029",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "Louisiana",
+      "id": "video_i3_la_lake-martin_20251019_029",
+      "pointsOfInterest": {
+        "0": "Bald cypress silhouettes rise from still Louisiana waters beneath a blazing sunset sky."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_i3_la_lake-martin_20251019_029.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_la_lake-martin_20251019_029.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_la_lake-martin_20251019_029.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "3b87e2a9d5d97a205f19ef5d66eaad3f",
-      "url-4K-SDR-md5" : "d6de718ae5878f7629092c37233384e8"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_la_lake-martin_20251019_029.png",
+      "scene": "nature",
+      "timeOfDay": "night",
+      "title": "Lake Martin",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_la_lake-martin_20251019_029.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_la_lake-martin_20251019_029.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "3b87e2a9d5d97a205f19ef5d66eaad3f",
+      "url-4K-SDR-md5": "d6de718ae5878f7629092c37233384e8"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_i3_nm_shiprock_20251025_010",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "New Mexico",
+      "id": "video_i3_nm_shiprock_20251025_010",
+      "pointsOfInterest": {
+        "0": "Ancient volcanic spires rise dramatically from the vast desert floor of northwestern New Mexico."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_i3_nm_shiprock_20251025_010.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_nm_shiprock_20251025_010.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_nm_shiprock_20251025_010.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "5513e40b87aa6fc79114b61d90e1dc25",
-      "url-4K-SDR-md5" : "642c0e4c39b4996c87e952d7d679f7ce"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_nm_shiprock_20251025_010.png",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "title": "Shiprock",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_nm_shiprock_20251025_010.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_nm_shiprock_20251025_010.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "5513e40b87aa6fc79114b61d90e1dc25",
+      "url-4K-SDR-md5": "642c0e4c39b4996c87e952d7d679f7ce"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_i3_nyc_brooklyn_bed-stuy_20250919_086",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "New York",
+      "id": "video_i3_nyc_brooklyn_bed-stuy_20250919_086",
+      "pointsOfInterest": {
+        "0": "Manhattan's glittering skyline rises beyond Brooklyn's rooftops in the warm glow of dusk."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_i3_nyc_brooklyn_bed-stuy_20250919_086.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_nyc_brooklyn_bed-stuy_20250919_086.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_nyc_brooklyn_bed-stuy_20250919_086.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "eb20258ec698a242601b7b5941a2dd86",
-      "url-4K-SDR-md5" : "8c99ee26ef3f1605ef894c05e7e1c8f2"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_nyc_brooklyn_bed-stuy_20250919_086.png",
+      "scene": "city",
+      "timeOfDay": "day",
+      "title": "Brooklyn",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_nyc_brooklyn_bed-stuy_20250919_086.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_nyc_brooklyn_bed-stuy_20250919_086.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "eb20258ec698a242601b7b5941a2dd86",
+      "url-4K-SDR-md5": "8c99ee26ef3f1605ef894c05e7e1c8f2"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_i3_nyc_manhattan_20250918_067",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "New York",
+      "id": "video_i3_nyc_manhattan_20250918_067",
+      "pointsOfInterest": {
+        "0": "Glittering towers illuminate the Manhattan skyline as twilight surrenders to night."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_i3_nyc_manhattan_20250918_067.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_nyc_manhattan_20250918_067.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_nyc_manhattan_20250918_067.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "463fb1cc1976541b4f313f774b38cd75",
-      "url-4K-SDR-md5" : "6b2a08e4562343be07c87d4dc673203d"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_nyc_manhattan_20250918_067.png",
+      "scene": "city",
+      "timeOfDay": "night",
+      "title": "Manhattan",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_nyc_manhattan_20250918_067.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_nyc_manhattan_20250918_067.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "463fb1cc1976541b4f313f774b38cd75",
+      "url-4K-SDR-md5": "6b2a08e4562343be07c87d4dc673203d"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_i3_or_gardiner_20250430_011",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "Oregon",
+      "id": "video_i3_or_gardiner_20250430_011",
+      "pointsOfInterest": {
+        "0": "Morning fog rolls through ancient forested valleys as golden light breaks over the Oregon hills."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_i3_or_gardiner_20250430_011.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_or_gardiner_20250430_011.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_or_gardiner_20250430_011.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "f4b82da7bebfed2a308ac388bc450ec8",
-      "url-4K-SDR-md5" : "b22991148f2dc2d7732940a84a7cd448"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_or_gardiner_20250430_011.png",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "title": "Gardiner",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_or_gardiner_20250430_011.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_or_gardiner_20250430_011.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "f4b82da7bebfed2a308ac388bc450ec8",
+      "url-4K-SDR-md5": "b22991148f2dc2d7732940a84a7cd448"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_i3_or_oregon-dunes_20250429_004",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "Oregon",
+      "id": "video_i3_or_oregon-dunes_20250429_004",
+      "pointsOfInterest": {
+        "0": "Wind-sculpted sand dunes sweep between ancient forests and the Oregon coast."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_i3_or_oregon-dunes_20250429_004.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_or_oregon-dunes_20250429_004.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_or_oregon-dunes_20250429_004.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "7047a87653aeec7221958140f5b4bba5",
-      "url-4K-SDR-md5" : "ebffb5c1f9ac19c0d5a666e1f5f6d369"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_or_oregon-dunes_20250429_004.png",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "title": "Oregon Dunes",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_or_oregon-dunes_20250429_004.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_or_oregon-dunes_20250429_004.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "7047a87653aeec7221958140f5b4bba5",
+      "url-4K-SDR-md5": "ebffb5c1f9ac19c0d5a666e1f5f6d369"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_i3_tx_houston_johnson-space-center_20251020_003",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "Texas",
+      "id": "video_i3_tx_houston_johnson-space-center_20251020_003",
+      "pointsOfInterest": {
+        "0": "NASA's mission control campus spreads across the Houston plains, where humanity's greatest journeys begin."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_i3_tx_houston_johnson-space-center_20251020_003.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_tx_houston_johnson-space-center_20251020_003.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_tx_houston_johnson-space-center_20251020_003.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "e639019bff80cb085f6f2d70ebe5c89e",
-      "url-4K-SDR-md5" : "d19dac664134f6f59c3b2c0428acd4ad"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_tx_houston_johnson-space-center_20251020_003.png",
+      "scene": "city",
+      "timeOfDay": "day",
+      "title": "Johnson Space Center",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_tx_houston_johnson-space-center_20251020_003.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_tx_houston_johnson-space-center_20251020_003.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "e639019bff80cb085f6f2d70ebe5c89e",
+      "url-4K-SDR-md5": "d19dac664134f6f59c3b2c0428acd4ad"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_i3_uk_staithes_20240628_003",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "United Kingdom",
+      "id": "video_i3_uk_staithes_20240628_003",
+      "pointsOfInterest": {
+        "0": "A historic fishing village clings to red sandstone cliffs where the North Yorkshire moors meet the sea."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_i3_uk_staithes_20240628_003.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_uk_staithes_20240628_003.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_uk_staithes_20240628_003.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "3c1e2e0016fe3142fdd96b83a389452b",
-      "url-4K-SDR-md5" : "dbb44b56d8736e5415b6347d79a15922"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_uk_staithes_20240628_003.png",
+      "scene": "countryside",
+      "timeOfDay": "day",
+      "title": "Staithes",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_uk_staithes_20240628_003.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_uk_staithes_20240628_003.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "3c1e2e0016fe3142fdd96b83a389452b",
+      "url-4K-SDR-md5": "dbb44b56d8736e5415b6347d79a15922"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_i3_uk_whitby_20240628_005",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "United Kingdom",
+      "id": "video_i3_uk_whitby_20240628_005",
+      "pointsOfInterest": {
+        "0": "Ancient abbey ruins watch over a timeless fishing town where river meets the North Sea."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_i3_uk_whitby_20240628_005.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_uk_whitby_20240628_005.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_uk_whitby_20240628_005.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "8c3589e34c6ec4a25d72303ecd165678",
-      "url-4K-SDR-md5" : "42401a02e20ee3c7cd14579d00423030"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_uk_whitby_20240628_005.png",
+      "scene": "city",
+      "timeOfDay": "day",
+      "title": "Whitby",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_uk_whitby_20240628_005.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_uk_whitby_20240628_005.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "8c3589e34c6ec4a25d72303ecd165678",
+      "url-4K-SDR-md5": "42401a02e20ee3c7cd14579d00423030"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_i3_uk_yorkshire_20240623_021",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "United Kingdom",
+      "id": "video_i3_uk_yorkshire_20240623_021",
+      "pointsOfInterest": {
+        "0": "Vivid green moorland rolls across the ancient valleys of the Yorkshire Dales."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_i3_uk_yorkshire_20240623_021.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_uk_yorkshire_20240623_021.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_uk_yorkshire_20240623_021.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "175001baf582b92f55ce27e28af944b4",
-      "url-4K-SDR-md5" : "294b69dff58ec40fd0076bb392ebf9da"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_uk_yorkshire_20240623_021.png",
+      "scene": "countryside",
+      "timeOfDay": "day",
+      "title": "Yorkshire",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_uk_yorkshire_20240623_021.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_uk_yorkshire_20240623_021.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "175001baf582b92f55ce27e28af944b4",
+      "url-4K-SDR-md5": "294b69dff58ec40fd0076bb392ebf9da"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_i3_wa_elwaha-river_20250427_001",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "Washington",
+      "id": "video_i3_wa_elwaha-river_20250427_001",
+      "pointsOfInterest": {
+        "0": "Clear mountain waters wind through ancient Pacific Northwest forests beneath open summer skies."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_i3_wa_elwaha-river_20250427_001.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_wa_elwaha-river_20250427_001.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_wa_elwaha-river_20250427_001.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "baeb63fba24436baa3aae7d1ebcd5005",
-      "url-4K-SDR-md5" : "8281cad055251ca481bf8b8269585957"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_wa_elwaha-river_20250427_001.png",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "title": "Elwha River",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_i3_wa_elwaha-river_20250427_001.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_i3_wa_elwaha-river_20250427_001.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "baeb63fba24436baa3aae7d1ebcd5005",
+      "url-4K-SDR-md5": "8281cad055251ca481bf8b8269585957"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_m3_ch_davos_20250712_009",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "Switzerland",
+      "id": "video_m3_ch_davos_20250712_009",
+      "pointsOfInterest": {
+        "0": "Turquoise alpine waters reflect the mountain village of Davos nestled beneath forested peaks."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_m3_ch_davos_20250712_009.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_m3_ch_davos_20250712_009.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_m3_ch_davos_20250712_009.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "11b342c3f209fd3fb0689a296962e4f2",
-      "url-4K-SDR-md5" : "511a96929103c5e98e7fe6bc5243ec79"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_m3_ch_davos_20250712_009.png",
+      "scene": "countryside",
+      "timeOfDay": "day",
+      "title": "Davos",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_m3_ch_davos_20250712_009.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_m3_ch_davos_20250712_009.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "11b342c3f209fd3fb0689a296962e4f2",
+      "url-4K-SDR-md5": "511a96929103c5e98e7fe6bc5243ec79"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_m3_ch_quarten_20250712_003",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "Switzerland",
+      "id": "video_m3_ch_quarten_20250712_003",
+      "pointsOfInterest": {
+        "0": "Crystalline waters of the Walensee mirror the peaks of the Swiss Alps above a lush green shore."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_m3_ch_quarten_20250712_003.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_m3_ch_quarten_20250712_003.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_m3_ch_quarten_20250712_003.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "69008c66d5876481d36b763fedebe309",
-      "url-4K-SDR-md5" : "d7ead608710ba45d40d26afc7c6fc208"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_m3_ch_quarten_20250712_003.png",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "title": "Quarten",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_m3_ch_quarten_20250712_003.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_m3_ch_quarten_20250712_003.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "69008c66d5876481d36b763fedebe309",
+      "url-4K-SDR-md5": "d7ead608710ba45d40d26afc7c6fc208"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_m3_ch_zurich_20250712_013",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "Switzerland",
+      "id": "video_m3_ch_zurich_20250712_013",
+      "pointsOfInterest": {
+        "0": "Bridges and rooftops fan out along the Limmat River as it meets the shimmering expanse of Lake Zurich."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_m3_ch_zurich_20250712_013.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_m3_ch_zurich_20250712_013.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_m3_ch_zurich_20250712_013.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "9bdc05fe45f0fb10968930d83d1dd450",
-      "url-4K-SDR-md5" : "9baeb2f06a1e5e9fba43aca1cde76072"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_m3_ch_zurich_20250712_013.png",
+      "scene": "city",
+      "timeOfDay": "day",
+      "title": "Zurich",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_m3_ch_zurich_20250712_013.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_m3_ch_zurich_20250712_013.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "9bdc05fe45f0fb10968930d83d1dd450",
+      "url-4K-SDR-md5": "9baeb2f06a1e5e9fba43aca1cde76072"
     },
     {
-      "accessibilityLabel" : "",
-      "id" : "video_m3_it_bolzano_20250717_013",
-      "pointsOfInterest" : {
-
+      "accessibilityLabel": "Italy",
+      "id": "video_m3_it_bolzano_20250717_013",
+      "pointsOfInterest": {
+        "0": "Terraced vineyards cascade down sun-drenched slopes toward the valley floor of South Tyrol."
       },
-      "previewImage" : "https://aerialscreensaver.github.io/thumbnails/video_m3_it_bolzano_20250717_013.png",
-      "scene" : "nature",
-      "timeOfDay" : "day",
-      "title" : "",
-      "url-4K-SDR" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_m3_it_bolzano_20250717_013.4k-sdr.mov",
-      "url-4K-SDR-240FPS" : "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_m3_it_bolzano_20250717_013.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5" : "9a6e25fa406f7a88b65a6565c9036414",
-      "url-4K-SDR-md5" : "962afc8a4a3789d07751de1a8cdbeb8d"
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_m3_it_bolzano_20250717_013.png",
+      "scene": "countryside",
+      "timeOfDay": "day",
+      "title": "Bolzano",
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_m3_it_bolzano_20250717_013.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_m3_it_bolzano_20250717_013.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "9a6e25fa406f7a88b65a6565c9036414",
+      "url-4K-SDR-md5": "962afc8a4a3789d07751de1a8cdbeb8d"
     }
   ]
 }
