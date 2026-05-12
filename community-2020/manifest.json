@@ -1,1 +1,12 @@
-{"more":"https://jetsoncreative.com/aerial/","local":false,"scenes":["Nature"],"license":"https://jetsoncreative.com/aeriallicense/","name":"community-2020","description":"2020 community pack from Magic Window.","cacheable":true,"manifestUrl":"https://aerialscreensaver.github.io/community-2020/entries.json"}
+{
+    "more": "https://jetsoncreative.com/aerial/",
+    "local": false,
+    "scenes": [
+        "Nature"
+    ],
+    "license": "https://jetsoncreative.com/aeriallicense/",
+    "name": "Community 2020",
+    "description": "2020 Community Expansion from Magic Window.",
+    "cacheable": true,
+    "manifestUrl": "https://aerialscreensaver.github.io/community-2020/entries.json"
+}
