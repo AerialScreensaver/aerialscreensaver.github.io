@@ -4,4 +4,4 @@ category: Getting started
 order: 10
 ---
 
-Download the latest release from the [download page](/download). Drag `Aerial.app` into your `/Applications` folder, open it once, and pick "Aerial4" in System Settings → Screen Saver. Updates arrive automatically in the background through Sparkle.
+Download the latest release from the [download page](/download). Drag `Aerial.app` into your `/Applications` folder then open it. A setup window will guide you, you can then access various settings from the icon in your menu bar. Auto-updates will be offered through Sparkle.
