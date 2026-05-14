@@ -280,10 +280,10 @@
       "scene": "city",
       "timeOfDay": "sunset",
       "title": "Zurich",
-      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_m3_ch_zurich_20250712_013.4k-sdr.mov",
-      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_m3_ch_zurich_20250712_013.4k-sdr-240fps.mov",
-      "url-4K-SDR-240FPS-md5": "9bdc05fe45f0fb10968930d83d1dd450",
-      "url-4K-SDR-md5": "9baeb2f06a1e5e9fba43aca1cde76072"
+      "url-4K-SDR": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr/video_m3_ch_zurich_20250712_013-v2.4k-sdr.mov",
+      "url-4K-SDR-240FPS": "https://github.com/AerialScreensaver/AerialCommunity/releases/download/community2026-4k-sdr-240fps/video_m3_ch_zurich_20250712_013-v2.4k-sdr-240fps.mov",
+      "url-4K-SDR-240FPS-md5": "0dff2bb51dc0866547cd5deea4a9c617",
+      "url-4K-SDR-md5": "3d14e10029a3396ad340b140fd208f09"
     },
     {
       "accessibilityLabel": "Italy",
