@@ -78,17 +78,20 @@ jobs:
       - name: Sync build into gh-pages root (preserve allowlist)
         run: |
           set -euo pipefail
+          # All excludes are root-anchored (leading slash) so they only
+          # protect the file/dir at the top level — not stray copies that
+          # could appear in subdirectories (e.g. a stale v4/.nojekyll).
           rsync -av --delete \
-            --exclude='.git/' \
-            --exclude='.gitignore' \
-            --exclude='.nojekyll' \
-            --exclude='CLAUDE.md' \
-            --exclude='appcast.xml' \
-            --exclude='Aerial-*.md' \
-            --exclude='thumbnails/' \
-            --exclude='community/' \
-            --exclude='community-2020/' \
-            --exclude='community-2026/' \
+            --exclude='/.git/' \
+            --exclude='/.gitignore' \
+            --exclude='/.nojekyll' \
+            --exclude='/CLAUDE.md' \
+            --exclude='/appcast.xml' \
+            --exclude='/Aerial-*.md' \
+            --exclude='/thumbnails/' \
+            --exclude='/community/' \
+            --exclude='/community-2020/' \
+            --exclude='/community-2026/' \
             source/dist/ deploy/
 
       - name: Commit and push to gh-pages
