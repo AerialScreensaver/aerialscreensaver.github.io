@@ -1,16 +1,16 @@
-name: Build and deploy /v4 to gh-pages
+name: Build and deploy site to gh-pages
 
-# During the preview phase, this Action only writes inside `gh-pages:/v4/`.
-# The legacy site at the root of `gh-pages`, `appcast.xml`, every `Aerial-*.md`,
-# `community/`, `community-2020/`, and `thumbnails/` are never modified by this
-# workflow — they keep being managed by the AerialCompanion release script and
-# the thumbnails upload script.
+# Builds the Astro site from `main` and syncs it to the root of `gh-pages`,
+# preserving an allowlist of files managed by other workflows / scripts:
+#   - appcast.xml             (Sparkle — load-bearing for installed apps)
+#   - Aerial-*.md             (release notes — read by the build pipeline)
+#   - thumbnails/             (expansions thumbnails)
+#   - community/, community-2020/, community-2026/ (community pack assets)
+#   - .nojekyll, .gitignore, CLAUDE.md
 #
-# At cutover (when v4 replaces the legacy site at the root):
-#   1. Set BASE = '/' in astro.config.mjs.
-#   2. Replace the deploy step below with one that copies `dist/` to the
-#      gh-pages root, with a preserve-allowlist that keeps the files listed
-#      above. See plan §8.
+# Recursion guard: the deploy commit only touches Astro output at gh-pages
+# root (index.html, _astro/, features/, sitemap-*.xml, …). None of those
+# match the paths filter below, so the Action's own push can't retrigger it.
 
 on:
   push:
@@ -20,8 +20,6 @@ on:
     # Triggered when source files change on `main` (rebuild needed) OR when
     # the release script touches appcast.xml / Aerial-*.md on gh-pages so
     # the homepage and release-notes index stay current.
-    # NOT triggered when this workflow's own deploy step pushes to gh-pages:/v4
-    # because v4/** is not in the paths filter, breaking the recursion loop.
     paths:
       - 'src/**'
       - 'public/**'
@@ -35,7 +33,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: deploy-v4
+  group: deploy
   cancel-in-progress: true
 
 permissions:
@@ -77,12 +75,21 @@ jobs:
           RELEASE_NOTES_DIR: ${{ github.workspace }}/deploy
         run: npm run build
 
-      - name: Replace /v4 in gh-pages with the new build
+      - name: Sync build into gh-pages root (preserve allowlist)
         run: |
           set -euo pipefail
-          rm -rf deploy/v4
-          mkdir -p deploy/v4
-          cp -R source/dist/. deploy/v4/
+          rsync -av --delete \
+            --exclude='.git/' \
+            --exclude='.gitignore' \
+            --exclude='.nojekyll' \
+            --exclude='CLAUDE.md' \
+            --exclude='appcast.xml' \
+            --exclude='Aerial-*.md' \
+            --exclude='thumbnails/' \
+            --exclude='community/' \
+            --exclude='community-2020/' \
+            --exclude='community-2026/' \
+            source/dist/ deploy/
 
       - name: Commit and push to gh-pages
         working-directory: deploy
@@ -90,12 +97,11 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add v4
+          git add -A
           if git diff --cached --quiet; then
-            echo "No changes in /v4 — skipping commit."
+            echo "No changes — skipping commit."
             exit 0
           fi
-          # Detect whether main HEAD is what triggered us, for a useful message.
-          MSG="Deploy /v4 from ${GITHUB_SHA::7} (${GITHUB_EVENT_NAME})"
+          MSG="Deploy site from ${GITHUB_SHA::7} (${GITHUB_EVENT_NAME})"
           git commit -m "$MSG"
           git push origin gh-pages
