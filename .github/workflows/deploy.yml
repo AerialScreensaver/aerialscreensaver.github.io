@@ -3,6 +3,7 @@ name: Build and deploy site to gh-pages
 # Builds the Astro site from `main` and syncs it to the root of `gh-pages`,
 # preserving an allowlist of files managed by other workflows / scripts:
 #   - appcast.xml             (Sparkle — load-bearing for installed apps)
+#   - manifest.json           (legacy Aerial Companion 1.x update manifest)
 #   - Aerial-*.md             (release notes — read by the build pipeline)
 #   - thumbnails/             (expansions thumbnails)
 #   - community/, community-2020/, community-2026/ (community pack assets)
@@ -87,6 +88,7 @@ jobs:
             --exclude='/.nojekyll' \
             --exclude='/CLAUDE.md' \
             --exclude='/appcast.xml' \
+            --exclude='/manifest.json' \
             --exclude='/Aerial-*.md' \
             --exclude='/thumbnails/' \
             --exclude='/community/' \
