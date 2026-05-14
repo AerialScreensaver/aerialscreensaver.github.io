@@ -56,6 +56,72 @@ const release = await getLatestRelease();
       </p>
     </div>
 
+    <div class="mt-16 border-t border-aerial-border pt-10">
+      <h2 class="text-aerial-text font-semibold text-lg">On an older Mac?</h2>
+      <p class="mt-3 text-aerial-text-muted text-sm leading-relaxed">
+        Aerial {release.version} requires macOS {release.minSystemVersion} (Sequoia) or later. If
+        you're on an older system, two legacy builds are still available — neither is maintained,
+        and neither will receive new features or fixes.
+      </p>
+
+      <div class="mt-6 grid gap-4 md:grid-cols-2 text-sm">
+        <div class="rounded-xl border border-aerial-border bg-aerial-surface/40 p-5">
+          <h3 class="text-aerial-text font-semibold">Aerial Companion 1.5.2</h3>
+          <p class="mt-2 text-aerial-text-muted leading-relaxed">
+            The last build of the previous-generation app, for Macs that can't run macOS 15.
+          </p>
+          <p class="mt-3 text-aerial-text-dim text-xs leading-relaxed">
+            <strong class="text-aerial-text-muted">Important:</strong> after installing, open
+            Companion's settings and <strong class="text-aerial-text-muted">disable
+            auto-updates</strong> — otherwise it will prompt you to upgrade to a version your Mac
+            can't run.
+          </p>
+          <a
+            href="https://github.com/AerialScreensaver/Aerial/releases/download/v1.5.2/Aerial.Companion.zip"
+            class="mt-4 inline-flex items-center gap-2 text-aerial-link hover:text-aerial-link-hi"
+          >
+            Download Aerial Companion 1.5.2
+            <svg class="h-3 w-3" viewBox="0 0 12 12" aria-hidden="true">
+              <path
+                d="M4.5 2.5 8 6l-3.5 3.5"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"></path>
+            </svg>
+          </a>
+        </div>
+
+        <div class="rounded-xl border border-aerial-border bg-aerial-surface/40 p-5">
+          <h3 class="text-aerial-text font-semibold">Aerial 3.6.3 (.saver)</h3>
+          <p class="mt-2 text-aerial-text-muted leading-relaxed">
+            The classic standalone screensaver bundle from the original repository, for the oldest
+            macOS versions.
+          </p>
+          <p class="mt-3 text-aerial-text-dim text-xs leading-relaxed">
+            No companion app, no auto-updates — just the <code class="text-aerial-text-muted">.saver</code>
+            installed via System Preferences.
+          </p>
+          <a
+            href="https://github.com/JohnCoates/Aerial/releases/download/v3.6.3/Aerial.saver.zip"
+            class="mt-4 inline-flex items-center gap-2 text-aerial-link hover:text-aerial-link-hi"
+          >
+            Download Aerial 3.6.3
+            <svg class="h-3 w-3" viewBox="0 0 12 12" aria-hidden="true">
+              <path
+                d="M4.5 2.5 8 6l-3.5 3.5"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
     <div class="mt-16 text-xs text-aerial-text-dim">
       <p>
         Direct download URL (also used by Sparkle):
