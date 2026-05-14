@@ -4,6 +4,6 @@ category: Getting started
 order: 16
 ---
 
-Open the menu bar popover — if Aerial isn't your active screensaver, a banner at the top has a **Set as Default** button that registers it in one click. If the banner doesn't show, open System Settings → Screen Saver and pick "Aerial" manually.
+Open the menu bar popover — if Aerial isn't your active screensaver, a banner at the top has a **Set as Default** button that registers it in one click. We recommend using it as it will enable Aerial on all your monitors.
 
-**macOS Sonoma+ caveat**: macOS lets you pick a different screensaver per Space. Aerial only checks your *current* Space, so if you previously set a different one on another Space, switch to that Space and change it back from there.
+You can also enable the screensaver manually from System Settings → Screen Saver and selecting **Aerial4** from the list. It appears at the very bottom, so scroll down and press **See More** to reveal it. Be aware that starting with Sonoma — and continuing in Tahoe — this only sets the screensaver for the current screen and Space. Use Aerial's built-in **Set as Default** activation instead if you want it on every monitor.
