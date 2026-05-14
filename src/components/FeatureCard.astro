@@ -7,14 +7,15 @@ interface Props {
   summary: string;
   href?: string;
   image?: ImageMetadata;
+  imageSrc?: string;
   video?: string;
   videoPoster?: string;
   alt?: string;
   placeholder?: 'image' | 'video';
 }
 
-const { title, summary, href, image, video, videoPoster, alt, placeholder } = Astro.props;
-const hasMedia = Boolean(image || video || placeholder);
+const { title, summary, href, image, imageSrc, video, videoPoster, alt, placeholder } = Astro.props;
+const hasMedia = Boolean(image || imageSrc || video || placeholder);
 ---
 
 <div
@@ -28,11 +29,13 @@ const hasMedia = Boolean(image || video || placeholder);
     hasMedia && (
       <MediaCard
         image={image}
+        imageSrc={imageSrc}
         video={video}
         videoPoster={videoPoster}
         alt={alt ?? title}
         placeholder={placeholder}
         placeholderLabel={title}
+        cardAspect="4/3"
       />
     )
   }

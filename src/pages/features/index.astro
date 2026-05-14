@@ -33,7 +33,7 @@ const featureEntries = await Promise.all(
     {
       featureEntries.map(({ entry, Content }) => {
         const hasMedia = Boolean(
-          entry.data.image || entry.data.video || entry.data.placeholder,
+          entry.data.image || entry.data.imageSrc || entry.data.video || entry.data.placeholder,
         );
         return (
           <article id={entry.id} class="scroll-mt-24">
@@ -41,6 +41,7 @@ const featureEntries = await Promise.all(
               <div class="mb-6 max-w-2xl">
                 <MediaCard
                   image={entry.data.image}
+                  imageSrc={entry.data.imageSrc}
                   video={entry.data.video}
                   videoPoster={entry.data.videoPoster}
                   alt={entry.data.alt ?? entry.data.title}

@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import MediaCard from '../../components/MediaCard.astro';
 ---
 
 <Base
@@ -17,6 +18,13 @@ import Base from '../../layouts/Base.astro';
       app — open <strong class="text-aerial-text">Video Library → Expansions</strong> to browse and
       install. Nothing is auto-installed without your consent.
     </p>
+
+    <div class="mt-10">
+      <MediaCard
+        imageSrc="expansions-browser.webp"
+        alt="The Expansions browser inside Aerial's Video Library, showing Community 2026, Community 2020, Community Plus 2026, Future macOS Versions, and San Francisco packs from Magic Window."
+      />
+    </div>
 
     <div class="mt-10 rounded-xl border border-aerial-border bg-aerial-surface/50 p-6">
       <h2 class="text-aerial-text font-semibold">Featured pack</h2>

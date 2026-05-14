@@ -4,6 +4,9 @@ import type { ImageMetadata } from 'astro';
 
 interface Props {
   image?: ImageMetadata;
+  // Raw image URL (basename in /public/screenshots/). Use this when the asset
+  // carries a wide-gamut ICC profile we don't want Sharp to strip.
+  imageSrc?: string;
   video?: string; // basename in /public/videos/
   videoPoster?: string; // basename in /public/posters/
   alt: string;
@@ -12,21 +15,29 @@ interface Props {
   // card with this label so the design is visualized end-to-end.
   placeholder?: 'image' | 'video';
   placeholderLabel?: string;
+  // Force a fixed aspect ratio with object-cover. Used on the homepage card
+  // grid so all cards line up regardless of the source's natural ratio.
+  cardAspect?: string;
 }
 
 const {
   image,
+  imageSrc,
   video,
   videoPoster,
   alt,
   class: className = '',
   placeholder,
   placeholderLabel,
+  cardAspect,
 } = Astro.props;
+const aspectStyle = cardAspect ? `aspect-ratio: ${cardAspect};` : undefined;
+const imageCardClass = cardAspect ? 'block w-full h-full object-cover' : 'block w-full h-auto';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const videoSrc = video ? `${base}/videos/${video}` : null;
 const posterSrc = videoPoster ? `${base}/posters/${videoPoster}` : null;
+const rawImageSrc = imageSrc ? `${base}/screenshots/${imageSrc}` : null;
 
 // For the lightbox, hand over a larger optimized variant of the image
 // (capped at the source's natural width so we don't upscale).
@@ -34,11 +45,13 @@ let lightboxImageSrc: string | null = null;
 if (image && !video) {
   const big = await getImage({ src: image, width: Math.min(image.width, 1920) });
   lightboxImageSrc = big.src;
+} else if (rawImageSrc) {
+  lightboxImageSrc = rawImageSrc;
 }
 
 const lightboxSrc = video ? videoSrc : lightboxImageSrc;
 const lightboxType = video ? 'video' : 'image';
-const hasRealMedia = Boolean(video || image);
+const hasRealMedia = Boolean(video || image || rawImageSrc);
 const showPlaceholder = !hasRealMedia && Boolean(placeholder);
 const showMedia = hasRealMedia || showPlaceholder;
 ---
@@ -54,6 +67,7 @@ const showMedia = hasRealMedia || showPlaceholder;
         data-lightbox-poster={posterSrc ?? undefined}
         data-lightbox-alt={alt}
         aria-label={`Expand: ${alt}`}
+        style={aspectStyle}
         class:list={[
           'media-card group relative block w-full overflow-hidden rounded-xl border border-aerial-border bg-aerial-surface shadow-lg cursor-zoom-in',
           'transition-all hover:border-aerial-accent/50',
@@ -74,11 +88,13 @@ const showMedia = hasRealMedia || showPlaceholder;
           <Image
             src={image}
             alt={alt}
-            class="block w-full h-auto aspect-video object-cover"
+            class={imageCardClass}
             widths={[480, 800, 1200]}
             sizes="(max-width: 768px) 100vw, 50vw"
             loading="lazy"
           />
+        ) : rawImageSrc ? (
+          <img src={rawImageSrc} alt={alt} class={imageCardClass} loading="lazy" />
         ) : null}
 
         <span

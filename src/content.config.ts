@@ -14,6 +14,9 @@ const features = defineCollection({
       // Visuals — all optional. If both image and video are set, video wins
       // (image becomes the poster fallback and the lightbox-expand target for stills).
       image: image().optional(), // path relative to the .md file, e.g. ./bring-your-own-videos.png
+      // Raw image URL (basename in /public/screenshots/). Use this when the asset
+      // carries a wide-gamut ICC profile we don't want Sharp to strip during resize.
+      imageSrc: z.string().optional(),
       video: z.string().optional(), // basename in /public/videos/, e.g. high-frame-rate.mp4
       videoPoster: z.string().optional(), // basename in /public/posters/, e.g. high-frame-rate.jpg
       alt: z.string().optional(), // alt text / aria label for the media

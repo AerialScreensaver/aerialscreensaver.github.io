@@ -58,6 +58,7 @@ const homepageFeatures = allFeatures
             summary={f.data.summary}
             href={link(`/features#${f.id}`)}
             image={f.data.image}
+            imageSrc={f.data.imageSrc}
             video={f.data.video}
             videoPoster={f.data.videoPoster}
             alt={f.data.alt ?? f.data.title}
@@ -115,6 +116,19 @@ const homepageFeatures = allFeatures
         </a>
       </div>
     </div>
+  </section>
+
+  <!-- Menu bar popover showcase -->
+  <section class="mx-auto max-w-5xl px-6 pt-12 pb-4 flex justify-center">
+    <img
+      src={link('/screenshots/menubar-popover.webp')}
+      alt="Aerial's menu bar popover, showing Lock Screen / Wallpaper / Fullscreen mode toggles, an expansions filter, a video list with Tiburon paused, and a speed slider."
+      width="452"
+      height="579"
+      class="w-full max-w-sm h-auto"
+      style="filter: drop-shadow(0 0 24px oklch(75% 0.15 220 / 0.25)) drop-shadow(0 0 60px oklch(80% 0.18 200 / 0.15));"
+      loading="lazy"
+    />
   </section>
 
   <!-- Final CTA -->
