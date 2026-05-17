@@ -15,3 +15,5 @@ What this gets you in practice:
 - **Better permission needs** — you no longer need to grant Full Disk Access for Aerial to work.
 
 This required a significant rewrite from Aerial 3, which still uses the older `.saver` format.
+
+The API is private and still undocumented by Apple. If you'd like to build your own AppExtension screensaver, I've put together a minimal sample project at [AerialScreensaver/AppexSaverMinimal](https://github.com/AerialScreensaver/AppexSaverMinimal) to get you started.
