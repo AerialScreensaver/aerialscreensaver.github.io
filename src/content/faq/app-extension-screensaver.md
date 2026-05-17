@@ -6,7 +6,7 @@ order: 18
 
 Apple introduced AppExtension screensavers (`.appex`) all the way back in macOS 10.15 (Catalina) — that's the format Apple's own video screensavers (the aerial views built into macOS) have used ever since. But the API has been private the entire time; Apple has never documented it publicly, which is why every other third-party screensaver still ships in the older `.saver` bundle format.
 
-Aerial 4 is the first third-party screensaver to implement this via the private API. We hope that after all these years, Apple will finally make it public soon!
+Aerial 4 is the first third-party screensaver to implement this via the private API. I hope that after all these years, Apple will finally make it public soon!
 
 What this gets you in practice:
 
