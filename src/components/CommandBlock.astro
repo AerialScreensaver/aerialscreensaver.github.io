@@ -1,0 +1,72 @@
+---
+// A mini terminal block with syntax coloring and a one-click copy button.
+// Renders `bin sub args...` colored as command / subcommand / argument.
+//   <CommandBlock command="brew install aerial" />
+interface Props {
+  command: string;
+}
+const { command } = Astro.props;
+const [bin, sub, ...args] = command.trim().split(/\s+/);
+const argStr = args.join(' ');
+---
+
+<div class="rounded-xl border border-aerial-border bg-aerial-bg-deep overflow-hidden font-mono">
+  <div class="flex items-center justify-between gap-3 border-b border-aerial-border/70 bg-aerial-surface/40 px-3 py-2">
+    <div class="flex items-center gap-1.5" aria-hidden="true">
+      <span class="h-2.5 w-2.5 rounded-full" style="background-color: oklch(65% 0.18 25)"></span>
+      <span class="h-2.5 w-2.5 rounded-full" style="background-color: oklch(80% 0.15 85)"></span>
+      <span class="h-2.5 w-2.5 rounded-full" style="background-color: oklch(72% 0.16 145)"></span>
+    </div>
+    <button
+      type="button"
+      data-copy
+      data-copy-text={command}
+      aria-label={`Copy command: ${command}`}
+      class="inline-flex items-center gap-1.5 rounded-md border border-aerial-border bg-aerial-surface/60 px-2.5 py-1 text-xs font-medium text-aerial-text-muted hover:text-aerial-text hover:border-aerial-text-dim transition-colors"
+    >
+      <svg class="copy-icon h-3.5 w-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <rect x="5" y="5" width="8.5" height="8.5" rx="1.5"></rect>
+        <path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11" stroke-linecap="round"></path>
+      </svg>
+      <svg class="check-icon hidden h-3.5 w-3.5" style="color: oklch(72% 0.16 145)" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M3 8.5l3.5 3.5L13 4.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <span class="copy-label">Copy</span>
+    </button>
+  </div>
+  <div class="overflow-x-auto px-4 py-3.5 text-sm">
+    <code class="whitespace-nowrap"><span class="select-none text-aerial-text-dim">$ </span><span class="text-aerial-accent">{bin}</span>{sub ? <span class="text-aerial-text-muted">{' '}{sub}</span> : null}{argStr ? <span class="text-aerial-link">{' '}{argStr}</span> : null}</code>
+  </div>
+</div>
+
+<script>
+  // Event delegation: one handler covers every CommandBlock on the page.
+  document.addEventListener('click', async (e) => {
+    const target = e.target as HTMLElement;
+    const btn = target.closest('[data-copy]') as HTMLElement | null;
+    if (!btn) return;
+
+    const text = btn.dataset.copyText;
+    if (!text) return;
+
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      return; // clipboard unavailable (e.g. non-secure context) — fail quietly
+    }
+
+    const copyIcon = btn.querySelector('.copy-icon');
+    const checkIcon = btn.querySelector('.check-icon');
+    const label = btn.querySelector('.copy-label');
+
+    copyIcon?.classList.add('hidden');
+    checkIcon?.classList.remove('hidden');
+    if (label) label.textContent = 'Copied';
+
+    window.setTimeout(() => {
+      copyIcon?.classList.remove('hidden');
+      checkIcon?.classList.add('hidden');
+      if (label) label.textContent = 'Copy';
+    }, 1600);
+  });
+</script>

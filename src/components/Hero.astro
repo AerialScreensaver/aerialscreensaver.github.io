@@ -50,6 +50,24 @@ const posterSrc = heroPosterExists ? `${base}/posters/hero.jpg` : undefined;
           <DownloadCTA variant="large" />
         </div>
 
+        <div class="mt-5">
+          <a
+            href={`${base}/download`}
+            class="inline-flex items-center gap-1.5 text-sm text-aerial-link hover:text-aerial-link-hi"
+          >
+            More download options
+            <svg class="h-3 w-3" viewBox="0 0 12 12" aria-hidden="true">
+              <path
+                d="M4.5 2.5 8 6l-3.5 3.5"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"></path>
+            </svg>
+          </a>
+        </div>
+
         <p class="mt-8 text-sm text-aerial-text-dim max-w-md">
           Built for macOS&nbsp;15+ and updated continuously since 2015. The macOS built-in version
           is nice — Aerial gives you the rest.

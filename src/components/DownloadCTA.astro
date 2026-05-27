@@ -4,9 +4,10 @@ import { getLatestRelease } from '../lib/appcast';
 interface Props {
   variant?: 'primary' | 'large';
   showMeta?: boolean;
+  align?: 'start' | 'center';
 }
 
-const { variant = 'primary', showMeta = true } = Astro.props;
+const { variant = 'primary', showMeta = true, align = 'start' } = Astro.props;
 const release = await getLatestRelease();
 
 const sizeClass =
@@ -14,10 +15,12 @@ const sizeClass =
     ? 'px-8 py-4 text-base'
     : 'px-6 py-3 text-sm';
 
+const alignClass = align === 'center' ? 'items-center text-center' : 'items-start text-left';
+
 const sizeMb = release.downloadSize ? Math.round(release.downloadSize / 1024 / 1024) : 0;
 ---
 
-<div class="flex flex-col items-start gap-3">
+<div class:list={['flex flex-col gap-3', alignClass]}>
   <a
     href={release.downloadUrl}
     class:list={[
@@ -44,7 +47,8 @@ const sizeMb = release.downloadSize ? Math.round(release.downloadSize / 1024 / 1
       <p class="text-xs text-aerial-text-dim">
         {sizeMb > 0 && <>{sizeMb}&nbsp;MB · </>}
         Released {release.pubDateLabel} · macOS&nbsp;{release.minSystemVersion}+
-        · Apple Silicon and Intel
+        <br />
+        Apple Silicon and Intel
       </p>
     )
   }

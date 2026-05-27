@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import DownloadCTA from '../../components/DownloadCTA.astro';
+import CommandBlock from '../../components/CommandBlock.astro';
 import { getLatestRelease } from '../../lib/appcast';
 
 const base = import.meta.env.BASE_URL;
@@ -24,6 +25,36 @@ const release = await getLatestRelease();
 
     <div class="mt-10">
       <DownloadCTA variant="large" />
+    </div>
+
+    <div class="mt-14">
+      <h2 class="text-aerial-text font-semibold text-lg">Or install with Homebrew</h2>
+      <p class="mt-3 text-aerial-text-muted text-sm leading-relaxed">
+        Prefer the command line? Aerial is on <a href="https://brew.sh" class="text-aerial-link">Homebrew</a>.
+        Pick one — you don't need both.
+      </p>
+
+      <div class="mt-5 grid gap-5 md:grid-cols-2">
+        <div>
+          <CommandBlock command="brew install aerial" />
+          <p class="mt-2.5 text-aerial-text-muted text-sm leading-relaxed">
+            <strong class="text-aerial-text">Stable.</strong> Installs the latest stable version.
+            Recommended.
+          </p>
+        </div>
+        <div>
+          <CommandBlock command="brew install aerial@beta" />
+          <p class="mt-2.5 text-aerial-text-muted text-sm leading-relaxed">
+            <strong class="text-aerial-text">Beta.</strong> Installs prerelease builds when one is
+            available, latest if not — newest features, bugs expected.
+          </p>
+        </div>
+      </div>
+
+      <p class="mt-6 rounded-lg border border-aerial-border bg-aerial-surface/40 px-4 py-3 text-aerial-text-muted text-sm leading-relaxed">
+        <strong class="text-aerial-text">Upgrading from Aerial 3.6.3?</strong> Launch the app once
+        after installing — it will install and enable the new Aerial&nbsp;4 screensaver which is now distributed as an App Extension.
+      </p>
     </div>
 
     <div class="mt-12 grid gap-6 md:grid-cols-2 text-sm">

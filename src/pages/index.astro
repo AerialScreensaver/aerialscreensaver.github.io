@@ -139,8 +139,25 @@ const homepageFeatures = allFeatures
     <p class="mt-4 text-aerial-text-muted text-lg max-w-xl mx-auto">
       One small download. Drag to <code class="text-aerial-text">/Applications</code>. That's it.
     </p>
-    <div class="mt-8 inline-block">
-      <DownloadCTA variant="large" />
+    <div class="mt-8">
+      <DownloadCTA variant="large" align="center" />
+    </div>
+    <div class="mt-5">
+      <a
+        href={link('/download')}
+        class="inline-flex items-center gap-1.5 text-sm text-aerial-link hover:text-aerial-link-hi"
+      >
+        More download options
+        <svg class="h-3 w-3" viewBox="0 0 12 12" aria-hidden="true">
+          <path
+            d="M4.5 2.5 8 6l-3.5 3.5"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"></path>
+        </svg>
+      </a>
     </div>
   </section>
 </Base>
