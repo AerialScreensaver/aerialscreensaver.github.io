@@ -30,7 +30,10 @@ const posterSrc = heroPosterExists ? `${base}/posters/hero.jpg` : undefined;
     <div class="grid items-center gap-12 lg:grid-cols-[1fr_1.05fr]">
       <!-- text column -->
       <div class="max-w-2xl">
-        <VersionBadge />
+        <div class="flex flex-wrap items-center gap-3">
+          <VersionBadge release={stable} />
+          {beta && <VersionBadge release={beta} />}
+        </div>
 
         <h1
           class="mt-6 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-aerial-text leading-[1.05]"
