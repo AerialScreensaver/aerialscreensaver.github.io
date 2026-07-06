@@ -879,6 +879,55 @@ Sorry for both inconveniences, that&#39;s why those are alphas 😅</li>
 Source markdown:
 <a href="https://aerialscreensaver.github.io/Aerial-3.9.9a10.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
 Aerial-3.9.9a10.md ↗
+</a> </div> </details><details id="4.1.0beta1c" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.0beta1c</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><h2>Aerial 4.1.0beta1c — corner-overlap fixes (diagnostic follow-up)</h2>
+<p>Building on the beta1b evidence (thanks to the tester logs — they nailed it):</p>
+<ul>
+<li><strong>Frozen wallpaper fix</strong>: a window whose video renderer entered a failed state used to
+stay frozen forever while everything else kept playing. The renderer now detects this,
+flushes, re-primes the current frame and rejoins playback automatically (🚑 in the log).</li>
+<li><strong>Quarter-window fix attempt</strong>: the &quot;small window in the top-right corner&quot; was proven to
+be macOS compositing our (fully correct) layer tree without the Retina ×2 factor. The
+extension now declares the display scale on its rendering context explicitly instead of
+letting the system infer it. If the small window still appears on this build, the
+remaining bug is on Apple&#39;s side and we&#39;ll file a Feedback with the evidence.</li>
+<li>Geometry audit now reports per-layer renderer health (st=FAILED / needsFlush).</li>
+</ul>
+<p><strong>For testers:</strong> same drill — reproduce, send <code>/Users/Shared/Aerial/Logs/wallpaper.txt</code> and
+the app log. Look out for whether the small corner window still happens at all.</p>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.1.0beta1c.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.1.0beta1c.md ↗
+</a> </div> </details><details id="4.1.0beta2" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.0beta2</span> <span class="text-sm text-aerial-text-dim">July 6, 2026</span>  </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This is a beta version, and has known issues. Prefer the stable version unless directed to this or you want to give feedback. </p>
+<p>Generally what changes in 4.1 ?</p>
+<ul>
+<li>Aerial 4.1 replaces the &quot;fake&quot; wallpaper mode with a native macOS Wallpaper Extension. In practice, Aerial now shows up as a Wallpaper in System Settings. The recommended way to activate it is to let it activate itself when prompted at startup. </li>
+<li>When upgrading from one beta to another, you need to manually restart the wallpaper. This can be done (most of the times) by running <code>killall WallpaperAgent</code> in a terminal. Sometimes that may leads to your Wallpaper being reset to the default ones, before coming back &quot;after a while&quot;. Restarting macOS is the best way to ensure you are running the latest after updating from one beta to another. This will be improved later. </li>
+<li>The Wallpaper Extension means video plays truly as your wallpaper, there is nothing underneath. This also means video plays on your login screen after waking up from sleep. </li>
+<li>During 1st startup you can pick between always still wallpaper (the way macOS works) or the video wallpaper with auto pause based on your windows. You can switch from one mode to another by using the &quot;Play/pause&quot; button for Wallpaper in the Aerial menu in your menubar.  </li>
+<li>There&#39;s now an home screen that lets you configure easily most things. open the Video Library to see it. This will become the main way to configure things soon.  </li>
+<li>There is now a beta track for auto updates.</li>
+</ul>
+<p>What&#39;s new :</p>
+<ul>
+<li>Better recovery of stuck/deactivated video contexts</li>
+<li>New transitions between videos on wallpaper and screensaver</li>
+<li>Improved buffer usage for decoded frames on recovery</li>
+<li>Various fixes</li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
+<li>You can go back to stable if you prefer, you will have to reset your wallpaper manually in that case.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.1.0beta2.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.1.0beta2.md ↗
 </a> </div> </details> </div> </div>  </main> <footer class="mt-32 border-t border-aerial-border/60 bg-aerial-bg"> <div class="mx-auto max-w-6xl px-6 py-12 grid gap-10 md:grid-cols-4 text-sm"> <div class="md:col-span-2"> <div class="flex items-center gap-2 text-aerial-text font-semibold text-base"> <img src="/aerial-icon-64.png" srcset="/aerial-icon-64.png 1x, /icon-192.png 3x" width="28" height="28" alt="" class="h-7 w-7">
 Aerial
 </div> <p class="mt-3 text-aerial-text-muted leading-relaxed max-w-md">
