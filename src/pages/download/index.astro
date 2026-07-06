@@ -2,30 +2,62 @@
 import Base from '../../layouts/Base.astro';
 import DownloadCTA from '../../components/DownloadCTA.astro';
 import CommandBlock from '../../components/CommandBlock.astro';
-import { getLatestRelease } from '../../lib/appcast';
+import {
+  getLatestStable,
+  getLatestBeta,
+  BETA_MIN_MACOS,
+  BETA_RECOMMENDED_ON,
+} from '../../lib/appcast';
 
 const base = import.meta.env.BASE_URL;
 const link = (path: string) => `${base.replace(/\/$/, '')}${path}`;
-const release = await getLatestRelease();
+const stable = await getLatestStable();
+const beta = await getLatestBeta();
 ---
 
 <Base
-  title={`Download Aerial ${release.version}`}
-  description={`Aerial ${release.version} for macOS. Free, open source, auto-updates via Sparkle. macOS ${release.minSystemVersion}+.`}
+  title={`Download Aerial ${stable.version}`}
+  description={`Aerial ${stable.version} for macOS. Free, open source, auto-updates via Sparkle. macOS ${stable.minSystemVersion}+.${beta ? ` Beta ${beta.version} also available.` : ''}`}
 >
   <section class="mx-auto max-w-3xl px-6 pt-24 pb-16">
     <p class="text-sm font-semibold uppercase tracking-widest text-aerial-accent">Download</p>
     <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight text-aerial-text">
-      Aerial {release.version}
+      Aerial {stable.version}
     </h1>
     <p class="mt-6 text-aerial-text-muted text-lg leading-relaxed">
       One zip. Drag the app into <code class="text-aerial-text">/Applications</code>. Open it once
-      and follow instructions. 
+      and follow instructions.
     </p>
 
     <div class="mt-10">
-      <DownloadCTA variant="large" />
+      <DownloadCTA release={stable} variant="large" betaPointerHref={beta ? '#beta' : undefined} />
     </div>
+
+    {
+      beta && (
+        <div id="beta" class="mt-14 rounded-xl border border-aerial-accent/30 bg-aerial-surface/50 p-6">
+          <div class="flex items-center gap-3">
+            <h2 class="text-aerial-text font-semibold text-lg">Beta channel</h2>
+            <span class="rounded-full border border-aerial-accent/40 bg-aerial-accent/10 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-aerial-accent">
+              Beta
+            </span>
+          </div>
+          <p class="mt-3 text-aerial-text-muted text-sm leading-relaxed">
+            Aerial {beta.version} is the current beta — newest features first, occasional rough
+            edges. It requires macOS {BETA_MIN_MACOS} or later, and it's the build we recommend
+            on {BETA_RECOMMENDED_ON}. Betas auto-update to newer betas via Sparkle.
+          </p>
+          <div class="mt-5">
+            <DownloadCTA release={beta} tone="outline" />
+          </div>
+          <p class="mt-4 text-sm">
+            <a href={beta.releaseNotesUrl} class="text-aerial-link hover:text-aerial-link-hi">
+              What's new in {beta.version} →
+            </a>
+          </p>
+        </div>
+      )
+    }
 
     <div class="mt-14">
       <h2 class="text-aerial-text font-semibold text-lg">Or install with Homebrew</h2>
@@ -61,7 +93,7 @@ const release = await getLatestRelease();
       <div class="rounded-xl border border-aerial-border bg-aerial-surface/50 p-6">
         <h2 class="text-aerial-text font-semibold">Compatibility</h2>
         <ul class="mt-3 space-y-1 text-aerial-text-muted">
-          <li>macOS {release.minSystemVersion} (Sequoia) or later</li>
+          <li>macOS {stable.minSystemVersion} (Sequoia) or later</li>
           <li>Apple Silicon and Intel</li>
           <li>Single-display and multi-display setups</li>
         </ul>
@@ -90,7 +122,7 @@ const release = await getLatestRelease();
     <div class="mt-16 border-t border-aerial-border pt-10">
       <h2 class="text-aerial-text font-semibold text-lg">On an older Mac?</h2>
       <p class="mt-3 text-aerial-text-muted text-sm leading-relaxed">
-        Aerial {release.version} requires macOS {release.minSystemVersion} (Sequoia) or later. If
+        Aerial {stable.version} requires macOS {stable.minSystemVersion} (Sequoia) or later. If
         you're on an older system, two legacy builds are still available — neither is maintained,
         and neither will receive new features or fixes.
       </p>
@@ -154,10 +186,17 @@ const release = await getLatestRelease();
     </div>
 
     <div class="mt-16 text-xs text-aerial-text-dim">
-      <p>
-        Direct download URL (also used by Sparkle):
-        <a href={release.downloadUrl} class="break-all text-aerial-text-muted">{release.downloadUrl}</a>
+      <p>Direct download URL{beta && 's'} (also used by Sparkle):</p>
+      <p class="mt-1">
+        Stable: <a href={stable.downloadUrl} class="break-all text-aerial-text-muted">{stable.downloadUrl}</a>
       </p>
+      {
+        beta && (
+          <p class="mt-1">
+            Beta: <a href={beta.downloadUrl} class="break-all text-aerial-text-muted">{beta.downloadUrl}</a>
+          </p>
+        )
+      }
     </div>
   </section>
 </Base>

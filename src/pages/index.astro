@@ -4,9 +4,13 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import DownloadCTA from '../components/DownloadCTA.astro';
+import { getLatestStable, getLatestBeta } from '../lib/appcast';
 
 const base = import.meta.env.BASE_URL;
 const link = (path: string) => `${base.replace(/\/$/, '')}${path}`;
+
+const stable = await getLatestStable();
+const beta = await getLatestBeta();
 
 const allFeatures = await getCollection('features');
 const homepageFeatures = allFeatures
@@ -140,7 +144,12 @@ const homepageFeatures = allFeatures
       One small download. Drag to <code class="text-aerial-text">/Applications</code>. That's it.
     </p>
     <div class="mt-8">
-      <DownloadCTA variant="large" align="center" />
+      <DownloadCTA
+        release={stable}
+        variant="large"
+        align="center"
+        betaPointerHref={beta ? `${link('/download')}#beta` : undefined}
+      />
     </div>
     <div class="mt-5">
       <a

@@ -1,32 +1,56 @@
 ---
-import { getLatestRelease } from '../lib/appcast';
+import type { AppcastRelease } from '../lib/appcast';
+import { BETA_MIN_MACOS, BETA_RECOMMENDED_ON } from '../lib/appcast';
 
 interface Props {
+  release: AppcastRelease;
   variant?: 'primary' | 'large';
+  tone?: 'solid' | 'outline';
   showMeta?: boolean;
   align?: 'start' | 'center';
+  /** When set (and release is stable), renders a pointer line sending
+   *  Golden Gate users to the beta. Callers pass it only when a beta exists. */
+  betaPointerHref?: string;
 }
 
-const { variant = 'primary', showMeta = true, align = 'start' } = Astro.props;
-const release = await getLatestRelease();
+const {
+  release,
+  variant = 'primary',
+  tone = 'solid',
+  showMeta = true,
+  align = 'start',
+  betaPointerHref,
+} = Astro.props;
 
 const sizeClass =
   variant === 'large'
     ? 'px-8 py-4 text-base'
     : 'px-6 py-3 text-sm';
 
+const toneClasses =
+  tone === 'solid'
+    ? [
+        'bg-aerial-accent text-aerial-bg-deep transition-all',
+        'hover:bg-aerial-accent-hi hover:scale-[1.02] active:scale-[0.98]',
+        'shadow-[0_8px_30px_-8px_oklch(78%_0.15_70/0.6)]',
+      ]
+    : [
+        'border border-aerial-border bg-aerial-surface-hi/60 text-aerial-text',
+        'hover:border-aerial-accent/50 transition-colors',
+      ];
+
 const alignClass = align === 'center' ? 'items-center text-center' : 'items-start text-left';
 
 const sizeMb = release.downloadSize ? Math.round(release.downloadSize / 1024 / 1024) : 0;
+const showBetaPointer = betaPointerHref && release.channel === 'stable';
 ---
 
 <div class:list={['flex flex-col gap-3', alignClass]}>
   <a
     href={release.downloadUrl}
     class:list={[
-      'inline-flex items-center gap-2 rounded-md bg-aerial-accent text-aerial-bg-deep font-semibold transition-all',
-      'hover:bg-aerial-accent-hi hover:scale-[1.02] active:scale-[0.98]',
-      'shadow-[0_8px_30px_-8px_oklch(78%_0.15_70/0.6)]',
+      'inline-flex items-center gap-2 rounded-md font-semibold',
+      ...toneClasses,
       sizeClass,
     ]}
   >
@@ -46,11 +70,27 @@ const sizeMb = release.downloadSize ? Math.round(release.downloadSize / 1024 / 1
     showMeta && (
       <p class="text-xs text-aerial-text-dim">
         {sizeMb > 0 && <>{sizeMb}&nbsp;MB · </>}
-        Released {release.pubDateLabel} · macOS&nbsp;{release.minSystemVersion}+
-        <br />
-        Compatible with macOS&nbsp;27 Golden&nbsp;Gate
-        <br />
-        Apple Silicon and Intel
+        {release.channel === 'beta' ? (
+          <>
+            Released {release.pubDateLabel} · Requires macOS&nbsp;{BETA_MIN_MACOS}+
+            <br />
+            Recommended for {BETA_RECOMMENDED_ON}
+          </>
+        ) : (
+          <>
+            Released {release.pubDateLabel} · macOS&nbsp;{release.minSystemVersion}+
+            <br />
+            Apple Silicon and Intel
+          </>
+        )}
+      </p>
+    )
+  }
+  {
+    showBetaPointer && (
+      <p class="text-xs text-aerial-text-dim">
+        On {BETA_RECOMMENDED_ON}? We recommend{' '}
+        <a href={betaPointerHref} class="text-aerial-link hover:text-aerial-link-hi">the beta</a>.
       </p>
     )
   }

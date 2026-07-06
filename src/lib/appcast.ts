@@ -2,8 +2,12 @@ import { XMLParser } from 'fast-xml-parser';
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
+export type ReleaseChannel = 'stable' | 'beta';
+
 export interface AppcastRelease {
   version: string;
+  channel: ReleaseChannel;
+  buildNumber: number;
   pubDate: Date;
   pubDateLabel: string;
   downloadUrl: string;
@@ -12,9 +16,19 @@ export interface AppcastRelease {
   releaseNotesUrl: string;
 }
 
+/**
+ * Website-hardcoded beta requirements. The appcast deliberately keeps
+ * sparkle:minimumSystemVersion at 15.0 on beta items (Sparkle-side decision),
+ * so the displayed beta requirement lives here. Update each beta cycle.
+ */
+export const BETA_MIN_MACOS = '26';
+export const BETA_RECOMMENDED_ON = 'macOS 27 Golden Gate';
+
 interface RawItem {
   title: string;
   pubDate: string;
+  'sparkle:version'?: string | number;
+  'sparkle:channel'?: string;
   'sparkle:shortVersionString'?: string;
   'sparkle:minimumSystemVersion'?: string;
   'sparkle:releaseNotesLink'?: string;
@@ -58,6 +72,8 @@ function toRelease(raw: RawItem): AppcastRelease {
   const pubDate = new Date(raw.pubDate);
   return {
     version: raw['sparkle:shortVersionString'] ?? raw.title,
+    channel: raw['sparkle:channel'] === 'beta' ? 'beta' : 'stable',
+    buildNumber: Number(raw['sparkle:version'] ?? NaN),
     pubDate,
     pubDateLabel: formatPubDate(pubDate),
     downloadUrl: raw.enclosure['@_url'],
@@ -88,7 +104,37 @@ export async function getAllReleases(): Promise<AppcastRelease[]> {
   return cached;
 }
 
-export async function getLatestRelease(): Promise<AppcastRelease> {
-  const all = await getAllReleases();
-  return all[0]!;
+/**
+ * True when a is strictly newer than b. Prefers sparkle:version (YYMMDD.HHMM
+ * build numbers, numerically comparable); falls back to pubDate. Any
+ * unresolvable comparison returns false, so a beta is never over-promoted.
+ */
+function isNewer(a: AppcastRelease, b: AppcastRelease): boolean {
+  if (Number.isFinite(a.buildNumber) && Number.isFinite(b.buildNumber)) {
+    return a.buildNumber > b.buildNumber;
+  }
+  return a.pubDate.getTime() > b.pubDate.getTime();
+}
+
+function newest(list: AppcastRelease[]): AppcastRelease {
+  return list.reduce((best, r) => (isNewer(r, best) ? r : best));
+}
+
+export async function getLatestStable(): Promise<AppcastRelease> {
+  const stable = (await getAllReleases()).filter((r) => r.channel === 'stable');
+  if (!stable.length) {
+    throw new Error('No stable release found in appcast.xml');
+  }
+  return newest(stable);
+}
+
+/**
+ * Latest beta, or null when there is no beta strictly newer than the latest
+ * stable — callers hide all beta UI on null.
+ */
+export async function getLatestBeta(): Promise<AppcastRelease | null> {
+  const betas = (await getAllReleases()).filter((r) => r.channel === 'beta');
+  if (!betas.length) return null;
+  const beta = newest(betas);
+  return isNewer(beta, await getLatestStable()) ? beta : null;
 }

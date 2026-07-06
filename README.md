@@ -5,18 +5,27 @@ Source for [aerialscreensaver.github.io](https://aerialscreensaver.github.io). W
 ## Branches
 
 - **`main`** (this branch) — Astro source. Edit, build, deploy from here.
-- **`gh-pages`** — what GitHub Pages serves. Holds the legacy site at the root, the new build at `/v4/`, and the app-facing files (`appcast.xml`, `Aerial-*.md`, `community/`, `community-2020/`, `thumbnails/`) that other tools and the in-app browser depend on. Don't hand-edit `v4/` there — the deploy Action overwrites it.
+- **`gh-pages`** — what GitHub Pages serves. Holds the built site at the root plus the app-facing files (`appcast.xml`, `Aerial-*.md`, `community*/`, `thumbnails/`) that other tools and the in-app browser depend on. Don't hand-edit the built HTML there — the deploy Action overwrites it (preserving an allowlist of the app-facing files).
 
 ## Local development
 
 ```bash
 npm install
-npm run dev      # → http://localhost:4321/v4/
+npm run dev      # → http://localhost:4321/
 npm run build    # → dist/
 npm run preview  # serve the production build
 ```
 
 `appcast.xml` is read from a sibling clone at `../aerialscreensaver.github.io/appcast.xml` if it exists; otherwise it's fetched from the live URL. So if you have both branches checked out as separate worktrees (recommended), version data flows in automatically.
+
+## Release channels
+
+The site derives both release channels from the appcast at build time (`src/lib/appcast.ts`):
+
+- **Stable** — the newest item without a `<sparkle:channel>` tag. Drives the version badge, the primary download buttons, and the download page copy.
+- **Beta** — the newest item with `<sparkle:channel>beta</sparkle:channel>`, shown (hero secondary button, download-page beta card) only when it is strictly newer than the latest stable, compared by `sparkle:version` build number. When a stable release catches up, all beta UI disappears on the next rebuild.
+
+The beta's displayed OS requirement is **not** read from the appcast (beta items deliberately keep `minimumSystemVersion` 15.0 for Sparkle): it's hardcoded as `BETA_MIN_MACOS` / `BETA_RECOMMENDED_ON` in `src/lib/appcast.ts`. Update those constants each beta cycle.
 
 ## Deployment
 

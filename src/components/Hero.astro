@@ -3,8 +3,11 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import VersionBadge from './VersionBadge.astro';
 import DownloadCTA from './DownloadCTA.astro';
+import { getLatestStable, getLatestBeta } from '../lib/appcast';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const stable = await getLatestStable();
+const beta = await getLatestBeta();
 
 // Detect at build time whether the hero video / poster have landed.
 // Until they do, the bezel falls back to an aurora gradient placeholder.
@@ -46,8 +49,9 @@ const posterSrc = heroPosterExists ? `${base}/posters/hero.jpg` : undefined;
           multi-display layouts, your own videos, live streaming, expansion packs and more. macOS only.
         </p>
 
-        <div class="mt-10 flex flex-wrap items-center gap-6">
-          <DownloadCTA variant="large" />
+        <div class="mt-10 flex flex-col items-start gap-6">
+          <DownloadCTA release={stable} variant="large" />
+          {beta && <DownloadCTA release={beta} tone="outline" />}
         </div>
 
         <div class="mt-5">
