@@ -9,10 +9,8 @@ Generally what changes in 4.1 ?
 - There is now a beta track for auto updates. 
 
 What's new :
-- Fix overlays offset not working correctly in screensaver mode
-- Add ability to disable the automatic dock/menubar overlay offset for more precise control
-- Fix selected user playlists randomly reverting to some other state
-- Tentative fix for overlap issues on Tahoe only; If you experience issues on Golden Gate please report them. 
+- Add ability to ignore apps for auto-pause calculations
+- Fix versions not displaying correctly
 - Various minor fixes
 
 Known issues : 
