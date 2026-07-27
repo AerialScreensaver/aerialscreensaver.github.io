@@ -911,6 +911,33 @@ Aerial-3.9.9a10.md ↗
 Source markdown:
 <a href="https://aerialscreensaver.github.io/Aerial-4.1.0beta10.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
 Aerial-4.1.0beta10.md ↗
+</a> </div> </details><details id="4.1.0beta11" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.0beta11</span> <span class="text-sm text-aerial-text-dim">July 27, 2026</span>  </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This is a beta version, and has known issues. This version does <strong>NOT</strong> work on Sequoia. If you run macOS Golden Gate beta, you should use these betas.   </p>
+<p>What&#39;s new :</p>
+<ul>
+<li>Improve startup time/fluidity of wallpaper &lt;-&gt; screensaver transition, they should be perfectly smooth in all cases now</li>
+<li>You should (generally) no longer see flashing &quot;old&quot; images when starting screensaver</li>
+<li>Fix some crashes that cause the wallpaper to reset</li>
+<li>You can now have the wallpaper rotate periodically if you want, to avoid staying on the same one. This is configurable in settings in Wallpaper &gt; Auto Advance</li>
+<li>More CPU usage optimizations</li>
+<li>Various minor fixes</li>
+</ul>
+<p>Known issues : </p>
+<ul>
+<li>Using an external location for Cache or Expansions doesn&#39;t work right now. If you need that feature, stick to stable.</li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
+<li>You can go back to stable if you prefer, you will have to reset your wallpaper manually in that case. </li>
+<li>When upgrading from one beta to another, you <strong>need</strong> to manually restart the wallpaper. This can be done (most of the times) by running <code>killall WallpaperAgent</code> in a terminal. Sometimes that may leads to your Wallpaper being reset to the default ones, before coming back &quot;after a while&quot;. You can try triggering it a few times. Restarting macOS is the best way to ensure you are running the latest after updating from one beta to another. This will be improved later. </li>
+<li>Use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help !</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.1.0beta11.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.1.0beta11.md ↗
 </a> </div> </details><details id="4.1.0beta1c" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.0beta1c</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
 +
 </span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><h2>Aerial 4.1.0beta1c — corner-overlap fixes (diagnostic follow-up)</h2>
@@ -1180,7 +1207,7 @@ Aerial-4.1.0beta7.md ↗
 Source markdown:
 <a href="https://aerialscreensaver.github.io/Aerial-4.1.0beta8.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
 Aerial-4.1.0beta8.md ↗
-</a> </div> </details><details id="4.1.0beta9" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.0beta9</span> <span class="text-sm text-aerial-text-dim">July 24, 2026</span>  </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
+</a> </div> </details><details id="4.1.0beta9" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.0beta9</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
 +
 </span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This is a beta version, and has known issues. Prefer the stable version unless directed to this or you want to give feedback. </p>
 <p>Generally what changes in 4.1 ?</p>
