@@ -1,0 +1,130 @@
+---
+import type { ExpansionVideo } from '../lib/expansions';
+
+interface Props {
+  videos: ExpansionVideo[];
+  tileCount?: number;
+}
+
+const { videos, tileCount = 12 } = Astro.props;
+const tiles = videos.slice(0, Math.min(tileCount, videos.length));
+// Compact pool the crossfade script rotates through — includes the videos
+// not visible as initial tiles.
+const pool = videos.map((v) => ({ t: v.title, r: v.region, c: v.caption, u: v.thumbnailUrl }));
+---
+
+<div class="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6" data-mosaic={JSON.stringify(pool)}>
+  {
+    tiles.map((v, i) => (
+      <figure
+        class="group relative aspect-video overflow-hidden rounded-lg border border-aerial-border bg-aerial-surface"
+        data-current={i}
+      >
+        <img
+          src={v.thumbnailUrl}
+          alt={v.caption}
+          width="256"
+          height="144"
+          loading="lazy"
+          class="absolute inset-0 h-full w-full object-cover transition-opacity duration-700"
+        />
+        <img
+          src={v.thumbnailUrl}
+          alt=""
+          width="256"
+          height="144"
+          loading="lazy"
+          aria-hidden="true"
+          class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-700"
+        />
+        <figcaption class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-aerial-bg-deep/90 to-transparent px-2 pt-5 pb-1.5 text-[11px] leading-tight text-aerial-text opacity-0 transition-opacity group-hover:opacity-100">
+          <span data-mosaic-label>
+            {v.title}
+            {v.region && v.region !== v.title && ` · ${v.region}`}
+          </span>
+        </figcaption>
+      </figure>
+    ))
+  }
+</div>
+
+<script>
+  // One controller drives every mosaic on the page: every ~1.6s a random
+  // visible tile crossfades to a pack video not currently on screen.
+  declare global {
+    interface Window {
+      __aerialMosaicInit?: boolean;
+    }
+  }
+  if (!window.__aerialMosaicInit) {
+    window.__aerialMosaicInit = true;
+
+    type PoolEntry = { t: string; r: string; c: string; u: string };
+
+    const run = () => {
+      const states = Array.from(document.querySelectorAll<HTMLElement>('[data-mosaic]')).map(
+        (el) => ({
+          el,
+          pool: JSON.parse(el.dataset.mosaic || '[]') as PoolEntry[],
+          figures: Array.from(el.querySelectorAll<HTMLElement>('figure')),
+          onScreen: false,
+        }),
+      );
+      if (!states.length) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            const s = states.find((s) => s.el === e.target);
+            if (s) s.onScreen = e.isIntersecting;
+          }
+        },
+        { threshold: 0.1 },
+      );
+      states.forEach((s) => observer.observe(s.el));
+
+      const pick = <T,>(list: T[]): T => list[Math.floor(Math.random() * list.length)];
+
+      const swap = () => {
+        if (document.hidden) return;
+        const live = states.filter((s) => s.onScreen && s.pool.length > s.figures.length);
+        if (!live.length) return;
+        const s = pick(live);
+        const shown = new Set(s.figures.map((f) => Number(f.dataset.current)));
+        const candidates = s.pool.map((_, i) => i).filter((i) => !shown.has(i));
+        if (!candidates.length) return;
+        const next = pick(candidates);
+        const fig = pick(s.figures);
+        const entry = s.pool[next];
+
+        const [front, back] = Array.from(fig.querySelectorAll('img'));
+        const hidden = front.classList.contains('opacity-0') ? front : back;
+        const visible = hidden === front ? back : front;
+        hidden.src = entry.u;
+        hidden.alt = entry.c;
+        hidden.removeAttribute('aria-hidden');
+        const reveal = () => {
+          hidden.classList.remove('opacity-0');
+          visible.classList.add('opacity-0');
+          visible.alt = '';
+          visible.setAttribute('aria-hidden', 'true');
+          fig.dataset.current = String(next);
+          const label = fig.querySelector('[data-mosaic-label]');
+          if (label) {
+            label.textContent =
+              entry.r && entry.r !== entry.t ? `${entry.t} · ${entry.r}` : entry.t;
+          }
+        };
+        if (hidden.decode) {
+          hidden.decode().then(reveal, reveal);
+        } else {
+          reveal();
+        }
+      };
+
+      setInterval(swap, 1600);
+    };
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) run();
+  }
+</script>

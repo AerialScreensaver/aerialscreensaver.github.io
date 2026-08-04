@@ -1,0 +1,279 @@
+{
+  "assets": [
+    {
+      "id": "video_i2_ca_bombay-beach_26a",
+      "title": "Bombay Beach",
+      "accessibilityLabel": "California",
+      "scene": "nature",
+      "timeOfDay": "sunset",
+      "pointsOfInterest": {
+        "0": "Glassy waters mirror a golden sunset over Bombay Beach and the Salton Sea's quiet, desolate shores."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i2_ca_bombay-beach_26a.png"
+    },
+    {
+      "id": "video_i3-8k_ca_losangeles_griffith_18_18",
+      "title": "Griffith",
+      "accessibilityLabel": "California",
+      "scene": "city",
+      "timeOfDay": "sunset",
+      "pointsOfInterest": {
+        "0": "Griffith Observatory crowns the hills above a glittering Los Angeles skyline at dusk."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3-8k_ca_losangeles_griffith_18_18.png"
+    },
+    {
+      "id": "video_i3_ca_gaviota_20250503_003",
+      "title": "Gaviota",
+      "accessibilityLabel": "California",
+      "scene": "beach",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "A historic trestle bridge arcs along rugged coastal cliffs where emerald farmland meets the Pacific shore."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_gaviota_20250503_003.png"
+    },
+    {
+      "id": "video_i3_ca_huntington-beach_20240816_024",
+      "title": "Huntington Beach",
+      "accessibilityLabel": "California",
+      "scene": "beach",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "Sun-drenched rooftops and swaying palms lead to the iconic pier stretching into the Pacific."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_huntington-beach_20240816_024.png"
+    },
+    {
+      "id": "video_i3_ca_ivanpah_20230920_027",
+      "title": "Ivanpah",
+      "accessibilityLabel": "California",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "Thousands of mirrors track the sun across this vast Mojave solar thermal power complex."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_ivanpah_20230920_027.png"
+    },
+    {
+      "id": "video_i3_ca_long-beach_20250219_004",
+      "title": "Long Beach",
+      "accessibilityLabel": "California",
+      "scene": "city",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "Sailboats dot the marina as Long Beach's gleaming skyline rises along the Southern California coast."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_long-beach_20250219_004.png"
+    },
+    {
+      "id": "video_i3_ca_mammoth_lake-mary_20240831_002",
+      "title": "Mammoth",
+      "accessibilityLabel": "California",
+      "scene": "nature",
+      "timeOfDay": "sunset",
+      "pointsOfInterest": {
+        "0": "Evergreen forests embrace the still waters of Lake Mary beneath golden Sierra Nevada peaks."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_mammoth_lake-mary_20240831_002.png"
+    },
+    {
+      "id": "video_i3_ca_mendocino-co_20250501_014",
+      "title": "Mendocino",
+      "accessibilityLabel": "California",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "Rugged sea stacks rise from the churning Pacific along California's wild Mendocino coastline."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_mendocino-co_20250501_014.png"
+    },
+    {
+      "id": "video_i3_ca_napa_20250306_003",
+      "title": "Napa",
+      "accessibilityLabel": "California",
+      "scene": "countryside",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "Calm waters mirror the sky above Napa's vineyard-lined wetlands and rolling green countryside."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_napa_20250306_003.png"
+    },
+    {
+      "id": "video_i3_ca_oakland_20250305_107",
+      "title": "Oakland",
+      "accessibilityLabel": "California",
+      "scene": "city",
+      "timeOfDay": "sunset",
+      "pointsOfInterest": {
+        "0": "Oakland's skyline glows warm as golden light spills across the shimmering estuary at dusk."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_oakland_20250305_107.png"
+    },
+    {
+      "id": "video_i3_ca_occidental_20230610_26_28",
+      "title": "Occidental",
+      "accessibilityLabel": "California",
+      "scene": "nature",
+      "timeOfDay": "sunset",
+      "pointsOfInterest": {
+        "0": "Forests of the Sonoma Coast emerge from a golden sea of fog at dawn."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_occidental_20230610_26_28.png"
+    },
+    {
+      "id": "video_i3_ca_redondo-beach_20250128_003",
+      "title": "Redondo Beach",
+      "accessibilityLabel": "California",
+      "scene": "beach",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "Waves roll gently onto the sun-drenched shores of this Southern California coastal town."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_redondo-beach_20250128_003.png"
+    },
+    {
+      "id": "video_i3_ca_sausalito_20230609_07_07",
+      "title": "Sausalito",
+      "accessibilityLabel": "California",
+      "scene": "city",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "Hillside homes cascade down toward the shimmering waters of San Francisco Bay."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_sausalito_20230609_07_07.png"
+    },
+    {
+      "id": "video_i3_ca_sunnyvale_20250303_005",
+      "title": "Cupertino",
+      "accessibilityLabel": "California",
+      "scene": "city",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "Apple Park's sweeping circular campus in Cupertino rises above the suburban grid of Silicon Valley."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_sunnyvale_20250303_005.png"
+    },
+    {
+      "id": "video_i3_ca_tiburon_20250502_026",
+      "title": "Tiburon",
+      "accessibilityLabel": "California",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "Colorful homes cascade down wooded hillsides toward the shimmering waters of San Francisco Bay."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_tiburon_20250502_026.png"
+    },
+    {
+      "id": "video_i3_ca_winters_20250306_006",
+      "title": "Winters",
+      "accessibilityLabel": "California",
+      "scene": "countryside",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "Rolling green hillsides cascade through oak-studded valleys in California's coastal range."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_i3_ca_winters_20250306_006.png"
+    },
+    {
+      "id": "video_inspire_california_bishop_hills_10",
+      "title": "Bishop Hills",
+      "accessibilityLabel": "California",
+      "scene": "nature",
+      "timeOfDay": "sunset",
+      "pointsOfInterest": {
+        "0": "Crimson clouds ignite the sky above ancient granite boulders and the jagged Sierra Nevada."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_california_bishop_hills_10.png"
+    },
+    {
+      "id": "video_inspire_california_mettler_aqueduct_16",
+      "title": "Aqueduct",
+      "accessibilityLabel": "California",
+      "scene": "countryside",
+      "timeOfDay": "sunset",
+      "pointsOfInterest": {
+        "0": "Sunlit waters of the California Aqueduct curve through the golden valley at dusk."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_california_mettler_aqueduct_16.png"
+    },
+    {
+      "id": "video_inspire_california_mtshasta_00012",
+      "title": "Mt. Shasta",
+      "accessibilityLabel": "California",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "Snow-capped Mt. Shasta rises above a sweeping emerald forest under clear blue skies."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_california_mtshasta_00012.png"
+    },
+    {
+      "id": "video_inspire_california_onionvalley_020",
+      "title": "Onion Valley",
+      "accessibilityLabel": "California",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "Rugged granite cliffs rise above a verdant Sierra Nevada valley carved by ancient glaciers."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_california_onionvalley_020.png"
+    },
+    {
+      "id": "video_inspire_california_redwoods-coast_00003",
+      "title": "Redwoods",
+      "accessibilityLabel": "California",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "Rocky sea stacks meet dense redwood forest along California's rugged northern coastline."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_inspire_california_redwoods-coast_00003.png"
+    },
+    {
+      "id": "video_m3_ca_easternsierra_07_07",
+      "title": "East Sierra",
+      "accessibilityLabel": "California",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "Rugged volcanic ridges and golden wildflowers sweep across the high slopes of the Eastern Sierra."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_m3_ca_easternsierra_07_07.png"
+    },
+    {
+      "id": "video_m3_california_highland-lakes_12b",
+      "title": "Highland Lakes",
+      "accessibilityLabel": "California",
+      "scene": "nature",
+      "timeOfDay": "sunset",
+      "pointsOfInterest": {
+        "0": "Pristine alpine lakes mirror the forested Sierra peaks at the edge of dusk."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_m3_california_highland-lakes_12b.png"
+    },
+    {
+      "id": "video_m3_california_mono-pass_02",
+      "title": "Mono Pass",
+      "accessibilityLabel": "California",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "Dense pine forests line a winding mountain road beneath drifting clouds in the Sierra Nevada."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_m3_california_mono-pass_02.png"
+    },
+    {
+      "id": "video_m4_ca_angeles-crest_20260218_019",
+      "title": "Angeles Crest",
+      "accessibilityLabel": "California",
+      "scene": "nature",
+      "timeOfDay": "day",
+      "pointsOfInterest": {
+        "0": "Snow-dusted peaks and pine-covered ridges stretch across the vast San Gabriel Mountains."
+      },
+      "previewImage": "https://aerialscreensaver.github.io/thumbnails/video_m4_ca_angeles-crest_20260218_019.png"
+    }
+  ]
+}

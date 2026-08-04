@@ -70,10 +70,11 @@ jobs:
       - name: Build Astro site
         working-directory: source
         env:
-          # Astro reads the live appcast + release notes from the gh-pages
-          # checkout instead of fetching over the network.
+          # Astro reads the live appcast + release notes + expansion pack data
+          # from the gh-pages checkout instead of fetching over the network.
           APPCAST_PATH: ${{ github.workspace }}/deploy/appcast.xml
           RELEASE_NOTES_DIR: ${{ github.workspace }}/deploy
+          EXPANSIONS_DIR: ${{ github.workspace }}/deploy
         run: npm run build
 
       - name: Sync build into gh-pages root (preserve allowlist)

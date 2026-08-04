@@ -1,51 +1,292 @@
 ---
 import Base from '../../layouts/Base.astro';
 import MediaCard from '../../components/MediaCard.astro';
+import PackMosaic from '../../components/PackMosaic.astro';
+import { getCommunityPack, getFeaturedPack } from '../../lib/expansions';
+
+const base = import.meta.env.BASE_URL;
+const link = (path: string) => `${base.replace(/\/$/, '')}${path}`;
+
+const pack2026 = await getCommunityPack('community-2026');
+const pack2020 = await getCommunityPack('community-2020');
+const packFuture = getFeaturedPack();
+
+const montage2026Src = link('/videos/community-2026-montage.mp4');
+const montage2026Poster = link('/posters/community-2026-montage.jpg');
+const montage2026Alt =
+  'A preview of Community 2026: Los Angeles at sunrise, the Icelandic Westfjords, Shiprock, Zurich at sunset, and Manhattan at night.';
+
+const montage2020Src = link('/videos/community-2020-montage.mp4');
+const montage2020Poster = link('/posters/community-2020-montage.jpg');
+const montage2020Alt =
+  'A preview of Community 2020: the Alabama countryside at sunrise, Catalina, a foggy Pecos landscape, Santa Barbara at sunset, and Portland at night.';
+
+const promoTitle =
+  'The Future macOS Versions trailer: California aerials of locations rumored as future macOS names.';
+const promoEmbed =
+  'https://player.vimeo.com/video/1191802092?h=db1ff07076&autoplay=1&muted=1&loop=1&byline=0&title=0&portrait=0&dnt=1';
+
+const pillClass =
+  'inline-flex items-center rounded-full border border-aerial-border bg-aerial-surface/60 px-3 py-1 text-xs font-medium text-aerial-text-muted';
+const freePillClass =
+  'inline-flex items-center gap-1.5 rounded-full border border-aerial-link/40 bg-aerial-link/10 px-2.5 py-1 text-xs font-semibold text-aerial-link';
+const paidPillClass =
+  'inline-flex items-center gap-1.5 rounded-full border border-aerial-accent/40 bg-aerial-accent/10 px-2.5 py-1 text-xs font-semibold text-aerial-accent';
 ---
 
 <Base
   title="Expansions — Aerial"
-  description="Community-made video packs for Aerial. Browse and install from inside the app's Video Library."
+  description="Community-made video packs for Aerial: Community 2026 (newly shot 4K 240 fps footage, under 5 GB) and Community 2020 (the originals, remastered in 240 fps)."
 >
-  <section class="mx-auto max-w-3xl px-6 pt-24 pb-32">
+  <header class="mx-auto max-w-5xl px-6 pt-24 pb-12">
     <p class="text-sm font-semibold uppercase tracking-widest text-aerial-accent">Expansions</p>
     <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight text-aerial-text">
-      Community video packs.
+      Video expansion packs.
     </h1>
-    <p class="mt-6 text-aerial-text-muted text-lg leading-relaxed">
+    <p class="mt-6 text-aerial-text-muted text-lg leading-relaxed max-w-3xl">
       Aerial supports curated, community-made video packs called <em>expansions</em>. Each pack is
       its own source of videos with its own license and credits. The full catalog lives inside the
       app — open <strong class="text-aerial-text">Video Library → Expansions</strong> to browse and
       install. Nothing is auto-installed without your consent.
     </p>
+  </header>
 
-    <div class="mt-10">
-      <MediaCard
-        imageSrc="expansions-browser.webp"
-        alt="The Expansions browser inside Aerial's Video Library, showing Community 2026, Community 2020, Community Plus 2026, Future macOS Versions, and San Francisco packs from Magic Window."
-      />
-    </div>
+  <div class="mx-auto max-w-5xl px-6 pb-32 space-y-20">
+    <!-- Community 2026 -->
+    <section id="community-2026" class="scroll-mt-24">
+      <h2 class="flex flex-wrap items-center gap-3 text-3xl md:text-4xl font-bold tracking-tight text-aerial-text">
+        Community 2026
+        <span class={freePillClass}>
+          <svg class="h-3.5 w-3.5 text-rose-400" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 13.6C5.4 11.7 2 9.1 2 6.2 2 4.4 3.4 3 5.1 3c1.1 0 2.1.5 2.7 1.4L8 4.8l.2-.4C8.8 3.5 9.8 3 10.9 3 12.6 3 14 4.4 14 6.2c0 2.9-3.4 5.5-6 7.4z" />
+          </svg>
+          Free
+        </span>
+      </h2>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <span class={pillClass}>20 videos</span>
+        <span class={pillClass}>Newly shot</span>
+        <span class={pillClass}>4K · 240 fps</span>
+        <span class={pillClass}>Under 5 GB</span>
+      </div>
+      <p class="mt-5 text-aerial-text-muted leading-relaxed max-w-3xl">
+        Brand-new footage, shot for this pack: twenty aerials across nine countries — from a foggy
+        Los Angeles sunrise to the Icelandic Westfjords, Jodhpur, the Swiss Alps and Manhattan at
+        night. Everything is high quality 4K at 240 fps for perfectly smooth slowed-down playback,
+        and encoded to use as little space as possible: the entire pack is under
+        <strong class="text-aerial-text">5&nbsp;GB</strong> (about 4&nbsp;GB for the full 240 fps
+        set, 2&nbsp;GB in standard 4K).
+      </p>
 
-    <div class="mt-10 rounded-xl border border-aerial-border bg-aerial-surface/50 p-6">
-      <h2 class="text-aerial-text font-semibold">Featured pack</h2>
-      <p class="mt-3 text-aerial-text-muted">
-        <strong class="text-aerial-text">Joshua Michaels &amp; Hal Bergman</strong> shoot
-        breathtaking aerial sequences over California, the American Southwest, New York, Monterey,
-        and beyond — and have generously shared sets with the Aerial community since the early
-        days. You can also support them by buying their commercial packs at
+      <button
+        type="button"
+        data-lightbox
+        data-lightbox-type="video"
+        data-lightbox-src={montage2026Src}
+        data-lightbox-poster={montage2026Poster}
+        data-lightbox-alt={montage2026Alt}
+        aria-label={`Expand: ${montage2026Alt}`}
+        class="mt-8 block w-full cursor-zoom-in overflow-hidden rounded-xl border border-aerial-border bg-aerial-surface shadow-lg transition-all hover:border-aerial-accent/50"
+      >
+        <video
+          class="block w-full h-auto"
+          src={montage2026Src}
+          poster={montage2026Poster}
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          data-motion-optional
+          aria-label={montage2026Alt}
+        ></video>
+      </button>
+      <p class="mt-3 text-sm text-aerial-text-dim">
+        A quick preview — Los Angeles, the Westfjords, Shiprock, Zurich, Manhattan.
+      </p>
+
+      {pack2026 && (
+        <div class="mt-8">
+          <PackMosaic videos={pack2026} />
+        </div>
+      )}
+
+      <p class="mt-6 text-sm text-aerial-text-muted leading-relaxed max-w-3xl">
+        Shot and produced by <strong class="text-aerial-text">Joshua Michaels &amp; Hal
+        Bergman</strong>, who have generously shared sets with the Aerial community since the early
+        days. You can support them by buying their commercial packs at
         <a href="https://magicwindow.app/aerial" class="text-aerial-link">magicwindow.app/aerial</a>.
       </p>
-    </div>
+    </section>
 
-    <div class="mt-10 text-aerial-text-muted">
-      <h2 class="text-aerial-text font-semibold mb-3">Want to publish an expansion?</h2>
-      <p>
-        Reach out via
-        <a href="https://github.com/AerialScreensaver/Aerial/issues" class="text-aerial-link">
-          GitHub issues
-        </a>
-        — I'll point you at the format spec and help with the catalog entry.
+    <!-- Community 2020 -->
+    <section id="community-2020" class="scroll-mt-24">
+      <h2 class="flex flex-wrap items-center gap-3 text-3xl md:text-4xl font-bold tracking-tight text-aerial-text">
+        Community 2020
+        <span class={freePillClass}>
+          <svg class="h-3.5 w-3.5 text-rose-400" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 13.6C5.4 11.7 2 9.1 2 6.2 2 4.4 3.4 3 5.1 3c1.1 0 2.1.5 2.7 1.4L8 4.8l.2-.4C8.8 3.5 9.8 3 10.9 3 12.6 3 14 4.4 14 6.2c0 2.9-3.4 5.5-6 7.4z" />
+          </svg>
+          Free
+        </span>
+      </h2>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <span class={pillClass}>20 videos</span>
+        <span class={pillClass}>The originals</span>
+        <span class={pillClass}>Remastered in 240 fps</span>
+      </div>
+      <p class="mt-5 text-aerial-text-muted leading-relaxed max-w-3xl">
+        The original community videos that started it all — Big Sur, Catalina, Las Vegas, Miami,
+        Edinburgh, Lake Como and more, from the 2020 Magic Window collection. The whole set has
+        been remastered in 240 fps, so it plays back just as smoothly as the new footage.
       </p>
-    </div>
-  </section>
+
+      <button
+        type="button"
+        data-lightbox
+        data-lightbox-type="video"
+        data-lightbox-src={montage2020Src}
+        data-lightbox-poster={montage2020Poster}
+        data-lightbox-alt={montage2020Alt}
+        aria-label={`Expand: ${montage2020Alt}`}
+        class="mt-8 block w-full cursor-zoom-in overflow-hidden rounded-xl border border-aerial-border bg-aerial-surface shadow-lg transition-all hover:border-aerial-accent/50"
+      >
+        <video
+          class="block w-full h-auto"
+          src={montage2020Src}
+          poster={montage2020Poster}
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          data-motion-optional
+          aria-label={montage2020Alt}
+        ></video>
+      </button>
+      <p class="mt-3 text-sm text-aerial-text-dim">
+        A quick preview — the Alabama countryside, Catalina, Pecos, Santa Barbara, Portland.
+      </p>
+
+      {pack2020 && (
+        <div class="mt-8">
+          <PackMosaic videos={pack2020} />
+        </div>
+      )}
+    </section>
+
+    <!-- Featured expansion: Future macOS Versions -->
+    <section
+      id="future-macos-versions"
+      class="scroll-mt-24 rounded-xl border border-aerial-accent/40 bg-aerial-accent/[0.06] p-6 md:p-10"
+    >
+      <p class="text-sm font-semibold uppercase tracking-widest text-aerial-accent">
+        Featured expansion
+      </p>
+      <h2 class="mt-3 flex flex-wrap items-center gap-3 text-3xl md:text-4xl font-bold tracking-tight text-aerial-text">
+        Future macOS Versions
+        <span class={paidPillClass}>
+          <svg
+            class="h-3.5 w-3.5"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M1.5 2.5h1.8l.5 2m0 0 1 5h7.4l1.3-5H3.8z" />
+            <circle cx="5.5" cy="13" r="1" fill="currentColor" stroke="none" />
+            <circle cx="11.5" cy="13" r="1" fill="currentColor" stroke="none" />
+          </svg>
+          Paid
+        </span>
+      </h2>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <span class={pillClass}>25 videos</span>
+        <span class={pillClass}>All California</span>
+        <span class={pillClass}>4K · 240 fps</span>
+      </div>
+      <p class="mt-5 text-aerial-text-muted leading-relaxed max-w-3xl">
+        Are the rumors true? What will the next macOS be called? <strong class="text-aerial-text">
+        Joshua Michaels &amp; Hal Bergman</strong> — the same duo who graciously share the
+        Community packs with everyone — put together twenty-five California aerials of locations
+        rumored for future macOS versions, from Mammoth and Mt.&nbsp;Shasta to Redondo Beach and
+        Sausalito, all in 4K at 240&nbsp;fps. It's a paid pack: buying it directly supports their
+        work, and the free packs everyone gets.
+      </p>
+      <p class="mt-4">
+        <a
+          href="https://www.jetsoncreative.com/aerial-expansions/future-macos-versions"
+          class="inline-flex items-center gap-1.5 text-aerial-link hover:text-aerial-link-hi"
+        >
+          Get it at jetsoncreative.com
+          <svg class="h-3 w-3" viewBox="0 0 12 12" aria-hidden="true">
+            <path
+              d="M4.5 2.5 8 6l-3.5 3.5"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"></path>
+          </svg>
+        </a>
+      </p>
+
+      <div class="relative mt-8 aspect-video w-full overflow-hidden rounded-xl border border-aerial-border bg-aerial-surface shadow-lg">
+        <iframe
+          class="absolute inset-0 h-full w-full"
+          src={promoEmbed}
+          title={promoTitle}
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <div class="mt-8">
+        <PackMosaic videos={packFuture} />
+      </div>
+    </section>
+
+    <!-- Install + publish -->
+    <section class="max-w-3xl">
+      <h2 class="text-aerial-text font-semibold text-lg">Installing packs</h2>
+      <p class="mt-3 text-aerial-text-muted leading-relaxed">
+        Open <strong class="text-aerial-text">Video Library → Expansions</strong> in the app,
+        pick a pack and install the videos you want — individually or all at once. Community packs
+        are shared under the
+        <a href="https://jetsoncreative.com/aeriallicense" class="text-aerial-link">community
+        license</a>.
+      </p>
+      <div class="mt-6">
+        <MediaCard
+          imageSrc="expansions-browser.webp"
+          alt="The Expansions browser inside Aerial's Video Library, showing Community 2026, Community 2020, Community Plus 2026, Future macOS Versions, and San Francisco packs from Magic Window."
+        />
+      </div>
+
+      <div class="mt-10 text-aerial-text-muted">
+        <h2 class="text-aerial-text font-semibold mb-3">Want to publish an expansion?</h2>
+        <p>
+          Reach out via
+          <a href="https://github.com/AerialScreensaver/Aerial/issues" class="text-aerial-link">
+            GitHub issues
+          </a>
+          — I'll point you at the format spec and help with the catalog entry.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Respect reduced motion: leave the montage on its poster frame.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll<HTMLVideoElement>('video[data-motion-optional]').forEach((v) => {
+        v.removeAttribute('autoplay');
+        v.pause();
+      });
+    }
+  </script>
 </Base>
