@@ -5,7 +5,7 @@ icon: layout-grid
 order: 40
 homepage: true
 imageSrc: overlay-editor.webp
-alt: Aerial's overlay editor in live preview mode over a sunset video — weather widget top-left, a large center clock at 16:57, music now-playing top-right, and a San Francisco location caption bottom-left.
+alt: Aerial's overlay editor over an aerial city video — a large clock and location caption top-left, weather top-right, with the drag-to-add Overlays palette and the layout-settings Inspector panels open.
 ---
 
 Older versions buried overlays inside a preferences table. Aerial 4 swaps that for a visual editor: pick a zone (top-left, top-center, top-right, center, bottom-left, bottom-center, bottom-right), drag in clock, date, weather, music, battery, timer, countdown, or a custom message, and see the result instantly. Per-zone stacks, shadow, margins, fonts, and timing are all there — without touching a settings file.
