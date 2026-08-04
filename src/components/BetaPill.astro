@@ -1,0 +1,15 @@
+---
+interface Props {
+  label?: string;
+  class?: string;
+}
+
+const { label = 'Beta', class: className } = Astro.props;
+---
+
+<span
+  class:list={[
+    'rounded-full border border-aerial-accent/40 bg-aerial-accent/10 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-aerial-accent',
+    className,
+  ]}>{label}</span
+>

@@ -10,6 +10,11 @@ const features = defineCollection({
       icon: z.string().optional(),
       order: z.number(),
       homepage: z.boolean().default(false),
+      // Set false for entries that only exist as a homepage card (the card's
+      // `anchor` should then point at the features-page section it teases).
+      featuresPage: z.boolean().default(true),
+      badge: z.string().optional(), // small pill next to the title, e.g. "Beta"
+      anchor: z.string().optional(), // features-page anchor the homepage card links to (defaults to the entry id)
 
       // Visuals — all optional. If both image and video are set, video wins
       // (image becomes the poster fallback and the lightbox-expand target for stills).
@@ -35,6 +40,7 @@ const faq = defineCollection({
     question: z.string(),
     category: z.string(),
     order: z.number().default(0),
+    badge: z.string().optional(), // small pill next to the question, e.g. "Beta"
   }),
 });
 

@@ -15,8 +15,9 @@ interface Props {
   // card with this label so the design is visualized end-to-end.
   placeholder?: 'image' | 'video';
   placeholderLabel?: string;
-  // Force a fixed aspect ratio with object-cover. Used on the homepage card
-  // grid so all cards line up regardless of the source's natural ratio.
+  // Force a fixed aspect ratio, letterboxing the media with object-contain.
+  // Used on the homepage card grid so all cards line up regardless of the
+  // source's natural ratio, without cropping it.
   cardAspect?: string;
 }
 
@@ -32,7 +33,10 @@ const {
   cardAspect,
 } = Astro.props;
 const aspectStyle = cardAspect ? `aspect-ratio: ${cardAspect};` : undefined;
-const imageCardClass = cardAspect ? 'block w-full h-full object-cover' : 'block w-full h-auto';
+const imageCardClass = cardAspect ? 'block w-full h-full object-contain' : 'block w-full h-auto';
+const videoCardClass = cardAspect
+  ? 'block w-full h-full object-contain'
+  : 'block w-full h-auto aspect-video object-cover';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const videoSrc = video ? `${base}/videos/${video}` : null;
@@ -76,7 +80,7 @@ const showMedia = hasRealMedia || showPlaceholder;
       >
         {video ? (
           <video
-            class="block w-full h-auto aspect-video object-cover"
+            class={videoCardClass}
             src={videoSrc!}
             poster={posterSrc ?? undefined}
             preload="metadata"

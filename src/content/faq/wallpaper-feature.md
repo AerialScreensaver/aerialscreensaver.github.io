@@ -10,3 +10,5 @@ Aerial's live Wallpaper is optional — Aerial works as a screensaver without it
 - **Stop it:** click **Wallpaper** again.
 - **Pause without stopping:** press the **pause** button next to the current video in the playlist. The wallpaper freezes on the current frame.
 - **Switch videos:** the playlist shows what's currently playing — scroll and click any other entry to jump to it immediately.
+
+**4.1 beta:** the wallpaper is now a native macOS wallpaper. Activate it by accepting the prompt at startup (or pick Aerial in System Settings › Wallpaper). The Play/Pause button in the menu bar switches between still and live modes.

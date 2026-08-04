@@ -29,35 +29,35 @@ const beta = await getLatestBeta();
       and follow instructions.
     </p>
 
-    <div class="mt-10">
-      <DownloadCTA release={stable} variant="large" betaPointerHref={beta ? '#beta' : undefined} />
+    <div class="mt-10 flex flex-col items-start gap-6">
+      {
+        beta ? (
+          <>
+            <div id="beta" class="scroll-mt-24">
+              <DownloadCTA release={beta} variant="large" />
+              <p class="mt-4 text-aerial-text-muted text-sm leading-relaxed max-w-md">
+                Aerial {beta.version} is the current beta — newest features first, occasional
+                rough edges. It requires macOS {BETA_MIN_MACOS} or later, and it's the build we
+                recommend on {BETA_RECOMMENDED_ON}. Betas auto-update to newer betas via Sparkle.
+                <a href={beta.releaseNotesUrl} class="text-aerial-link hover:text-aerial-link-hi">
+                  What's new in {beta.version} →
+                </a>
+              </p>
+            </div>
+            <div class="flex w-full max-w-md items-center gap-4" aria-hidden="true">
+              <div class="h-px flex-1 bg-aerial-border" />
+              <span class="text-xs font-medium uppercase tracking-widest text-aerial-text-dim">
+                or
+              </span>
+              <div class="h-px flex-1 bg-aerial-border" />
+            </div>
+            <DownloadCTA release={stable} tone="outline" />
+          </>
+        ) : (
+          <DownloadCTA release={stable} variant="large" />
+        )
+      }
     </div>
-
-    {
-      beta && (
-        <div id="beta" class="mt-14 rounded-xl border border-aerial-accent/30 bg-aerial-surface/50 p-6">
-          <div class="flex items-center gap-3">
-            <h2 class="text-aerial-text font-semibold text-lg">Beta channel</h2>
-            <span class="rounded-full border border-aerial-accent/40 bg-aerial-accent/10 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-aerial-accent">
-              Beta
-            </span>
-          </div>
-          <p class="mt-3 text-aerial-text-muted text-sm leading-relaxed">
-            Aerial {beta.version} is the current beta — newest features first, occasional rough
-            edges. It requires macOS {BETA_MIN_MACOS} or later, and it's the build we recommend
-            on {BETA_RECOMMENDED_ON}. Betas auto-update to newer betas via Sparkle.
-          </p>
-          <div class="mt-5">
-            <DownloadCTA release={beta} tone="outline" />
-          </div>
-          <p class="mt-4 text-sm">
-            <a href={beta.releaseNotesUrl} class="text-aerial-link hover:text-aerial-link-hi">
-              What's new in {beta.version} →
-            </a>
-          </p>
-        </div>
-      )
-    }
 
     <div class="mt-14">
       <h2 class="text-aerial-text font-semibold text-lg">Or install with Homebrew</h2>
@@ -68,17 +68,16 @@ const beta = await getLatestBeta();
 
       <div class="mt-5 grid gap-5 md:grid-cols-2">
         <div>
-          <CommandBlock command="brew install aerial" />
-          <p class="mt-2.5 text-aerial-text-muted text-sm leading-relaxed">
-            <strong class="text-aerial-text">Stable.</strong> Installs the latest stable version.
-            Recommended.
-          </p>
-        </div>
-        <div>
           <CommandBlock command="brew install aerial@beta" />
           <p class="mt-2.5 text-aerial-text-muted text-sm leading-relaxed">
             <strong class="text-aerial-text">Beta.</strong> Installs prerelease builds when one is
             available, latest if not — newest features, bugs expected.
+          </p>
+        </div>
+        <div>
+          <CommandBlock command="brew install aerial" />
+          <p class="mt-2.5 text-aerial-text-muted text-sm leading-relaxed">
+            <strong class="text-aerial-text">Stable.</strong> Installs the latest stable version.
           </p>
         </div>
       </div>
@@ -93,7 +92,8 @@ const beta = await getLatestBeta();
       <div class="rounded-xl border border-aerial-border bg-aerial-surface/50 p-6">
         <h2 class="text-aerial-text font-semibold">Compatibility</h2>
         <ul class="mt-3 space-y-1 text-aerial-text-muted">
-          <li>macOS {stable.minSystemVersion} (Sequoia) or later</li>
+          {beta && <li>Beta: macOS {BETA_MIN_MACOS} (Tahoe) or later</li>}
+          <li>Stable: macOS {stable.minSystemVersion} (Sequoia) or later</li>
           <li>Apple Silicon and Intel</li>
           <li>Single-display and multi-display setups</li>
         </ul>
@@ -187,9 +187,6 @@ const beta = await getLatestBeta();
 
     <div class="mt-16 text-xs text-aerial-text-dim">
       <p>Direct download URL{beta && 's'} (also used by Sparkle):</p>
-      <p class="mt-1">
-        Stable: <a href={stable.downloadUrl} class="break-all text-aerial-text-muted">{stable.downloadUrl}</a>
-      </p>
       {
         beta && (
           <p class="mt-1">
@@ -197,6 +194,9 @@ const beta = await getLatestBeta();
           </p>
         )
       }
+      <p class="mt-1">
+        Stable: <a href={stable.downloadUrl} class="break-all text-aerial-text-muted">{stable.downloadUrl}</a>
+      </p>
     </div>
   </section>
 </Base>

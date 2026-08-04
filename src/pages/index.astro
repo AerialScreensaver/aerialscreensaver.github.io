@@ -60,7 +60,8 @@ const homepageFeatures = allFeatures
           <FeatureCard
             title={f.data.title}
             summary={f.data.summary}
-            href={link(`/features#${f.id}`)}
+            href={link(`/features#${f.data.anchor ?? f.id}`)}
+            badge={f.data.badge}
             image={f.data.image}
             imageSrc={f.data.imageSrc}
             video={f.data.video}
@@ -143,13 +144,24 @@ const homepageFeatures = allFeatures
     <p class="mt-4 text-aerial-text-muted text-lg max-w-xl mx-auto">
       One small download. Drag to <code class="text-aerial-text">/Applications</code>. That's it.
     </p>
-    <div class="mt-8">
-      <DownloadCTA
-        release={stable}
-        variant="large"
-        align="center"
-        betaPointerHref={beta ? `${link('/download')}#beta` : undefined}
-      />
+    <div class="mt-8 flex flex-col items-center gap-6">
+      {
+        beta ? (
+          <>
+            <DownloadCTA release={beta} variant="large" align="center" />
+            <div class="flex w-full max-w-md items-center gap-4" aria-hidden="true">
+              <div class="h-px flex-1 bg-aerial-border" />
+              <span class="text-xs font-medium uppercase tracking-widest text-aerial-text-dim">
+                or
+              </span>
+              <div class="h-px flex-1 bg-aerial-border" />
+            </div>
+            <DownloadCTA release={stable} tone="outline" align="center" />
+          </>
+        ) : (
+          <DownloadCTA release={stable} variant="large" align="center" />
+        )
+      }
     </div>
     <div class="mt-5">
       <a

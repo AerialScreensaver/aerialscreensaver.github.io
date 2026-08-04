@@ -53,8 +53,34 @@ const posterSrc = heroPosterExists ? `${base}/posters/hero.jpg` : undefined;
         </p>
 
         <div class="mt-10 flex flex-col items-start gap-6">
-          <DownloadCTA release={stable} variant="large" />
-          {beta && <DownloadCTA release={beta} tone="outline" />}
+          {
+            beta ? (
+              <>
+                <DownloadCTA release={beta} variant="large" />
+                <p class="text-sm text-aerial-text-muted max-w-md">
+                  <strong class="text-aerial-text">New in the 4.1 beta:</strong> Aerial becomes a
+                  native macOS wallpaper — plus a new home screen, auto-advance, and big
+                  performance gains.
+                  <a
+                    href={`${base}/features/#desktop-wallpaper`}
+                    class="text-aerial-link hover:text-aerial-link-hi"
+                  >
+                    See what's new →
+                  </a>
+                </p>
+                <div class="flex w-full max-w-md items-center gap-4" aria-hidden="true">
+                  <div class="h-px flex-1 bg-aerial-border" />
+                  <span class="text-xs font-medium uppercase tracking-widest text-aerial-text-dim">
+                    or
+                  </span>
+                  <div class="h-px flex-1 bg-aerial-border" />
+                </div>
+                <DownloadCTA release={stable} tone="outline" />
+              </>
+            ) : (
+              <DownloadCTA release={stable} variant="large" />
+            )
+          }
         </div>
 
         <div class="mt-5">

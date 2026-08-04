@@ -1,11 +1,13 @@
 ---
 import type { ImageMetadata } from 'astro';
+import BetaPill from './BetaPill.astro';
 import MediaCard from './MediaCard.astro';
 
 interface Props {
   title: string;
   summary: string;
   href?: string;
+  badge?: string;
   image?: ImageMetadata;
   imageSrc?: string;
   video?: string;
@@ -14,7 +16,8 @@ interface Props {
   placeholder?: 'image' | 'video';
 }
 
-const { title, summary, href, image, imageSrc, video, videoPoster, alt, placeholder } = Astro.props;
+const { title, summary, href, badge, image, imageSrc, video, videoPoster, alt, placeholder } =
+  Astro.props;
 const hasMedia = Boolean(image || imageSrc || video || placeholder);
 ---
 
@@ -40,8 +43,9 @@ const hasMedia = Boolean(image || imageSrc || video || placeholder);
     )
   }
   <div class={hasMedia ? 'p-4' : ''}>
-    <h3 class="text-xl font-semibold text-aerial-text">
+    <h3 class="text-xl font-semibold text-aerial-text flex items-center gap-2">
       {href ? <a href={href}>{title}</a> : title}
+      {badge && <BetaPill label={badge} />}
     </h3>
     <p class="mt-3 text-aerial-text-muted leading-relaxed">{summary}</p>
     {

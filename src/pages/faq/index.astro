@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import BetaPill from '../../components/BetaPill.astro';
 
 const all = (await getCollection('faq')).sort((a, b) => a.data.order - b.data.order);
 
@@ -33,7 +34,9 @@ for (const entry of all) {
       <a href="https://github.com/AerialScreensaver/Aerial/issues" class="text-aerial-link">
         GitHub issues
       </a>
-      and the project Discord are good places to ask.
+      and the
+      <a href="https://discord.com/invite/TPuA5WG" class="text-aerial-link">project Discord</a>
+      are good places to ask.
     </p>
   </header>
 
@@ -51,7 +54,10 @@ for (const entry of all) {
               return (
                 <details class="group rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 transition-colors">
                   <summary class="cursor-pointer list-none flex items-start justify-between gap-4 font-medium text-aerial-text">
-                    <span>{entry.data.question}</span>
+                    <span>
+                      {entry.data.question}
+                      {entry.data.badge && <BetaPill label={entry.data.badge} class="ml-2 align-middle" />}
+                    </span>
                     <span
                       class="mt-1 text-aerial-text-muted transition-transform group-open:rotate-45"
                       aria-hidden="true"
