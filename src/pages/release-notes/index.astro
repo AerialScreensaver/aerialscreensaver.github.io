@@ -33,18 +33,17 @@ function loadReleaseNoteFiles(): { version: string; body: string; url: string }[
   return [];
 }
 
-// Sort: higher major.minor.patch first, stable above any alpha of the same patch.
+// Sort: higher major.minor.patch first, stable above any beta of the same patch,
+// betas ordered by number then trailing letter (beta1 < beta1c < beta2).
 function versionRank(v: string): number {
-  const m = v.match(/^(\d+)\.(\d+)\.(\d+)(?:a(\d+))?$/);
+  const m = v.match(/^(\d+)\.(\d+)\.(\d+)(?:beta(\d+)([a-z])?)?$/);
   if (!m) return 0;
-  const [, major, minor, patch, alpha] = m;
-  return (
-    Number(major) * 1_000_000_000 +
-    Number(minor) * 1_000_000 +
-    Number(patch) * 1_000 +
-    (alpha ? Number(alpha) : 999)
-  );
+  const [, major, minor, patch, beta, letter] = m;
+  const sub = beta ? Number(beta) * 30 + (letter ? letter.charCodeAt(0) - 96 : 0) : 999;
+  return Number(major) * 1_000_000_000 + Number(minor) * 1_000_000 + Number(patch) * 1_000 + sub;
 }
+
+const channelOf = (v: string) => (v.includes('beta') ? 'beta' : 'stable');
 
 const files = loadReleaseNoteFiles();
 const appcastByVersion = new Map(
@@ -54,6 +53,7 @@ const appcastByVersion = new Map(
 marked.setOptions({ gfm: true, breaks: false });
 
 const notes: ReleaseNote[] = files
+  .filter((f) => !/^3\.9\.9a\d+$/.test(f.version))
   .map((f) => {
     const appcast = appcastByVersion.get(f.version);
     return {
@@ -65,6 +65,9 @@ const notes: ReleaseNote[] = files
     };
   })
   .sort((a, b) => versionRank(b.version) - versionRank(a.version));
+
+const betaNotes = notes.filter((n) => channelOf(n.version) === 'beta');
+const stableNotes = notes.filter((n) => channelOf(n.version) === 'stable');
 ---
 
 <Base
@@ -88,46 +91,111 @@ const notes: ReleaseNote[] = files
           No release notes found locally. In CI, this list is built from the gh-pages branch root.
         </p>
       ) : (
-        <div class="space-y-4">
-          {notes.map((n, i) => (
-            <details
-              id={n.version}
-              open={i === 0}
-              class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"
+        <div>
+          <div
+            role="tablist"
+            aria-label="Release channel"
+            class="mb-8 inline-flex rounded-full border border-aerial-border bg-aerial-surface/40 p-1"
+          >
+            <button
+              type="button"
+              role="tab"
+              data-channel-tab="beta"
+              aria-selected="true"
+              class="cursor-pointer rounded-full border border-transparent px-4 py-1.5 text-sm font-medium text-aerial-text-muted transition-colors aria-selected:bg-aerial-surface aria-selected:text-aerial-link aria-selected:border-aerial-link/40"
             >
-              <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4">
-                <div class="flex items-baseline gap-3 flex-wrap">
-                  <span class="text-lg font-semibold text-aerial-text">Aerial {n.version}</span>
-                  {n.pubDateLabel && (
-                    <span class="text-sm text-aerial-text-dim">{n.pubDateLabel}</span>
-                  )}
-                  {i === 0 && (
-                    <span class="text-[10px] font-semibold uppercase tracking-widest text-aerial-accent border border-aerial-accent/40 rounded px-1.5 py-0.5">
-                      Latest
-                    </span>
-                  )}
-                </div>
-                <span
-                  class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none"
-                  aria-hidden="true"
-                >
-                  +
-                </span>
-              </summary>
+              Beta
+            </button>
+            <button
+              type="button"
+              role="tab"
+              data-channel-tab="stable"
+              aria-selected="false"
+              class="cursor-pointer rounded-full border border-transparent px-4 py-1.5 text-sm font-medium text-aerial-text-muted transition-colors aria-selected:bg-aerial-surface aria-selected:text-aerial-accent aria-selected:border-aerial-accent/40"
+            >
+              Stable
+            </button>
+          </div>
+          {
+            ([
+              ['beta', betaNotes],
+              ['stable', stableNotes],
+            ] as const).map(([channel, list]) => (
               <div
-                class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"
-                set:html={n.bodyHtml}
-              />
-              <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-                Source markdown:
-                <a href={n.url} class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-                  Aerial-{n.version}.md ↗
-                </a>
+                data-channel-panel={channel}
+                class:list={['space-y-4', channel === 'stable' && 'hidden']}
+              >
+                {list.length === 0 && (
+                  <p class="text-aerial-text-muted">No releases in this channel yet.</p>
+                )}
+                {list.map((n, i) => (
+                  <details
+                    id={n.version}
+                    open={i === 0}
+                    class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"
+                  >
+                    <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4">
+                      <div class="flex items-baseline gap-3 flex-wrap">
+                        <span class="text-lg font-semibold text-aerial-text">Aerial {n.version}</span>
+                        {n.pubDateLabel && (
+                          <span class="text-sm text-aerial-text-dim">{n.pubDateLabel}</span>
+                        )}
+                        {i === 0 && (
+                          <span class="text-[10px] font-semibold uppercase tracking-widest text-aerial-accent border border-aerial-accent/40 rounded px-1.5 py-0.5">
+                            Latest
+                          </span>
+                        )}
+                      </div>
+                      <span
+                        class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none"
+                        aria-hidden="true"
+                      >
+                        +
+                      </span>
+                    </summary>
+                    <div
+                      class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"
+                      set:html={n.bodyHtml}
+                    />
+                    <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+                      Source markdown:
+                      <a href={n.url} class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+                        Aerial-{n.version}.md ↗
+                      </a>
+                    </div>
+                  </details>
+                ))}
               </div>
-            </details>
-          ))}
+            ))
+          }
         </div>
       )
     }
   </div>
+
+  <script>
+    function selectChannel(channel: string) {
+      document.querySelectorAll<HTMLElement>('[data-channel-panel]').forEach((p) => {
+        p.classList.toggle('hidden', p.dataset.channelPanel !== channel);
+      });
+      document.querySelectorAll<HTMLElement>('[data-channel-tab]').forEach((b) => {
+        b.setAttribute('aria-selected', String(b.dataset.channelTab === channel));
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLElement>('[data-channel-tab]');
+      if (btn?.dataset.channelTab) selectChannel(btn.dataset.channelTab);
+    });
+
+    // A version hash (e.g. #4.0.7) may target a card in the hidden panel:
+    // switch to its channel, expand it, and re-scroll now that it's visible.
+    const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    const panel = target?.closest<HTMLElement>('[data-channel-panel]');
+    if (target && panel?.dataset.channelPanel) {
+      selectChannel(panel.dataset.channelPanel);
+      if (target instanceof HTMLDetailsElement) target.open = true;
+      target.scrollIntoView();
+    }
+  </script>
 </Base>
