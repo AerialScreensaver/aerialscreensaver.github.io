@@ -3,6 +3,39 @@
     <channel>
         <title>Aerial</title>
         <item>
+            <title>4.1.0beta14</title>
+            <pubDate>Sat, 22 Aug 2026 19:55:22 +0200</pubDate>
+            <sparkle:version>260822.1952</sparkle:version>
+            <sparkle:shortVersionString>4.1.0beta14</sparkle:shortVersionString>
+            <sparkle:channel>beta</sparkle:channel>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:releaseNotesLink>https://aerialscreensaver.github.io/Aerial-4.1.0beta14.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.1.0beta14/Aerial-4.1.0beta14.zip" length="9789257" type="application/octet-stream" sparkle:edSignature="muOPZLWVCtmeDYYbTRELTdwzH8Vyf6i5f10Vpr+rs7kh/Xh+0hLoEZkejGm3W2wQBS9DXievcz7R+27b4Eg5AA=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.1.0beta14/Aerial260822.1952-260822.1934.delta" sparkle:deltaFrom="260822.1934" length="3267578" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="39eHAJkIUv5h4oxJlRXGj6w2L8/1sx9uP0nso68WzwA54dkrIfc+QgLyZx1uNUM9mIbMGRBdzovscWSKcRZpBg=="/>
+                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.1.0beta14/Aerial260822.1952-260812.1910.delta" sparkle:deltaFrom="260812.1910" length="342470" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="L2Et9iy6LfLsn9QgQDmsw/2nP9ChNGkTwAUj2ifFAQEdDsoeO9AzgpQwAffYAn06OjjfGKF1478qMp9Y/9kqDg=="/>
+                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.1.0beta14/Aerial260822.1952-260803.1924.delta" sparkle:deltaFrom="260803.1924" length="1987474" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="NnvRx/K/eHKn6sBj93ttt62OxjJRBmz4+QJW0mBg46flILVHt54pUE2rBKMA4srpLqCes3sEz2QUTaFH4UvzAA=="/>
+                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.1.0beta14/Aerial260822.1952-260803.1916.delta" sparkle:deltaFrom="260803.1916" length="4314414" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="VPjFaxLh86ECpWXUIEuwY3FmRIJSZi/da91+tVv+xMk74HXFYWGxKaZ/2XaIxbXKDPuMaSvCp4cMTOFbugYvAQ=="/>
+                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.1.0beta14/Aerial260822.1952-260727.1823.delta" sparkle:deltaFrom="260727.1823" length="2257978" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="e4f8m84OkYoQtkyCmcnB7j9EEM/3ZYU9u/U0nKybzwCEEcl/JqwiCU3XZi5UsyBsSAacW8LpXyqJ9kL+g9EyDw=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
+            <title>4.0.15</title>
+            <pubDate>Sat, 22 Aug 2026 19:37:04 +0200</pubDate>
+            <sparkle:version>260822.1934</sparkle:version>
+            <sparkle:shortVersionString>4.0.15</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:releaseNotesLink>https://aerialscreensaver.github.io/Aerial-4.0.15.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.0.15/Aerial-4.0.15.zip" length="8908441" type="application/octet-stream" sparkle:edSignature="mTbSlmeDsC9lkZZxlKQ20SmDhNzC0ZhA+SLI6VtFMT65a7T855SYrCxvNm1sfc4NNOagiMp6hhif5osKJ3MXAA=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.0.15/Aerial260822.1934-260812.1910.delta" sparkle:deltaFrom="260812.1910" length="2597078" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="e6Yf0PAcMYmkDIL9Me3HWF9VEbfmcsSpKQLDO4JVt9d+ItdObv5YE81WgImxpPRZmqPnN+fG8NEL1BaSytmoCg=="/>
+                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.0.15/Aerial260822.1934-260803.1924.delta" sparkle:deltaFrom="260803.1924" length="3601034" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="m/0mQw6aD2CEstoATS09rXYaQdzBG3Nwt9ZiqmH2E8k2zCeb2KFl/lxiXM7Hqgfuni+KUY/XuSiyq9wTVgHOAg=="/>
+                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.0.15/Aerial260822.1934-260803.1916.delta" sparkle:deltaFrom="260803.1916" length="1359574" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="b9HvB17NiP/Fzy7wjQgx6wfOvCQ9pAJho6/t60GAlH+nnnA35cRn9ALqkW2rFtBuCKrHU7GaNN4Gb91BkwTLBA=="/>
+                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.0.15/Aerial260822.1934-260727.1823.delta" sparkle:deltaFrom="260727.1823" length="3604014" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="o/bx1lq094xCKkNSRuO233ef1F5PQbTdIPajIogIKxZqKgEnR1rdAKam5idQ/ipSRqa9fxM5W15dHq1HyURfDg=="/>
+                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.0.15/Aerial260822.1934-260725.1918.delta" sparkle:deltaFrom="260725.1918" length="3602866" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="cGk03rRU7yLc6BGl8n0N2UM7Y25l3PSv51bIt86i/EtfX3ly0DoWRVzS6Kb9PPVF2yKYBWCB7+Jj9mTYI/ttAw=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>4.1.0beta13</title>
             <pubDate>Wed, 12 Aug 2026 19:13:19 +0200</pubDate>
             <sparkle:version>260812.1910</sparkle:version>
@@ -20,23 +53,6 @@
             </sparkle:deltas>
         </item>
         <item>
-            <title>4.1.0beta12</title>
-            <pubDate>Mon, 03 Aug 2026 19:27:25 +0200</pubDate>
-            <sparkle:version>260803.1924</sparkle:version>
-            <sparkle:shortVersionString>4.1.0beta12</sparkle:shortVersionString>
-            <sparkle:channel>beta</sparkle:channel>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:releaseNotesLink>https://aerialscreensaver.github.io/Aerial-4.1.0beta12.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.1.0beta12/Aerial-4.1.0beta12.zip" length="9725599" type="application/octet-stream" sparkle:edSignature="jPTBdD037962NBj82dcN4bARxdMGTk1Tt7hRzrR4LOxNiSenn9KGC5ErGuqza33ppZpJKPe/ZGORXXcaoJo6Dg=="/>
-            <sparkle:deltas>
-                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.1.0beta12/Aerial260803.1924-260803.1916.delta" sparkle:deltaFrom="260803.1916" length="3176670" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="vOqz4Uon1aDClsV5u6zahK1u9a44bENOnJ1iVTQD1yKARWO66Ij+PZB/3BxGRYizaC3eKVbtDhn1uskDnJ0uDA=="/>
-                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.1.0beta12/Aerial260803.1924-260727.1823.delta" sparkle:deltaFrom="260727.1823" length="2026278" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="v0yK2r7LqCYF9iysvVXmyVb+/U8TgxCcPaknWYaZDAQ0C5KnutdmolOtF3gv6QwjhR80PQs+b7XC9g1N3SeNAQ=="/>
-                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.1.0beta12/Aerial260803.1924-260725.1918.delta" sparkle:deltaFrom="260725.1918" length="2091538" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="v+6AKeSC91zSUNsIFkUU17NWxsT3FkX3koQm8gw/uRJROOzFvncXXo66yDmRK6o8rWtj3VuGV+2Jc0Rl5WtSAA=="/>
-                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.1.0beta12/Aerial260803.1924-260724.1544.delta" sparkle:deltaFrom="260724.1544" length="2327510" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="54rwQQ35TX2o/Xvlkm5FsOXCUMM29z5afGpc/r3UQOoW1mPfxBjNjkX+VhfREWOpT95Y9ZV8WjvdweIZpFmODg=="/>
-                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.1.0beta12/Aerial260803.1924-260720.1842.delta" sparkle:deltaFrom="260720.1842" length="2518038" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="5dwJAZOJtiythy52/zTYAA6Wh17+SAAahM9+MbMA/SZKdJxQZEozalatDai5SmR1h9ISk0bXar3/N83SFbuFBw=="/>
-            </sparkle:deltas>
-        </item>
-        <item>
             <title>4.0.14</title>
             <pubDate>Mon, 03 Aug 2026 19:18:33 +0200</pubDate>
             <sparkle:version>260803.1916</sparkle:version>
@@ -50,22 +66,6 @@
                 <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.0.14/Aerial260803.1916-260724.1544.delta" sparkle:deltaFrom="260724.1544" length="3605654" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="Kjf58TTPyBijEk7zvMubs5m6CrQqtGouootHDuAr5C3eBXNbzykZm2s7UbICYY3WXetLFFjAhP9v8EqYDd16Bg=="/>
                 <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.0.14/Aerial260803.1916-260720.1842.delta" sparkle:deltaFrom="260720.1842" length="3588658" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="wPK/EB/w1CnkL5HzgRt20JGTUYUt4QANRPvHBTuNw+CBceYIqzZn599jShD8oUP8R9hwBFkdc2tAB/TDqlkODQ=="/>
                 <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.0.14/Aerial260803.1916-260717.1906.delta" sparkle:deltaFrom="260717.1906" length="3581166" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="0UCesA90CVzqMese1+iq1op7D4k0yiwZFKxtXWWi7HF+Gq1IkTckEvbCLizBsusBb68csOZQM5s74TNbvNu4Aw=="/>
-            </sparkle:deltas>
-        </item>
-        <item>
-            <title>4.0.12</title>
-            <pubDate>Sat, 04 Jul 2026 17:07:24 +0200</pubDate>
-            <sparkle:version>260704.1705</sparkle:version>
-            <sparkle:shortVersionString>4.0.12</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:releaseNotesLink>https://aerialscreensaver.github.io/Aerial-4.0.12.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.0.12/Aerial-4.0.12.zip" length="8885568" type="application/octet-stream" sparkle:edSignature="p9wRM7uBJXGPqj2x8Ib8DZHW68xZfEF6hhAvJuPEN8BEm75izWUQdJm2itIXF6+ewWVybt6Baqbkhkr+Q/IOBw=="/>
-            <sparkle:deltas>
-                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.0.12/Aerial260704.1705-260608.1837.delta" sparkle:deltaFrom="260608.1837" length="3845126" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="KIZP/Lf9svjO8/1UKq8RT97ki7Ex2GKC+A+8MDBL3z8dREKqo8GjtY1RUDyC65pAO4UQsGfosVggbsxqNbi1CQ=="/>
-                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.0.12/Aerial260704.1705-260604.1531.delta" sparkle:deltaFrom="260604.1531" length="3879086" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="s8uCsp5cMjA06hwCVWjyD3YGRPdOJpQTgiM0k0SQMt5U/IDR0bh4pguZsqAMR+YUxmDvmfZLgljrYIBb/MjDBw=="/>
-                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.0.12/Aerial260704.1705-260528.1839.delta" sparkle:deltaFrom="260528.1839" length="3891918" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="ifBeNfl5zCLgrt7RZHPwNf6uBYakVluKEn3CHBX69uA93nYDkcYg1Xie6qRdB2HPJOCiiY6kGExI79IIEbuGDw=="/>
-                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.0.12/Aerial260704.1705-260526.1758.delta" sparkle:deltaFrom="260526.1758" length="3890262" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="wfvo2hrhXjz6iDVO+z2p7WPL4DMOcu2Vcz6bofqBO/CP6fiPdVGPaO5nk0twLFnnnYXq+G8o+QjLHyIQ5emxCQ=="/>
-                <enclosure url="https://github.com/AerialScreensaver/Aerial/releases/download/v4.0.12/Aerial260704.1705-260525.1805.delta" sparkle:deltaFrom="260525.1805" length="3890334" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="s1gNVqMJCVUbSCItsVZ29O4j6R3K1H0JIPiUdOdboCgl9oXllBg32IDkgO5xf/JGyoe2sf0arvE6Dsd+OfZrDw=="/>
             </sparkle:deltas>
         </item>
     </channel>
