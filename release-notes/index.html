@@ -1,16 +1,517 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"><link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png"><title>Release notes — Aerial</title><meta name="description" content="Every Aerial release: what changed, when it shipped, and the markdown the auto-updater shows."><link rel="canonical" href="https://aerialscreensaver.github.io/release-notes/"><meta property="og:type" content="website"><meta property="og:title" content="Release notes — Aerial"><meta property="og:description" content="Every Aerial release: what changed, when it shipped, and the markdown the auto-updater shows."><meta property="og:url" content="https://aerialscreensaver.github.io/release-notes/"><meta property="og:image" content="https://aerialscreensaver.github.io/icon-512.png"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#0a0e16"><meta name="generator" content="Astro v6.3.1"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"><link rel="stylesheet" href="/_astro/Base.B0xYBuJ3.css"></head> <body> <header class="sticky top-0 z-50 transition-colors bg-aerial-bg-deep/85 border-b border-aerial-border/50" style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"> <div class="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between gap-6"> <a href="/" class="flex items-center gap-2 text-aerial-text font-semibold tracking-tight text-lg hover:text-aerial-accent-hi transition-colors"> <img src="/aerial-icon-64.png" srcset="/aerial-icon-64.png 1x, /icon-192.png 3x" width="32" height="32" alt="" class="h-8 w-8"> <span>Aerial</span> </a> <nav class="hidden md:flex items-center gap-6 text-sm"> <a href="/features" class="transition-colors text-aerial-text-muted hover:text-aerial-text"> Features </a><a href="/expansions" class="transition-colors text-aerial-text-muted hover:text-aerial-text"> Expansions </a><a href="/release-notes" class="transition-colors text-aerial-accent"> Release notes </a><a href="/faq" class="transition-colors text-aerial-text-muted hover:text-aerial-text"> FAQ </a><a href="https://github.com/AerialScreensaver/Aerial" target="_blank" rel="noopener noreferrer" class="transition-colors text-aerial-text-muted hover:text-aerial-text"> GitHub </a> </nav> <a href="/download" class="px-4 py-2 rounded-md bg-aerial-accent text-aerial-bg-deep font-medium text-sm hover:bg-aerial-accent-hi transition-colors">
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"><link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png"><title>Release notes — Aerial</title><meta name="description" content="Every Aerial release: what changed, when it shipped, and the markdown the auto-updater shows."><link rel="canonical" href="https://aerialscreensaver.github.io/release-notes/"><meta property="og:type" content="website"><meta property="og:title" content="Release notes — Aerial"><meta property="og:description" content="Every Aerial release: what changed, when it shipped, and the markdown the auto-updater shows."><meta property="og:url" content="https://aerialscreensaver.github.io/release-notes/"><meta property="og:image" content="https://aerialscreensaver.github.io/icon-512.png"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#0a0e16"><meta name="generator" content="Astro v7.4.0"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"><link rel="stylesheet" href="/_astro/Base.CpUvTaGQ.css"></head> <body> <header class="sticky top-0 z-50 transition-colors bg-aerial-bg-deep/85 border-b border-aerial-border/50" style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"> <div class="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between gap-6"> <a href="/" class="flex items-center gap-2 text-aerial-text font-semibold tracking-tight text-lg hover:text-aerial-accent-hi transition-colors"> <img src="/aerial-icon-64.png" srcset="/aerial-icon-64.png 1x, /icon-192.png 3x" width="32" height="32" alt="" class="h-8 w-8"> <span>Aerial</span> </a> <nav class="hidden md:flex items-center gap-6 text-sm"> <a href="/features" class="transition-colors text-aerial-text-muted hover:text-aerial-text"> Features </a><a href="/expansions" class="transition-colors text-aerial-text-muted hover:text-aerial-text"> Expansions </a><a href="/release-notes" class="transition-colors text-aerial-accent"> Release notes </a><a href="/faq" class="transition-colors text-aerial-text-muted hover:text-aerial-text"> FAQ </a><a href="https://github.com/AerialScreensaver/Aerial" target="_blank" rel="noopener noreferrer" class="transition-colors text-aerial-text-muted hover:text-aerial-text"> GitHub </a> </nav> <a href="/download" class="px-4 py-2 rounded-md bg-aerial-accent text-aerial-bg-deep font-medium text-sm hover:bg-aerial-accent-hi transition-colors">
 Download
 </a> </div> </header> <main>  <header class="mx-auto max-w-3xl px-6 pt-24 pb-12"> <p class="text-sm font-semibold uppercase tracking-widest text-aerial-accent">Release notes</p> <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight text-aerial-text">
 Latest releases.
 </h1> <p class="mt-6 text-aerial-text-muted text-lg leading-relaxed">
-Release notes will show up in the app when a new version is available, prior to update. Updates are provided via <a href="https://sparkle-project.org/" class="text-aerial-link">Sparkle</a>. You can find the previous release notes below!
-</p> </header> <div class="mx-auto max-w-3xl px-6 pb-32"> <div> <div role="tablist" aria-label="Release channel" class="mb-8 inline-flex rounded-full border border-aerial-border bg-aerial-surface/40 p-1"> <button type="button" role="tab" data-channel-tab="beta" aria-selected="true" class="cursor-pointer rounded-full border border-transparent px-4 py-1.5 text-sm font-medium text-aerial-text-muted transition-colors aria-selected:bg-aerial-surface aria-selected:text-aerial-link aria-selected:border-aerial-link/40">
-Beta
-</button> <button type="button" role="tab" data-channel-tab="stable" aria-selected="false" class="cursor-pointer rounded-full border border-transparent px-4 py-1.5 text-sm font-medium text-aerial-text-muted transition-colors aria-selected:bg-aerial-surface aria-selected:text-aerial-accent aria-selected:border-aerial-accent/40">
+See what changed in each recent version. Release notes can be viewed in-app when updating via
+<a href="https://sparkle-project.org/" class="text-aerial-link">Sparkle</a>.
+</p> </header> <div class="mx-auto max-w-3xl px-6 pb-32"> <div> <div role="tablist" aria-label="Release channel" class="mb-8 inline-flex rounded-full border border-aerial-border bg-aerial-surface/40 p-1"> <button type="button" role="tab" data-channel-tab="stable" aria-selected="true" class="cursor-pointer rounded-full border border-transparent px-4 py-1.5 text-sm font-medium text-aerial-text-muted transition-colors aria-selected:bg-aerial-surface aria-selected:text-aerial-accent aria-selected:border-aerial-accent/40">
 Stable
-</button> </div> <div data-channel-panel="beta" class="space-y-4">  <details id="4.1.0beta17" open class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.0beta17</span> <span class="text-sm text-aerial-text-dim">September 12, 2026</span> <span class="text-[10px] font-semibold uppercase tracking-widest text-aerial-accent border border-aerial-accent/40 rounded px-1.5 py-0.5">
+</button> <button type="button" role="tab" data-channel-tab="beta" aria-selected="false" class="cursor-pointer rounded-full border border-transparent px-4 py-1.5 text-sm font-medium text-aerial-text-muted transition-colors aria-selected:bg-aerial-surface aria-selected:text-aerial-link aria-selected:border-aerial-link/40">
+Beta
+</button> </div> <div data-channel-panel="stable" class="space-y-4">  <details id="4.1.8" open class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.8</span> <span class="text-sm text-aerial-text-dim">October 16, 2026</span> <span class="text-[10px] font-semibold uppercase tracking-widest text-aerial-accent border border-aerial-accent/40 rounded px-1.5 py-0.5">
 Latest
 </span> </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>What&#39;s new :</p>
+<ul>
+<li>Bring back support for the Music overlay to support all audio apps, just like the Now playing widget. Many thanks to Jonas van den Berg (@ungive) for their workaround to support the <code>mediaremote</code> framework again. </li>
+<li>Add override options for users who want different screensaver configurations whether plugged into external monitors or not. See the Settings &gt; Displays options and change from &quot;All screens&quot; to selected screens to see your options. </li>
+<li>Code review/better threading model. With big thanks to Josh Michaels (@zeromhz) for the help !</li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>Requires macOS 26/27. See Aerial&#39;s website for older systems. </li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
+<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.1.8.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.1.8.md ↗
+</a> </div> </details><details id="4.1.7" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.7</span> <span class="text-sm text-aerial-text-dim">October 5, 2026</span>  </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. You should not be prompted to upgrade on older systems. If you are, please deny the update! </p>
+<p>What&#39;s new (compared to the betas) :</p>
+<ul>
+<li>Improve migration from 3.X on macOS Golden Gate, you will get prompted for access to your old folder if needed, you may get prompted again if migration had failed so you can at least cleanup your old files and reclaim space </li>
+<li>Fix battery pausing getting stuck (many thanks to @jwarczynski !)</li>
+<li>Add new option to show overlays on lock screen</li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
+<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.1.7.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.1.7.md ↗
+</a> </div> </details><details id="4.1.6" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.6</span> <span class="text-sm text-aerial-text-dim">October 2, 2026</span>  </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. You should not be prompted to upgrade on older systems. If you are, please deny the update! </p>
+<p>What&#39;s new (compared to the betas) :</p>
+<ul>
+<li>Fix monitor selection no longer working for screensavers. For wallpapers, if you only want to use Aerial on one monitor, you can change settings manually in System Settings to your liking</li>
+<li>Fix time adaptation not responding immediately to changes, including light mode/dark mode UI switches</li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
+<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.1.6.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.1.6.md ↗
+</a> </div> </details><details id="4.1.5" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.5</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. You should not be prompted to upgrade on older systems. If you are, please deny the update! </p>
+<p>What&#39;s new (compared to the betas) :</p>
+<ul>
+<li>Fix location overlays getting desynced in 4.1.4</li>
+<li>Fix crashes on exit in screensaver only mode, in macOS Golden Gate due to Metal library locking a file</li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
+<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.1.5.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.1.5.md ↗
+</a> </div> </details><details id="4.1.4" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.4</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. You should not be prompted to upgrade on older systems. If you are, please deny the update! </p>
+<p>What&#39;s new (compared to the betas) :</p>
+<ul>
+<li>Add optional &quot;Don&#39;t resume videos&quot; for screensaver mode only, if you want to make sure each screensaver start gives you a new video (as 3.X used to do). This is disabled by default. </li>
+<li>Add optional restart wallpaperagent button, if you keep experiencing issues with wallpaper/screensaver, you can enable it at the bottom of the Settings &gt; Wallpaper panel</li>
+<li>Fix screensaver sometimes showing accelerated video at startup</li>
+<li>Improvement on migration from 4.0 with a custom cache folder that is on your main drive, thanks to @Starksoft ! </li>
+<li>Improvement on migration from 3.x with a custom cache folder</li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
+<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.1.4.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.1.4.md ↗
+</a> </div> </details><details id="4.1.3" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.3</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. You should not be prompted to upgrade on older systems. If you are, please deny the update! </p>
+<p>What&#39;s new (compared to the betas) :</p>
+<ul>
+<li>Fix custom time in playlist no longer working</li>
+<li>Fix some crashes that seem to occur in Golden Gate finale in some scenarios.</li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
+<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.1.3.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.1.3.md ↗
+</a> </div> </details><details id="4.1.2" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.2</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. You should not be prompted to upgrade on older systems. If you are, please deny the update! </p>
+<p>What&#39;s new :</p>
+<ul>
+<li>Fix two New York videos not showing at the right time. Thanks to @BloobyBabyYoshi on Discord for reporting this !</li>
+<li>Fix screensaver sometimes not starting, in some scenarios that were mishandled with the wallpaper off. Thanks to @deki-haibane for reporting the issue !</li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
+<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.1.2.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.1.2.md ↗
+</a> </div> </details><details id="4.1.1" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.1</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. You should not be prompted to upgrade on older systems. If you are, please deny the update! </p>
+<p>What&#39;s new (compared to the betas) :</p>
+<ul>
+<li>Fix &quot;My videos&quot; sometimes playing upside down.</li>
+<li>Add ability to manually rotate videos if detection fails</li>
+<li>Add detection for SMB volumes that may not work for external drive support</li>
+<li>Fix crash in fast launch scenarios</li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
+<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.1.1.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.1.1.md ↗
+</a> </div> </details><details id="4.1.0" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.0</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. You should not be prompted to upgrade on older systems. If you are, please deny the update! </p>
+<p>What&#39;s new (compared to the betas) :</p>
+<ul>
+<li>Proper support for macOS Golden Gate (and Tahoe).</li>
+<li>Add migration for external drive to the new sparsebundle system (many thanks to Brian (@brian163) for his help testing the original system)</li>
+<li>macOS 27 feed. On top of the new videos, you&#39;ll also find a new Wallpaper section with some system videos that can be added (or not) to your rotations. Add support for the new localization format used by Apple.</li>
+<li>Add trim cache button to manually trim  your cache if you feel so inclined.</li>
+<li>Increase visibility of Aerial version in the popover menu</li>
+<li>Extra fixes</li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
+<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.1.0.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.1.0.md ↗
+</a> </div> </details><details id="4.0.16" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.16</span> <span class="text-sm text-aerial-text-dim">August 25, 2026</span>  </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>If you are using macOS Tahoe or Golden Gate beta, you probably want to try the 4.1 beta instead of this, you can switch to beta directly in the app in Settings &gt; Auto update.</p>
+<p>Version 4.0.X is recommended only if you use macOS Sequoia. </p>
+<p>What&#39;s new :</p>
+<ul>
+<li>Fix video rotation that didn&#39;t work as expected</li>
+<li>Fix for crash on screen connect/disconnect in some scenarios</li>
+<li>Possible workaround for a macOS extension bug</li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>Check the FAQ if you have issues here : <a href="https://aerialscreensaver.github.io/faq/">https://aerialscreensaver.github.io/faq/</a> </li>
+<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.0.16.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.0.16.md ↗
+</a> </div> </details><details id="4.0.15" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.15</span> <span class="text-sm text-aerial-text-dim">August 22, 2026</span>  </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>If you are using macOS Tahoe or Golden Gate beta, you probably want to try the 4.1 beta instead of this, you can switch to beta directly in the app in Settings &gt; Auto update.</p>
+<p>Version 4.0.X is recommended only if you use macOS Sequoia. </p>
+<p>What&#39;s new :</p>
+<ul>
+<li>Fix support for the latest <code>yt-dlp</code> command line changes</li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>Check the FAQ if you have issues here : <a href="https://aerialscreensaver.github.io/faq/">https://aerialscreensaver.github.io/faq/</a> </li>
+<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.0.15.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.0.15.md ↗
+</a> </div> </details><details id="4.0.14" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.14</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>If you are using macOS Tahoe or Golden Gate beta, you probably want to try the 4.1 beta instead of this, you can switch to beta directly in the app in Settings &gt; Auto update.</p>
+<p>Version 4.0.X is recommended only if you use macOS Sequoia. </p>
+<p>What&#39;s new :</p>
+<ul>
+<li>Bring modern pause architecture from 4.1 to fix a bunch of bugs</li>
+<li>Fix crashes related to screen connect/disconnect</li>
+<li>Fix a bunch of bugs related to Time management</li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>Check the FAQ if you have issues here : <a href="https://aerialscreensaver.github.io/faq/">https://aerialscreensaver.github.io/faq/</a> </li>
+<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.0.14.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.0.14.md ↗
+</a> </div> </details><details id="4.0.12" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.12</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
+<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
+<p>Auto updates are provided via Sparkle from now on. </p>
+<p>What&#39;s new :</p>
+<ul>
+<li>Fix black screen happening in some scenarios (mostly when waking up from sleep). Many thanks to @Antholife for the fix (<a href="https://github.com/AerialScreensaver/Aerial/pull/148">https://github.com/AerialScreensaver/Aerial/pull/148</a>)</li>
+<li>Add beta channel for upcoming 4.1 updates</li>
+<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.0.12.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.0.12.md ↗
+</a> </div> </details><details id="4.0.11" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.11</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
+<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
+<p>Auto updates are provided via Sparkle from now on. </p>
+<p>What&#39;s new :</p>
+<ul>
+<li>Add optional play duration for playlist items. You can play your looping video for longer now. </li>
+<li>Add ability to change scene for My Videos</li>
+<li>Add All fonts submenu for overlays</li>
+<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.0.11.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.0.11.md ↗
+</a> </div> </details><details id="4.0.10" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.10</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
+<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
+<p>Auto updates are provided via Sparkle from now on. </p>
+<p>What&#39;s new :</p>
+<ul>
+<li>Add macOS Video Wallpaper cleaner. Use it if you want to free the macOS video cache.</li>
+<li>Fix resume speed not being respected for wallpaper in 4.0.9</li>
+<li>Fix battery pause not considering changes on wake up</li>
+<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.0.10.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.0.10.md ↗
+</a> </div> </details><details id="4.0.9" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.9</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
+<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
+<p>Auto updates are provided via Sparkle from now on. </p>
+<p>What&#39;s new :</p>
+<ul>
+<li>Fix auto-pause not correctly behaving on screen reconnect</li>
+<li>Fix wallpaper mode not correctly handling some disconnect/reconnect scenarios where macOS changes the UUID of the screen</li>
+<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.0.9.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.0.9.md ↗
+</a> </div> </details><details id="4.0.8" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.8</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
+<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
+<p>Auto updates are provided via Sparkle from now on. </p>
+<p>What&#39;s new :</p>
+<ul>
+<li>Fix windows not opening in macOS 15.1 because of a SwiftUI bug : 
+<a href="https://github.com/AerialScreensaver/Aerial/issues/131">https://github.com/AerialScreensaver/Aerial/issues/131</a></li>
+<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.0.8.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.0.8.md ↗
+</a> </div> </details><details id="4.0.7" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.7</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
+<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
+<p>Auto updates are provided via Sparkle from now on. </p>
+<p>What&#39;s new :</p>
+<ul>
+<li>Add progress bar for currently playing video in popover</li>
+<li>Fix auto-pause not correctly working on some screen arrangements</li>
+<li>Fix auto-pause not detecting if you changed your screen arrangements</li>
+<li>Fix screensaver per screen selection not working</li>
+<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.0.7.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.0.7.md ↗
+</a> </div> </details><details id="4.0.6" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.6</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
+<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
+<p>Auto updates are provided via Sparkle from now on. </p>
+<p>What&#39;s new :</p>
+<ul>
+<li>Fix broken wallpaper &lt;-&gt; screensaver continuity from 4.0.5 🫣</li>
+<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.0.6.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.0.6.md ↗
+</a> </div> </details><details id="4.0.5" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.5</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
+<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
+<p>Auto updates are provided via Sparkle from now on. </p>
+<p>What&#39;s new :</p>
+<ul>
+<li>Fix misdetection issue for some configurations in extension (screensaver). Massive thanks to @djp3 for the fix !</li>
+<li>Fix unable to pick playlists in the popover in playlists mode</li>
+<li>Fix independant mode not handling multi monitor setups</li>
+<li>Fix Unlimited cache preference not working as expected</li>
+<li>Fix Rotation : Never not being always respected in some corner cases</li>
+<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.0.5.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.0.5.md ↗
+</a> </div> </details><details id="4.0.4" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.4</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
+<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
+<p>Auto updates are provided via Sparkle from now on. </p>
+<p>What&#39;s new :</p>
+<ul>
+<li>Fix wallpaper not going under the dock in 4.0.3 🫣 Many thanks to suchsu and emmgr23 who reported the issue !</li>
+<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.0.4.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.0.4.md ↗
+</a> </div> </details><details id="4.0.3" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.3</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
+<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
+<p>Auto updates are provided via Sparkle from now on. </p>
+<p>What&#39;s new :</p>
+<ul>
+<li>Add new pause on battery option for Wallpaper. Report what works/doesn&#39;t at <a href="https://github.com/AerialScreensaver/Aerial/issues/115">https://github.com/AerialScreensaver/Aerial/issues/115</a></li>
+<li>Add new global shortcut to launch screensaver</li>
+<li>Tiny cleanup of popover UI, replaced &quot;Lock screen&quot; with &quot;Screensaver&quot;, maybe it&#39;s easier to understand what it does</li>
+<li>Massive log cleanup</li>
+<li>More old files cleanup</li>
+<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.0.3.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.0.3.md ↗
+</a> </div> </details><details id="4.0.2" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.2</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
+<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
+<p>Auto updates are provided via Sparkle from now on. </p>
+<p>What&#39;s new :</p>
+<ul>
+<li>Spotify support in Music overlay</li>
+<li>Possible improvement for missing artwork with Apple Music. Sometimes Apple Music will simply refuse to give the artwork, you&#39;ll see a music note instead. But this improves it a tiny bit. </li>
+<li>Improve situation with Location services, the permission prompt should clarify why it&#39;s needed, and if it&#39;s not enabled in the various features that needs it (Weather by location, Time adaptation, WiFi filtering) it will let you know what to do now, not just silently error. </li>
+<li>Add warning on advanced source management about the effects of disabling macOS 26 default source.</li>
+<li>Add workaround if you try launching the app a second time, it will now open the menu. </li>
+<li>Fix broken link in Expansions to the old website</li>
+<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.0.2.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.0.2.md ↗
+</a> </div> </details><details id="4.0.1" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.1</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
+<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
+<p>Auto updates are provided via Sparkle from now on. </p>
+<p>What&#39;s new (very short recap) :</p>
+<ul>
+<li>Reenable missing tvOS 26 source</li>
+<li>Fix location overlay not showing on first video in some shared configurations</li>
+<li>Clarify what the shuffle tooltip do (they shuffle at playlist end)</li>
+<li>For more info on V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.0.1.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.0.1.md ↗
+</a> </div> </details><details id="4.0.0" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.0</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
++
+</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4.0.0 is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
+<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
+<p>Auto updates are provided via Sparkle from now on. </p>
+<p>What&#39;s new (very short recap) :</p>
+<ul>
+<li>Aerial is now distributed as an AppExtension for perfect compaibility with macOS Sonoma and Tahoe. No more black screens bugs or other annoyances that have plagued previous versions of all third party screensavers to date : Aerial uses the same (private) API that Apple uses nowadays for it&#39;s screensavers</li>
+<li>Wallpaper mode with auto-pause : by default plays 4K 240fps videos at a slower pace on desktop, pausing when your windows cover your screens to save gpu, and transitionning to/from screensaver.  </li>
+<li>New My Videos feature for easy import of your own videos</li>
+<li>Live feed support : RTSP, http streaming and <code>yt-dlp</code> are supported (`yt-dlp support provided as a best effort)</li>
+<li>New visual overlay editor, just drag&#39;n drop, with more options than ever before. Per screen, with the ability to now have separate overlays on desktop if you want</li>
+<li>Global hotkeys support to play/pause/prev/next </li>
+<li>New video library with a host of new features. Including ordered, fully customizable playlists</li>
+<li>And plenty more, check <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a> for more</li>
+</ul>
+<p>Important : </p>
+<ul>
+<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
+<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
+</ul>
+</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+Source markdown:
+<a href="https://aerialscreensaver.github.io/Aerial-4.0.0.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
+Aerial-4.0.0.md ↗
+</a> </div> </details> </div><div data-channel-panel="beta" class="space-y-4 hidden">  <details id="4.1.0beta17" open class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.0beta17</span> <span class="text-sm text-aerial-text-dim">September 12, 2026</span>  </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
 +
 </span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. </p>
 <p>What&#39;s new :</p>
@@ -525,535 +1026,14 @@ the app log. Look out for whether the small corner window still happens at all.<
 Source markdown:
 <a href="https://aerialscreensaver.github.io/Aerial-4.1.0beta1c.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
 Aerial-4.1.0beta1c.md ↗
-</a> </div> </details> </div><div data-channel-panel="stable" class="space-y-4 hidden">  <details id="4.1.8" open class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.8</span> <span class="text-sm text-aerial-text-dim">October 16, 2026</span> <span class="text-[10px] font-semibold uppercase tracking-widest text-aerial-accent border border-aerial-accent/40 rounded px-1.5 py-0.5">
-Latest
-</span> </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>What&#39;s new :</p>
-<ul>
-<li>Bring back support for the Music overlay to support all audio apps, just like the Now playing widget. Many thanks to Jonas van den Berg (@ungive) for their workaround to support the <code>mediaremote</code> framework again. </li>
-<li>Add override options for users who want different screensaver configurations whether plugged into external monitors or not. See the Settings &gt; Displays options and change from &quot;All screens&quot; to selected screens to see your options. </li>
-<li>Code review/better threading model. With big thanks to Josh Michaels (@zeromhz) for the help !</li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>Requires macOS 26/27. See Aerial&#39;s website for older systems. </li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
-<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.1.8.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.1.8.md ↗
-</a> </div> </details><details id="4.1.7" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.7</span> <span class="text-sm text-aerial-text-dim">October 5, 2026</span>  </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. You should not be prompted to upgrade on older systems. If you are, please deny the update! </p>
-<p>What&#39;s new (compared to the betas) :</p>
-<ul>
-<li>Improve migration from 3.X on macOS Golden Gate, you will get prompted for access to your old folder if needed, you may get prompted again if migration had failed so you can at least cleanup your old files and reclaim space </li>
-<li>Fix battery pausing getting stuck (many thanks to @jwarczynski !)</li>
-<li>Add new option to show overlays on lock screen</li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
-<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.1.7.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.1.7.md ↗
-</a> </div> </details><details id="4.1.6" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.6</span> <span class="text-sm text-aerial-text-dim">October 2, 2026</span>  </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. You should not be prompted to upgrade on older systems. If you are, please deny the update! </p>
-<p>What&#39;s new (compared to the betas) :</p>
-<ul>
-<li>Fix monitor selection no longer working for screensavers. For wallpapers, if you only want to use Aerial on one monitor, you can change settings manually in System Settings to your liking</li>
-<li>Fix time adaptation not responding immediately to changes, including light mode/dark mode UI switches</li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
-<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.1.6.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.1.6.md ↗
-</a> </div> </details><details id="4.1.5" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.5</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. You should not be prompted to upgrade on older systems. If you are, please deny the update! </p>
-<p>What&#39;s new (compared to the betas) :</p>
-<ul>
-<li>Fix location overlays getting desynced in 4.1.4</li>
-<li>Fix crashes on exit in screensaver only mode, in macOS Golden Gate due to Metal library locking a file</li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
-<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.1.5.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.1.5.md ↗
-</a> </div> </details><details id="4.1.4" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.4</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. You should not be prompted to upgrade on older systems. If you are, please deny the update! </p>
-<p>What&#39;s new (compared to the betas) :</p>
-<ul>
-<li>Add optional &quot;Don&#39;t resume videos&quot; for screensaver mode only, if you want to make sure each screensaver start gives you a new video (as 3.X used to do). This is disabled by default. </li>
-<li>Add optional restart wallpaperagent button, if you keep experiencing issues with wallpaper/screensaver, you can enable it at the bottom of the Settings &gt; Wallpaper panel</li>
-<li>Fix screensaver sometimes showing accelerated video at startup</li>
-<li>Improvement on migration from 4.0 with a custom cache folder that is on your main drive, thanks to @Starksoft ! </li>
-<li>Improvement on migration from 3.x with a custom cache folder</li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
-<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.1.4.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.1.4.md ↗
-</a> </div> </details><details id="4.1.3" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.3</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. You should not be prompted to upgrade on older systems. If you are, please deny the update! </p>
-<p>What&#39;s new (compared to the betas) :</p>
-<ul>
-<li>Fix custom time in playlist no longer working</li>
-<li>Fix some crashes that seem to occur in Golden Gate finale in some scenarios.</li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
-<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.1.3.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.1.3.md ↗
-</a> </div> </details><details id="4.1.2" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.2</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. You should not be prompted to upgrade on older systems. If you are, please deny the update! </p>
-<p>What&#39;s new :</p>
-<ul>
-<li>Fix two New York videos not showing at the right time. Thanks to @BloobyBabyYoshi on Discord for reporting this !</li>
-<li>Fix screensaver sometimes not starting, in some scenarios that were mishandled with the wallpaper off. Thanks to @deki-haibane for reporting the issue !</li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
-<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.1.2.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.1.2.md ↗
-</a> </div> </details><details id="4.1.1" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.1</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. You should not be prompted to upgrade on older systems. If you are, please deny the update! </p>
-<p>What&#39;s new (compared to the betas) :</p>
-<ul>
-<li>Fix &quot;My videos&quot; sometimes playing upside down.</li>
-<li>Add ability to manually rotate videos if detection fails</li>
-<li>Add detection for SMB volumes that may not work for external drive support</li>
-<li>Fix crash in fast launch scenarios</li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
-<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.1.1.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.1.1.md ↗
-</a> </div> </details><details id="4.1.0" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.0</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>This version does <strong>NOT</strong> work on Sequoia. If you still use macOS Sequoia, use 4.0 until you upgrade your mac. You should not be prompted to upgrade on older systems. If you are, please deny the update! </p>
-<p>What&#39;s new (compared to the betas) :</p>
-<ul>
-<li>Proper support for macOS Golden Gate (and Tahoe).</li>
-<li>Add migration for external drive to the new sparsebundle system (many thanks to Brian (@brian163) for his help testing the original system)</li>
-<li>macOS 27 feed. On top of the new videos, you&#39;ll also find a new Wallpaper section with some system videos that can be added (or not) to your rotations. Add support for the new localization format used by Apple.</li>
-<li>Add trim cache button to manually trim  your cache if you feel so inclined.</li>
-<li>Increase visibility of Aerial version in the popover menu</li>
-<li>Extra fixes</li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings. </li>
-<li>If you have an issue, please use Settings &gt; Advanced &gt; Export Diagnostics to generate the logs before posting about your issue in Discord or Github, it will help immensely !</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.1.0.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.1.0.md ↗
-</a> </div> </details><details id="4.0.16" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.16</span> <span class="text-sm text-aerial-text-dim">August 25, 2026</span>  </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>If you are using macOS Tahoe or Golden Gate beta, you probably want to try the 4.1 beta instead of this, you can switch to beta directly in the app in Settings &gt; Auto update.</p>
-<p>Version 4.0.X is recommended only if you use macOS Sequoia. </p>
-<p>What&#39;s new :</p>
-<ul>
-<li>Fix video rotation that didn&#39;t work as expected</li>
-<li>Fix for crash on screen connect/disconnect in some scenarios</li>
-<li>Possible workaround for a macOS extension bug</li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>Check the FAQ if you have issues here : <a href="https://aerialscreensaver.github.io/faq/">https://aerialscreensaver.github.io/faq/</a> </li>
-<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.16.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.16.md ↗
-</a> </div> </details><details id="4.0.15" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.15</span> <span class="text-sm text-aerial-text-dim">August 22, 2026</span>  </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>If you are using macOS Tahoe or Golden Gate beta, you probably want to try the 4.1 beta instead of this, you can switch to beta directly in the app in Settings &gt; Auto update.</p>
-<p>Version 4.0.X is recommended only if you use macOS Sequoia. </p>
-<p>What&#39;s new :</p>
-<ul>
-<li>Fix support for the latest <code>yt-dlp</code> command line changes</li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>Check the FAQ if you have issues here : <a href="https://aerialscreensaver.github.io/faq/">https://aerialscreensaver.github.io/faq/</a> </li>
-<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.15.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.15.md ↗
-</a> </div> </details><details id="4.0.14" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.14</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>If you are using macOS Tahoe or Golden Gate beta, you probably want to try the 4.1 beta instead of this, you can switch to beta directly in the app in Settings &gt; Auto update.</p>
-<p>Version 4.0.X is recommended only if you use macOS Sequoia. </p>
-<p>What&#39;s new :</p>
-<ul>
-<li>Bring modern pause architecture from 4.1 to fix a bunch of bugs</li>
-<li>Fix crashes related to screen connect/disconnect</li>
-<li>Fix a bunch of bugs related to Time management</li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>Check the FAQ if you have issues here : <a href="https://aerialscreensaver.github.io/faq/">https://aerialscreensaver.github.io/faq/</a> </li>
-<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.14.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.14.md ↗
-</a> </div> </details><details id="4.0.12" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.12</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
-<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
-<p>Auto updates are provided via Sparkle from now on. </p>
-<p>What&#39;s new :</p>
-<ul>
-<li>Fix black screen happening in some scenarios (mostly when waking up from sleep). Many thanks to @Antholife for the fix (<a href="https://github.com/AerialScreensaver/Aerial/pull/148">https://github.com/AerialScreensaver/Aerial/pull/148</a>)</li>
-<li>Add beta channel for upcoming 4.1 updates</li>
-<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.12.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.12.md ↗
-</a> </div> </details><details id="4.0.11" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.11</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
-<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
-<p>Auto updates are provided via Sparkle from now on. </p>
-<p>What&#39;s new :</p>
-<ul>
-<li>Add optional play duration for playlist items. You can play your looping video for longer now. </li>
-<li>Add ability to change scene for My Videos</li>
-<li>Add All fonts submenu for overlays</li>
-<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.11.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.11.md ↗
-</a> </div> </details><details id="4.0.10" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.10</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
-<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
-<p>Auto updates are provided via Sparkle from now on. </p>
-<p>What&#39;s new :</p>
-<ul>
-<li>Add macOS Video Wallpaper cleaner. Use it if you want to free the macOS video cache.</li>
-<li>Fix resume speed not being respected for wallpaper in 4.0.9</li>
-<li>Fix battery pause not considering changes on wake up</li>
-<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.10.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.10.md ↗
-</a> </div> </details><details id="4.0.9" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.9</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
-<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
-<p>Auto updates are provided via Sparkle from now on. </p>
-<p>What&#39;s new :</p>
-<ul>
-<li>Fix auto-pause not correctly behaving on screen reconnect</li>
-<li>Fix wallpaper mode not correctly handling some disconnect/reconnect scenarios where macOS changes the UUID of the screen</li>
-<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.9.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.9.md ↗
-</a> </div> </details><details id="4.0.8" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.8</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
-<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
-<p>Auto updates are provided via Sparkle from now on. </p>
-<p>What&#39;s new :</p>
-<ul>
-<li>Fix windows not opening in macOS 15.1 because of a SwiftUI bug : 
-<a href="https://github.com/AerialScreensaver/Aerial/issues/131">https://github.com/AerialScreensaver/Aerial/issues/131</a></li>
-<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.8.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.8.md ↗
-</a> </div> </details><details id="4.0.7" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.7</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
-<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
-<p>Auto updates are provided via Sparkle from now on. </p>
-<p>What&#39;s new :</p>
-<ul>
-<li>Add progress bar for currently playing video in popover</li>
-<li>Fix auto-pause not correctly working on some screen arrangements</li>
-<li>Fix auto-pause not detecting if you changed your screen arrangements</li>
-<li>Fix screensaver per screen selection not working</li>
-<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.7.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.7.md ↗
-</a> </div> </details><details id="4.0.6" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.6</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
-<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
-<p>Auto updates are provided via Sparkle from now on. </p>
-<p>What&#39;s new :</p>
-<ul>
-<li>Fix broken wallpaper &lt;-&gt; screensaver continuity from 4.0.5 🫣</li>
-<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.6.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.6.md ↗
-</a> </div> </details><details id="4.0.5" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.5</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
-<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
-<p>Auto updates are provided via Sparkle from now on. </p>
-<p>What&#39;s new :</p>
-<ul>
-<li>Fix misdetection issue for some configurations in extension (screensaver). Massive thanks to @djp3 for the fix !</li>
-<li>Fix unable to pick playlists in the popover in playlists mode</li>
-<li>Fix independant mode not handling multi monitor setups</li>
-<li>Fix Unlimited cache preference not working as expected</li>
-<li>Fix Rotation : Never not being always respected in some corner cases</li>
-<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.5.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.5.md ↗
-</a> </div> </details><details id="4.0.4" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.4</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
-<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
-<p>Auto updates are provided via Sparkle from now on. </p>
-<p>What&#39;s new :</p>
-<ul>
-<li>Fix wallpaper not going under the dock in 4.0.3 🫣 Many thanks to suchsu and emmgr23 who reported the issue !</li>
-<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.4.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.4.md ↗
-</a> </div> </details><details id="4.0.3" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.3</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
-<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
-<p>Auto updates are provided via Sparkle from now on. </p>
-<p>What&#39;s new :</p>
-<ul>
-<li>Add new pause on battery option for Wallpaper. Report what works/doesn&#39;t at <a href="https://github.com/AerialScreensaver/Aerial/issues/115">https://github.com/AerialScreensaver/Aerial/issues/115</a></li>
-<li>Add new global shortcut to launch screensaver</li>
-<li>Tiny cleanup of popover UI, replaced &quot;Lock screen&quot; with &quot;Screensaver&quot;, maybe it&#39;s easier to understand what it does</li>
-<li>Massive log cleanup</li>
-<li>More old files cleanup</li>
-<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.3.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.3.md ↗
-</a> </div> </details><details id="4.0.2" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.2</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
-<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
-<p>Auto updates are provided via Sparkle from now on. </p>
-<p>What&#39;s new :</p>
-<ul>
-<li>Spotify support in Music overlay</li>
-<li>Possible improvement for missing artwork with Apple Music. Sometimes Apple Music will simply refuse to give the artwork, you&#39;ll see a music note instead. But this improves it a tiny bit. </li>
-<li>Improve situation with Location services, the permission prompt should clarify why it&#39;s needed, and if it&#39;s not enabled in the various features that needs it (Weather by location, Time adaptation, WiFi filtering) it will let you know what to do now, not just silently error. </li>
-<li>Add warning on advanced source management about the effects of disabling macOS 26 default source.</li>
-<li>Add workaround if you try launching the app a second time, it will now open the menu. </li>
-<li>Fix broken link in Expansions to the old website</li>
-<li>For more info on general V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.2.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.2.md ↗
-</a> </div> </details><details id="4.0.1" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.1</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4. is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
-<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
-<p>Auto updates are provided via Sparkle from now on. </p>
-<p>What&#39;s new (very short recap) :</p>
-<ul>
-<li>Reenable missing tvOS 26 source</li>
-<li>Fix location overlay not showing on first video in some shared configurations</li>
-<li>Clarify what the shuffle tooltip do (they shuffle at playlist end)</li>
-<li>For more info on V4 changes, check : <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a></li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.1.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.1.md ↗
-</a> </div> </details><details id="4.0.0" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.0</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>Aerial 4.0.0 is finally out 🍾 This took a long while, so a massive thanks to all the alpha testers who helped with their testing, bug reports and feedback !</p>
-<p>If you are upgrading from the old Aerial Companion, close it in the menubar before install. After you download the app, move it to your <code>/Applications</code> or <code>~/Applications</code> folder and launch it, it will offer to migrate your data and cleanup the old versions. </p>
-<p>Auto updates are provided via Sparkle from now on. </p>
-<p>What&#39;s new (very short recap) :</p>
-<ul>
-<li>Aerial is now distributed as an AppExtension for perfect compaibility with macOS Sonoma and Tahoe. No more black screens bugs or other annoyances that have plagued previous versions of all third party screensavers to date : Aerial uses the same (private) API that Apple uses nowadays for it&#39;s screensavers</li>
-<li>Wallpaper mode with auto-pause : by default plays 4K 240fps videos at a slower pace on desktop, pausing when your windows cover your screens to save gpu, and transitionning to/from screensaver.  </li>
-<li>New My Videos feature for easy import of your own videos</li>
-<li>Live feed support : RTSP, http streaming and <code>yt-dlp</code> are supported (`yt-dlp support provided as a best effort)</li>
-<li>New visual overlay editor, just drag&#39;n drop, with more options than ever before. Per screen, with the ability to now have separate overlays on desktop if you want</li>
-<li>Global hotkeys support to play/pause/prev/next </li>
-<li>New video library with a host of new features. Including ordered, fully customizable playlists</li>
-<li>And plenty more, check <a href="https://aerialscreensaver.github.io/">https://aerialscreensaver.github.io/</a> for more</li>
-</ul>
-<p>Important : </p>
-<ul>
-<li>If things don&#39;t work, open the app settings and look at the checklist on top. You should get buttons to resolve issues if any.</li>
-<li>You can start fresh if you get stuck by deleting <code>/Users/Shared/Aerial</code>. It resets <em>everything</em>, including settings.</li>
-</ul>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.0.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.0.md ↗
-</a> </div> </details><details id="4.0.13test1" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.13test1</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"></div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.13test1.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.13test1.md ↗
-</a> </div> </details><details id="4.0.13test2" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.0.13test2</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"></div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.0.13test2.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.0.13test2.md ↗
-</a> </div> </details><details id="4.1.0testfreeze" class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 open:border-aerial-accent/30 transition-colors"> <summary class="cursor-pointer list-none flex items-baseline justify-between gap-4"> <div class="flex items-baseline gap-3 flex-wrap"> <span class="text-lg font-semibold text-aerial-text">Aerial 4.1.0testfreeze</span>   </div> <span class="text-aerial-text-muted transition-transform group-open:rotate-45 select-none" aria-hidden="true">
-+
-</span> </summary> <div class="mt-5 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed prose-headings:text-aerial-text prose-strong:text-aerial-text prose-code:text-aerial-text prose-a:text-aerial-link hover:prose-a:text-aerial-link-hi"><p>test build</p>
-</div> <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
-Source markdown:
-<a href="https://aerialscreensaver.github.io/Aerial-4.1.0testfreeze.md" class="ml-1 text-aerial-text-muted hover:text-aerial-text">
-Aerial-4.1.0testfreeze.md ↗
-</a> </div> </details> </div> </div> </div> <script type="module">function l(a){document.querySelectorAll("[data-channel-panel]").forEach(e=>{e.classList.toggle("hidden",e.dataset.channelPanel!==a)}),document.querySelectorAll("[data-channel-tab]").forEach(e=>{e.setAttribute("aria-selected",String(e.dataset.channelTab===a))})}document.addEventListener("click",a=>{const e=a.target.closest("[data-channel-tab]");e?.dataset.channelTab&&l(e.dataset.channelTab)});const t=document.getElementById(decodeURIComponent(location.hash.slice(1))),n=t?.closest("[data-channel-panel]");t&&n?.dataset.channelPanel&&(l(n.dataset.channelPanel),t instanceof HTMLDetailsElement&&(t.open=!0),t.scrollIntoView());</script>  </main> <footer class="mt-32 border-t border-aerial-border/60 bg-aerial-bg"> <div class="mx-auto max-w-6xl px-6 py-12 grid gap-10 md:grid-cols-4 text-sm"> <div class="md:col-span-2"> <div class="flex items-center gap-2 text-aerial-text font-semibold text-base"> <img src="/aerial-icon-64.png" srcset="/aerial-icon-64.png 1x, /icon-192.png 3x" width="28" height="28" alt="" class="h-7 w-7">
+</a> </div> </details> </div> </div> </div><script type="module">function e(e){document.querySelectorAll(`[data-channel-panel]`).forEach(t=>{t.classList.toggle(`hidden`,t.dataset.channelPanel!==e)}),document.querySelectorAll(`[data-channel-tab]`).forEach(t=>{t.setAttribute(`aria-selected`,String(t.dataset.channelTab===e))})}document.addEventListener(`click`,t=>{let n=t.target.closest(`[data-channel-tab]`);n?.dataset.channelTab&&e(n.dataset.channelTab)});var t=document.getElementById(decodeURIComponent(location.hash.slice(1))),n=t?.closest(`[data-channel-panel]`);t&&n?.dataset.channelPanel&&(e(n.dataset.channelPanel),t instanceof HTMLDetailsElement&&(t.open=!0),t.scrollIntoView());</script>  </main> <footer class="mt-32 border-t border-aerial-border/60 bg-aerial-bg"> <div class="mx-auto max-w-6xl px-6 py-12 grid gap-10 md:grid-cols-4 text-sm"> <div class="md:col-span-2"> <div class="flex items-center gap-2 text-aerial-text font-semibold text-base"> <img src="/aerial-icon-64.png" srcset="/aerial-icon-64.png 1x, /icon-192.png 3x" width="28" height="28" alt="" class="h-7 w-7">
 Aerial
 </div> <p class="mt-3 text-aerial-text-muted leading-relaxed max-w-md">
-Free and open-source. Maintained for the last 8 years with your ☕️ in Le Havre, France 🇫🇷 by Guillaume Louel.
-        If you enjoy Aerial, you can
+Free and open source. By Guillaume Louel, maintaining Aerial since 2018
+        from Le Havre, France 🇫🇷. Supported by your ☕️. If you enjoy it, you can
 <a href="https://ko-fi.com/A0A32385Y" class="text-aerial-link hover:text-aerial-link-hi">
-buy me one (or a few !)
-</a> or check the <a href="/expansions" class="text-aerial-link hover:text-aerial-link-hi">Expansions</a> for extra videos, their authors contribute back to the project !
+buy me a coffee (or a few)
+</a>, or pick up an <a href="/expansions" class="text-aerial-link hover:text-aerial-link-hi">expansion pack</a>: their authors contribute back to the project.
 </p> </div> <div> <div class="text-aerial-text font-semibold mb-3">Project</div> <ul class="space-y-2 text-aerial-text-muted"> <li><a href="/features" class="hover:text-aerial-text">Features</a></li> <li><a href="/release-notes" class="hover:text-aerial-text">Release notes</a></li> <li><a href="/expansions" class="hover:text-aerial-text">Expansions</a></li> <li><a href="/faq" class="hover:text-aerial-text">FAQ</a></li> <li><a href="/legal" class="hover:text-aerial-text">Legal</a></li> </ul> </div> <div> <div class="text-aerial-text font-semibold mb-3">Source &amp; community</div> <ul class="space-y-2 text-aerial-text-muted"> <li> <a href="https://github.com/AerialScreensaver/Aerial" class="hover:text-aerial-text">
 Aerial on GitHub
 </a> </li> <li> <a href="https://github.com/JohnCoates/Aerial" class="hover:text-aerial-text">
@@ -1070,4 +1050,4 @@ Sparkle
 </p> <p class="text-right">
 Apple, macOS, tvOS, Apple TV and Mac are trademarks of Apple Inc. Aerial is not affiliated with
         Apple.
-</p> </div> </div> </footer> <dialog id="aerial-lightbox" class="bg-transparent text-aerial-text p-0 m-auto backdrop:bg-aerial-bg-deep/85 backdrop:backdrop-blur-md"> <div class="relative max-w-[92vw] max-h-[88vh]"> <button type="button" data-lightbox-close aria-label="Close" class="absolute -top-3 -right-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-aerial-surface-hi text-aerial-text border border-aerial-border hover:bg-aerial-accent hover:text-aerial-bg-deep transition-colors shadow-lg"> <svg viewBox="0 0 16 16" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"> <path d="M3 3l10 10M13 3L3 13" stroke-linecap="round"></path> </svg> </button> <div data-lightbox-content class="rounded-xl overflow-hidden bg-aerial-bg-deep shadow-2xl border border-aerial-border"></div> </div> </dialog> <script type="module">const o=document.getElementById("aerial-lightbox");if(o){let l=function(e){const a=e.dataset.lightboxType,n=e.dataset.lightboxSrc;if(!a||!n)return;const r=e.dataset.lightboxAlt??"",i=e.dataset.lightboxPoster??"";if(c.innerHTML="",a==="image"){const t=document.createElement("img");t.src=n,t.alt=r,t.className="block max-w-[92vw] max-h-[88vh] w-auto h-auto",c.appendChild(t)}else if(a==="video"){const t=document.createElement("video");t.src=n,i&&(t.poster=i),t.controls=!0,t.autoplay=!0,t.loop=!0,t.muted=!0,t.playsInline=!0,t.className="block max-w-[92vw] max-h-[88vh] w-auto h-auto",c.appendChild(t)}o.showModal()},s=function(){o.close()};const c=o.querySelector("[data-lightbox-content]");document.addEventListener("click",e=>{const a=e.target,n=a.closest("[data-lightbox]");if(n){e.preventDefault(),l(n);return}if(a.closest("[data-lightbox-close]")){s();return}}),o.addEventListener("click",e=>{e.target===o&&s()}),o.addEventListener("close",()=>{c.innerHTML=""})}</script> </body></html>
+</p> </div> </div> </footer> <dialog id="aerial-lightbox" class="bg-transparent text-aerial-text p-0 m-auto backdrop:bg-aerial-bg-deep/85 backdrop:backdrop-blur-md"> <div class="relative max-w-[92vw] max-h-[88vh]"> <button type="button" data-lightbox-close aria-label="Close" class="absolute -top-3 -right-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-aerial-surface-hi text-aerial-text border border-aerial-border hover:bg-aerial-accent hover:text-aerial-bg-deep transition-colors shadow-lg"> <svg viewBox="0 0 16 16" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"> <path d="M3 3l10 10M13 3L3 13" stroke-linecap="round"></path> </svg> </button> <div data-lightbox-content class="rounded-xl overflow-hidden bg-aerial-bg-deep shadow-2xl border border-aerial-border"></div> </div> </dialog><script type="module">var e=document.getElementById(`aerial-lightbox`);if(e){let t=e.querySelector(`[data-lightbox-content]`);function n(n){let r=n.dataset.lightboxType,i=n.dataset.lightboxSrc;if(!r||!i)return;let a=n.dataset.lightboxAlt??``,o=n.dataset.lightboxPoster??``;if(t.innerHTML=``,r===`image`){let e=document.createElement(`img`);e.src=i,e.alt=a,e.className=`block max-w-[92vw] max-h-[88vh] w-auto h-auto`,t.appendChild(e)}else if(r===`video`){let e=document.createElement(`video`);e.src=i,o&&(e.poster=o),e.controls=!0,e.autoplay=!0,e.loop=!0,e.muted=!0,e.playsInline=!0,e.className=`block max-w-[92vw] max-h-[88vh] w-auto h-auto`,t.appendChild(e)}e.showModal()}function r(){e.close()}document.addEventListener(`click`,e=>{let t=e.target,i=t.closest(`[data-lightbox]`);i?(e.preventDefault(),n(i)):t.closest(`[data-lightbox-close]`)&&r()}),e.addEventListener(`click`,t=>{t.target===e&&r()}),e.addEventListener(`close`,()=>{t.innerHTML=``})}</script> </body> </html>
