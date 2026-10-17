@@ -4,7 +4,7 @@ category: Getting started
 order: 15
 ---
 
-None to run. Aerial doesn't need Full Disk Access or anything like it: its data lives in `/Users/Shared/Aerial/`, which any app can read and write.
+None. Aerial no longer needs Full Disk Access: its data lives in `/Users/Shared/Aerial/`, which any app can read and write.
 
 You may see three optional prompts:
 
@@ -12,4 +12,4 @@ You may see three optional prompts:
 - **Access to the macOS wallpaper cache folder**, once, when Aerial offers to keep that cache from growing (see the Wallpaper section below).
 - **Access to your old Aerial 3 folder**, if the setup assistant finds videos from Aerial 3 and offers to move them.
 
-Aerial can start at login; that's in Settings › Advanced. It uses Apple's current login-item API, so there's nothing to clean up in your LaunchAgents folder, and if an older version left a file there, Aerial removes it.
+Aerial can start at login; that's configured in Settings › Advanced. It uses Apple's current login-item API, so there's nothing to clean up in your LaunchAgents folder, and if an older version left a file there, Aerial will remove it.

@@ -4,4 +4,4 @@ category: Wallpaper
 order: 64
 ---
 
-Yes. Settings › Wallpaper lists the apps covering the wallpaper right now, each with its coverage. Ignore one and it no longer counts toward the pause threshold. Useful for utilities that keep a transparent window over the whole screen.
+Yes. Settings › Wallpaper lists the apps covering the wallpaper right now, and you can add them to an ignore list. You can also configure how much of the screen needs to be covered before the pause is engaged. 

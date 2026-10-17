@@ -1,5 +1,5 @@
 ---
-title: Your setup, on one screen
+title: Quick setup
 summary: The Video Library opens on a home screen, with a card per display showing what's playing and the controls you use most.
 order: 3
 homepage: true

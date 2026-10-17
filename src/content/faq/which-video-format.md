@@ -4,6 +4,6 @@ category: Library
 order: 39
 ---
 
-Stick with the default. Aerial ships with 4K SDR at 240 fps selected because it's the best quality for the space it takes, and it's the set I update first when Apple adds videos.
+Stick with the default on Apple Silicon Macs (M1+). Aerial uses 4K SDR at 240 fps as the default to provide the best experience as a live wallpaper where it slows down the frame rate. 
 
-Decoding is fully hardware accelerated, so the high frame rate doesn't strain your Mac. The exception is older Intel Macs: if you see stutter or heat there, switch to 4K HEVC or one of the 1080p formats in Settings › Advanced.
+Decoding is fully hardware accelerated, so the high frame rate has no impact. The only exception is with older Intel Macs: if you see stutter or heat there, switch to 4K HEVC or one of the 1080p formats in Settings › Advanced.

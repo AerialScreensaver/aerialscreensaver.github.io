@@ -4,7 +4,7 @@ category: Getting started
 order: 18
 ---
 
-Aerial 4 doesn't ship as a `.saver` bundle. The screensaver and the wallpaper are one macOS extension (an `.appex`) bundled inside `Aerial.app`, the same mechanism Apple uses for its own wallpapers and screensavers. Apple has never documented it for third parties, so Aerial relies on private APIs to do it, and as far as I know it's the first third-party screensaver that does.
+Aerial 4 no longer ships as a `.saver` bundle. The screensaver and the wallpaper are one macOS extension (an `.appex`) bundled inside `Aerial.app`, the same mechanism Apple uses for its own wallpapers and screensavers. Apple has never documented it for third parties, so Aerial relies on private APIs to do it, and as far as I know it's the first third-party screensaver that does.
 
 What it gets you:
 
