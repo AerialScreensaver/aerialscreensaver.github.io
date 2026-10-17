@@ -4,6 +4,6 @@ category: Features
 order: 52
 ---
 
-Settings → Overlays → **Open Editor**. It's a drag-and-drop canvas where you place clocks, dates, weather, location names, music info, and message overlays into one of seven on-screen zones. Each overlay has its own font, opacity, and color settings.
+Settings › Overlays → **Open Overlay Editor**. It's a canvas where you drag clocks, dates, weather, location names, music info, battery, timers, countdowns and messages into one of seven on-screen zones, and set the font, color, shadow and opacity of each overlay.
 
-Two presets are included: **Modern** — a large translucent top-center clock with overlays in the corners — and **Classic** — clock and location stacked bottom-left, the Aerial 3 look. You can also start from a blank slate.
+Two presets come with it: **Modern**, a large translucent clock top center with the rest in the corners, and **Classic**, the Aerial 3 look with clock and location stacked bottom left. Or start from a blank slate. The screensaver and the wallpaper can have different layouts, and so can each display.

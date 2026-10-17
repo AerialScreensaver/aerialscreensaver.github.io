@@ -4,4 +4,6 @@ category: Privacy
 order: 60
 ---
 
-No. Aerial includes no telemetry, no analytics, no crash reporting of any kind. It downloads videos directly from Apple's CDN, fetches the Sparkle update feed and the expansions catalog over HTTPS directly from github, and stores everything locally. There is **no** Aerial server collecting data about you. Some optional features (Weather forecast via OpenWeather, Youtube streaming via yt-dlp, etc) may individually track you in some form, I recommend you check their respective privacy policies for more details. 
+No. Aerial has no telemetry, no analytics and no crash reporting of any kind, and there is no Aerial server anywhere. It downloads videos straight from Apple's servers, and fetches the update feed, the expansions catalog and video thumbnails from this site, all over HTTPS and without anything that identifies you.
+
+Some optional features talk to other services once you turn them on: the weather overlay (OpenWeather), YouTube live feeds (yt-dlp and YouTube), the camera URLs you add yourself, and automatic location (Apple's Location Services). Those have their own privacy policies, which I'd encourage you to read. The [legal page](/legal) has the full list.

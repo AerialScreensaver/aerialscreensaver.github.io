@@ -4,10 +4,6 @@ category: Getting started
 order: 25
 ---
 
-Aerial plays whatever the current filter is set to. The fastest way to change it is right from the menu bar popover:
+Aerial plays whatever the current filter says. The quickest way to change it is the filter row in the menu bar popover, just under the mode cards: pick a category (an expansion, a location, a scene, a time of day, your own videos or a playlist) and refine it with the chevron on the right when there are sub-options.
 
-- **Open the popover** and look at the row just below the three big buttons (Lock Screen / Wallpaper / Fullscreen).
-- **Pick a category** — Expansions, locations, scenes, time of day, your own videos, or a playlist.
-- **Refine** further with the **chevron** on the right when the category has sub-options (a specific expansion pack, a specific location, etc.).
-
-For more videos to pick from, open the **Video Library** from the popover's bottom toolbar — that's where you install community **Expansions** or import your own. For fine-grained control, create a **Playlist** in the Library, drop in exactly the videos you want, then select it from the popover's filter row.
+For more choice, open the Video Library from the popover's bottom bar. That's where you install expansions, import your own videos and build playlists, and every source, location, favourite, expansion and playlist there has a **Play** button that makes it the current selection, on every display or just one.

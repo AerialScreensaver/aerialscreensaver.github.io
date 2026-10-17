@@ -20,9 +20,37 @@ export interface AppcastRelease {
  * Website-hardcoded beta requirements. The appcast deliberately keeps
  * sparkle:minimumSystemVersion at 15.0 on beta items (Sparkle-side decision),
  * so the displayed beta requirement lives here. Update each beta cycle.
+ * BETA_RECOMMENDED_ON may be left empty: the "recommended on" line is then
+ * not rendered at all.
  */
 export const BETA_MIN_MACOS = '26';
-export const BETA_RECOMMENDED_ON = 'macOS 27 Golden Gate';
+export const BETA_RECOMMENDED_ON = '';
+
+/**
+ * macOS marketing names, keyed by major version. Used wherever a version
+ * number from the appcast is printed next to its name, so the name can
+ * never drift from the number. Add a line each autumn.
+ */
+export const MACOS_CODENAMES: Record<string, string> = {
+  '13': 'Ventura',
+  '14': 'Sonoma',
+  '15': 'Sequoia',
+  '26': 'Tahoe',
+  '27': 'Golden Gate',
+};
+
+/** "26.0" → "26"; "15" → "15". Tolerates the number the XML parser may hand over. */
+export function macosMajor(version: string | number): string {
+  const text = String(version ?? '');
+  return text.split('.')[0] ?? text;
+}
+
+/** "26.0" → "macOS 26 (Tahoe)"; unknown majors print without a name. */
+export function macosLabel(version: string | number): string {
+  const major = macosMajor(version);
+  const name = MACOS_CODENAMES[major];
+  return name ? `macOS ${major} (${name})` : `macOS ${major}`;
+}
 
 interface RawItem {
   title: string;
@@ -30,7 +58,7 @@ interface RawItem {
   'sparkle:version'?: string | number;
   'sparkle:channel'?: string;
   'sparkle:shortVersionString'?: string;
-  'sparkle:minimumSystemVersion'?: string;
+  'sparkle:minimumSystemVersion'?: string | number; // "26.0" parses as the number 26
   'sparkle:releaseNotesLink'?: string;
   enclosure: {
     '@_url': string;
@@ -78,7 +106,7 @@ function toRelease(raw: RawItem): AppcastRelease {
     pubDateLabel: formatPubDate(pubDate),
     downloadUrl: raw.enclosure['@_url'],
     downloadSize: Number(raw.enclosure['@_length'] ?? 0),
-    minSystemVersion: raw['sparkle:minimumSystemVersion'] ?? '',
+    minSystemVersion: String(raw['sparkle:minimumSystemVersion'] ?? ''),
     releaseNotesUrl: raw['sparkle:releaseNotesLink'] ?? '',
   };
 }
@@ -126,6 +154,23 @@ export async function getLatestStable(): Promise<AppcastRelease> {
     throw new Error('No stable release found in appcast.xml');
   }
   return newest(stable);
+}
+
+/**
+ * The newest stable release that still runs on an older macOS than the
+ * latest stable requires (today: 4.0.16 for Sequoia while 4.1.x needs
+ * Tahoe). Null when every stable item shares the same minimum — callers
+ * hide the "older Mac" card on null.
+ */
+export async function getLegacyStable(): Promise<AppcastRelease | null> {
+  const latest = await getLatestStable();
+  const latestMajor = Number(macosMajor(latest.minSystemVersion));
+  if (!Number.isFinite(latestMajor)) return null;
+  const older = (await getAllReleases()).filter((r) => {
+    const major = Number(macosMajor(r.minSystemVersion));
+    return r.channel === 'stable' && Number.isFinite(major) && major < latestMajor;
+  });
+  return older.length ? newest(older) : null;
 }
 
 /**

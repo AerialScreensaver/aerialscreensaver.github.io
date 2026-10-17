@@ -4,6 +4,6 @@ category: Performance
 order: 80
 ---
 
-There are two possible reasons for this. On older Intel macs, 4K HDR video decoding can be  GPU-intensive, particularly because of the tone mapping needed to display the colors accurately. On Apple Silicon, Aerial uses full hardware decoding and the load is insignificant in practice — even at 240fps. If you're on Intel and notice heat, switch to a 4K SDR variant in Format settings, or even 1080p if it's still a concern.
+There are two usual reasons. On older Intel Macs, decoding 4K HDR video is GPU-intensive, mostly because of the tone mapping needed to show the colors accurately. On Apple Silicon, Aerial decodes everything in hardware and the load is negligible, even at 240 fps. If you're on Intel and notice the heat, switch to 4K HEVC or a 1080p format in Settings › Advanced.
 
-The second reason is not specific to Aerial : macOS does defer many tasks to when the screensaver starts. macOS background services for auto tagging your photo/video library is the most common culprit for increased heat/fan usage. This is particularly apparent after you add a large bunch of photos/videos in your library, or just after a major macOS upgrade where `Photos.app` will rescan your entire library to update the tags. 
+The second reason has nothing to do with Aerial: macOS defers a lot of background work to the moment the screensaver starts. The services that tag your photo and video library are the most common culprit for fans spinning up, especially after you add a large batch of photos or right after a major macOS upgrade, when Photos rescans your whole library.

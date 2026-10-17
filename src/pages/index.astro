@@ -29,25 +29,26 @@ const homepageFeatures = allFeatures
           Why Aerial
         </p>
         <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-aerial-text">
-          The power-user version of the screensaver Apple ships.
+          Apple's aerials, without the limits.
         </h2>
       </div>
       <div class="space-y-5 text-aerial-text-muted text-lg leading-relaxed">
         <p>
-          macOS already plays a few aerial videos out of the box — and they look great. But the
-          built-in version stops there: a small fixed library, no overlays, no multi-display tricks,
-          no community packs, no live wallpaper, no way to drop in your own footage.
+          macOS has played a few of these aerials on its own for a while now, and they look
+          great. But that's where it stops. You can't choose what plays and when, put a clock
+          or the weather on top, add your own footage, stretch one video across every display,
+          or watch a live camera feed instead.
         </p>
         <p>
-          Aerial picks up where Apple stopped. The full Apple library at native quality (the new
-          4K 240fps set included), your own videos in the rotation, live camera feeds, drag-and-drop
-          overlays, per-monitor playback, global hotkeys for the wallpaper, and a curated catalog
-          of community-made expansions — all in a single small <code class="text-aerial-text">.app</code>
-          that auto-updates itself.
+          Aerial does all of that. The whole Apple catalog at native quality, including the 4K
+          240 fps set, your own videos in the rotation, live feeds, a drag-and-drop overlay
+          editor, four multi-display modes, global hotkeys and a catalog of community video
+          packs, from one small <code class="text-aerial-text">.app</code> that updates itself.
         </p>
         <p class="text-aerial-text-dim">
-          Free, open source, no telemetry. Support welcome but not required. 
-        </p> 
+          Free and open source, no telemetry. If you like it, you can buy me a coffee. You don't
+          have to.
+        </p>
       </div>
     </div>
   </section>
@@ -99,19 +100,18 @@ const homepageFeatures = allFeatures
         Old project. New tricks.
       </h2>
       <p class="mt-6 text-aerial-text-muted text-lg leading-relaxed max-w-3xl">
-        Aerial was the first to bring the Apple&nbsp;TV aerials to the Mac, almost a decade before
-        Apple shipped a simple version of their own. It's still the most flexible, most
-        feature-rich way to use them — and Aerial&nbsp;4 is its biggest leap yet: 4K&nbsp;240fps slowed
-        for the desktop with smart pause-on-occlusion, live camera feeds, your own videos in the
-        rotation, global hotkeys for the wallpaper, a brand-new visual overlay editor, and the new
-        App Extension screensaver API for perfect modern macOS compatibility.
+        Aerial brought the Apple&nbsp;TV aerials to the Mac in 2015, years before Apple shipped a
+        built-in version. It's still the most flexible way to use them, and Aerial&nbsp;4 is the
+        biggest rewrite it has had: a native macOS wallpaper extension, 4K&nbsp;240fps footage
+        slowed down for the desktop, live camera feeds, your own videos, global hotkeys and a
+        visual overlay editor.
       </p>
       <div class="mt-8 flex flex-wrap items-center gap-4">
         <a
           href={link('/release-notes')}
           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-aerial-border bg-aerial-surface-hi/60 text-sm text-aerial-text hover:border-aerial-accent/50 transition-colors"
         >
-          What's new in 4.0
+          What's new in {stable.version}
         </a>
         <a
           href="https://github.com/AerialScreensaver/Aerial"
@@ -127,9 +127,9 @@ const homepageFeatures = allFeatures
   <section class="mx-auto max-w-5xl px-6 pt-12 pb-4 flex justify-center">
     <img
       src={link('/screenshots/menubar-popover.webp')}
-      alt="Aerial's menu bar popover, showing Lock Screen / Wallpaper / Fullscreen mode toggles, an expansions filter, a video list with Tiburon paused, and a speed slider."
+      alt="Aerial's menu bar popover: Screensaver and Wallpaper cards at the top, the filter row set to Everything, loop, shuffle and repeat controls, the video list with Golden Gate paused, and the playback speed slider."
       width="452"
-      height="579"
+      height="580"
       class="w-full max-w-sm h-auto"
       style="filter: drop-shadow(0 0 24px oklch(75% 0.15 220 / 0.25)) drop-shadow(0 0 60px oklch(80% 0.18 200 / 0.15));"
       loading="lazy"
@@ -142,7 +142,7 @@ const homepageFeatures = allFeatures
       Make your Mac cinematic.
     </h2>
     <p class="mt-4 text-aerial-text-muted text-lg max-w-xl mx-auto">
-      One small download. Drag to <code class="text-aerial-text">/Applications</code>. That's it.
+      One small download. Drag it to <code class="text-aerial-text">/Applications</code>. That's it.
     </p>
     <div class="mt-8 flex flex-col items-center gap-6">
       {

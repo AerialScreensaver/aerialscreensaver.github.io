@@ -4,11 +4,12 @@ category: Getting started
 order: 20
 ---
 
-Aerial's live Wallpaper is optional — Aerial works as a screensaver without it. Here's how to drive it:
+The wallpaper is optional: the screensaver works fine without it. The setup assistant asks about it on first launch. Later on, the fastest ways to turn it on are the blue bar in the popover, the **Set as wallpaper** button on the Video Library's home screen, or System Settings › Wallpaper.
 
-- **Start it:** open the menu bar popover and click **Wallpaper** at the top (between Lock Screen and Fullscreen).
-- **Stop it:** click **Wallpaper** again.
-- **Pause without stopping:** press the **pause** button next to the current video in the playlist. The wallpaper freezes on the current frame.
-- **Switch videos:** the playlist shows what's currently playing — scroll and click any other entry to jump to it immediately.
+Once Aerial is your wallpaper:
 
-**4.1 beta:** the wallpaper is now a native macOS wallpaper. Activate it by accepting the prompt at startup (or pick Aerial in System Settings › Wallpaper). The Play/Pause button in the menu bar switches between still and live modes.
+- The **Wallpaper** card at the top of the popover switches between still (a frozen frame) and live (the video plays).
+- The playlist below it shows what's playing. Click any other entry to jump to it, or use the next and previous buttons and the speed slider.
+- Settings › Wallpaper holds the rest: Auto-Pause, Auto-Advance, and the battery, thermal, Low Power Mode and camera pauses.
+
+To stop using it, pick any other wallpaper in System Settings › Wallpaper.

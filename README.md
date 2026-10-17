@@ -1,6 +1,6 @@
 # Aerial — website (v4)
 
-Source for [aerialscreensaver.github.io](https://aerialscreensaver.github.io). Written in [Astro](https://astro.build) with Tailwind v4 and MDX.
+Source for [aerialscreensaver.github.io](https://aerialscreensaver.github.io). Written in [Astro](https://astro.build) 7 with Tailwind v4. Content is plain Markdown (no MDX integration).
 
 ## Branches
 

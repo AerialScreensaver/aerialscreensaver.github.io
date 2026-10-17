@@ -19,55 +19,67 @@ import Base from '../../layouts/Base.astro';
       Aerial is open-source software, released under the
       <a href="https://github.com/AerialScreensaver/Aerial/blob/main/LICENSE" class="text-aerial-link">
         MIT license
-      </a>. © Guillaume Louel and contributors. The full license text is available in the source
+      </a>. © Guillaume Louel and contributors. The full license text is in the source
       repository.
     </p>
 
     <h2 class="text-aerial-text">Apple's videos</h2>
     <p class="text-aerial-text-muted">
-      The macOS/tvOS aerial videos played by Aerial are produced by Apple and fetched directly from Apple's
-      content-delivery network at first play, on each user's machine. Aerial does not host,
-      mirror, or redistribute Apple's videos.
+      The aerial videos from macOS and tvOS are produced by Apple. Aerial downloads them from
+      Apple's content delivery network onto your Mac, the same way macOS itself does. It does not
+      host, mirror or redistribute them.
     </p>
 
-    <h2 class="text-aerial-text">Community expansions</h2>
+    <h2 class="text-aerial-text">Expansions</h2>
     <p class="text-aerial-text-muted">
-      Each community expansion ships with its own license, declared in its manifest. Installing
-      an expansion is opt-in. The featured expansion from Joshua Michaels &amp; Hal Bergman is
-      licensed under the terms at
+      Every expansion pack declares its own license in its manifest, and nothing is installed
+      unless you choose to. The free Community packs by Joshua Michaels &amp; Hal Bergman are
+      shared under the terms at
       <a href="https://jetsoncreative.com/aeriallicense" class="text-aerial-link">
         jetsoncreative.com/aeriallicense
-      </a>.
+      </a>. Their paid packs come with their own terms, available where you buy them.
     </p>
 
     <h2 class="text-aerial-text">Privacy</h2>
     <p class="text-aerial-text-muted">
-      Aerial includes no telemetry, no analytics, no crash reporting of any kind. The app
-      makes outbound HTTPS requests to: Apple's CDN (for videos), this site's
-      <code class="text-aerial-text">appcast.xml</code> (for Sparkle update checks), and the
-      expansions catalog when you open the Expansions browser. None of these requests carry user
-      identifiers. Some optional features (Weather forecast via OpenWeather, Youtube streaming 
-      via yt-dlp, etc) may individually track you in some limited form, I recommend you check
-      their respective privacy policies for more details. 
+      Aerial has no telemetry, no analytics and no crash reporting of any kind. There is no
+      Aerial server, and nothing identifies you in the requests it makes. Out of the box it talks
+      to Apple's content delivery network to download videos, and to this site (GitHub Pages) for
+      update checks, the expansions catalog and video thumbnails.
+    </p>
+    <p class="text-aerial-text-muted">
+      Some optional features reach other services when you turn them on: the weather overlay
+      queries OpenWeather, YouTube live feeds go through yt-dlp to YouTube, camera feeds connect
+      to whatever address you gave them, and automatic location uses Apple's Location Services.
+      Each of those has its own privacy policy, which I'd encourage you to read.
     </p>
 
     <h2 class="text-aerial-text">Trademarks</h2>
     <p class="text-aerial-text-muted">
-      Apple, macOS, tvOS, Apple TV, and Mac are trademarks of Apple Inc., registered in the U.S.
-      and other countries. Aerial is a third-party project unaffiliated with Apple.
+      Apple, macOS, tvOS, Apple TV and Mac are trademarks of Apple Inc., registered in the U.S.
+      and other countries. Aerial is a third-party project with no affiliation to Apple.
     </p>
 
     <h2 class="text-aerial-text">Thanks</h2>
     <p class="text-aerial-text-muted">
-      Aerial uses <a href="https://sparkle-project.org/" class="text-aerial-link">Sparkle</a> for
-      auto-updates and
-      <a href="https://github.com/sindresorhus/KeyboardShortcuts" class="text-aerial-link">
-        KeyboardShortcuts
-      </a>
-      by Sindre Sorhus for the global hotkeys feature. The original project was started by John
-      Coates in 2015 — see the
-      <a href="https://github.com/JohnCoates/Aerial" class="text-aerial-link">historical repository</a>
-      for the early commit history.
+      Aerial is built on the work of others:
+      <a href="https://sparkle-project.org/" class="text-aerial-link">Sparkle</a> for updates,
+      created by Andy Matuschak and kept alive since by Kornel Lesiński and, today, Mayur
+      Pawashe (Zorg);
+      <a href="https://github.com/sindresorhus/KeyboardShortcuts" class="text-aerial-link">KeyboardShortcuts</a>
+      by Sindre Sorhus for the global hotkeys,
+      <a href="https://github.com/ungive/mediaremote-adapter" class="text-aerial-link">mediaremote-adapter</a>
+      by Jonas van den Berg (BSD 3-Clause) for the music overlay, and
+      <a href="https://github.com/AerialScreensaver/PaperSaver" class="text-aerial-link">PaperSaver</a>
+      for talking to the macOS wallpaper system. Live feeds optionally rely on
+      <a href="https://ffmpeg.org/" class="text-aerial-link">ffmpeg</a> and
+      <a href="https://github.com/yt-dlp/yt-dlp" class="text-aerial-link">yt-dlp</a>, which you
+      install yourself.
+    </p>
+    <p class="text-aerial-text-muted">
+      John Coates started the project in 2015. The
+      <a href="https://github.com/JohnCoates/Aerial" class="text-aerial-link">original repository</a>
+      keeps the early history.
     </p>
   </section>
 </Base>

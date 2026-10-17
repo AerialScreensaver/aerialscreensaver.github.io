@@ -1,11 +1,12 @@
 ---
-title: 4K at 240fps — slowed for your desktop
-summary: macOS 26's new 4K 240fps videos play as a calm live wallpaper, smart-paused when your desktop fills with windows.
+title: 4K at 240 fps, slowed for your desktop
+summary: Apple's 4K 240 fps videos make a calm live wallpaper. Slow them down and they stay perfectly smooth.
 icon: clock
 order: 20
 homepage: true
-imageSrc: high-frame-rate.webp
-alt: Aerial's Wallpaper settings panel showing Auto-Pause with a Coverage threshold slider at 60%, plus a live coverage indicator for the current display.
+video: hero.mp4
+videoPoster: hero.jpg
+alt: One of Apple's 4K 240 fps aerials playing as Aerial's live wallpaper.
 ---
 
-The 4K 240fps video set Apple shipped in macOS 26 is the headline of Aerial 4. The high frame rate isn't there for tech-demo bragging rights — it's what makes the live wallpaper mode breathe. Aerial slows playback down to an ambient pace without dropping frames or stuttering, because the source has plenty of frames to draw from. And because a wallpaper running full-tilt behind covered windows wastes battery and GPU, Aerial pauses automatically when your desktop is mostly hidden by other apps and resumes the moment there's space to see it again — threshold configurable.
+Apple's 240 fps set, introduced with macOS 26, is the default format in Aerial 4 and the one I update first when new videos come out. The high frame rate isn't there for its own sake: with that many frames to draw from, Aerial can slow playback to an ambient pace, with the speed slider in the popover, without stutter or repeated frames. Decoding is fully hardware-accelerated, so the frame rate costs your Mac very little. On older Intel Macs, the plain 4K or 1080p formats are the better choice.

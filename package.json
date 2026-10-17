@@ -4,7 +4,7 @@
   "version": "4.0.0",
   "private": true,
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.22.0"
   },
   "scripts": {
     "dev": "astro dev",
@@ -13,13 +13,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.4",
-    "@astrojs/sitemap": "^3.7.2",
-    "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.3.1",
-    "fast-xml-parser": "^5.7.3",
-    "marked": "^18.0.3",
-    "tailwindcss": "^4.3.0"
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.4.0",
+    "fast-xml-parser": "^5.11.2",
+    "marked": "^18.1.1",
+    "tailwindcss": "^4.3.3"
   }
 }

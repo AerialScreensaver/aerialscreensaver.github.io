@@ -4,4 +4,4 @@ category: Compatibility
 order: 20
 ---
 
-No — Aerial is macOS only. It needs the system-level screensaver and wallpaper hooks that exist only on the Mac, plus a few macOS frameworks for HDR decoding and overlay rendering.
+No. Aerial is macOS only: it depends on the Mac's screensaver and wallpaper extension points and on macOS frameworks for video decoding and overlays, none of which exist on Apple's other platforms.

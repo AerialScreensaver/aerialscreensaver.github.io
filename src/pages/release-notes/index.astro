@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { marked } from 'marked';
-import { getAllReleases } from '../../lib/appcast';
+import { getAllReleases, getLatestBeta } from '../../lib/appcast';
 
 interface ReleaseNote {
   version: string;
@@ -52,8 +52,10 @@ const appcastByVersion = new Map(
 
 marked.setOptions({ gfm: true, breaks: false });
 
+// Skip the pre-4.0 alphas and anything that isn't a real version string
+// (internal test builds such as "4.0.13test1" leave empty files behind).
 const notes: ReleaseNote[] = files
-  .filter((f) => !/^3\.9\.9a\d+$/.test(f.version))
+  .filter((f) => !/^3\.9\.9a\d+$/.test(f.version) && versionRank(f.version) > 0)
   .map((f) => {
     const appcast = appcastByVersion.get(f.version);
     return {
@@ -68,6 +70,11 @@ const notes: ReleaseNote[] = files
 
 const betaNotes = notes.filter((n) => channelOf(n.version) === 'beta');
 const stableNotes = notes.filter((n) => channelOf(n.version) === 'stable');
+
+// Open on the beta tab only while a beta is actually newer than the latest
+// stable; "Latest" marks the single newest release across both channels.
+const defaultChannel = (await getLatestBeta().catch(() => null)) ? 'beta' : 'stable';
+const latestVersion = notes[0]?.version;
 ---
 
 <Base
@@ -80,7 +87,9 @@ const stableNotes = notes.filter((n) => channelOf(n.version) === 'stable');
       Latest releases.
     </h1>
     <p class="mt-6 text-aerial-text-muted text-lg leading-relaxed">
-      Release notes will show up in the app when a new version is available, prior to update. Updates are provided via <a href="https://sparkle-project.org/" class="text-aerial-link">Sparkle</a>. You can find the previous release notes below! 
+      Every release, newest first. These are the same notes the app shows you before it
+      installs an update through
+      <a href="https://sparkle-project.org/" class="text-aerial-link">Sparkle</a>.
     </p>
   </header>
 
@@ -100,30 +109,30 @@ const stableNotes = notes.filter((n) => channelOf(n.version) === 'stable');
             <button
               type="button"
               role="tab"
-              data-channel-tab="beta"
-              aria-selected="true"
-              class="cursor-pointer rounded-full border border-transparent px-4 py-1.5 text-sm font-medium text-aerial-text-muted transition-colors aria-selected:bg-aerial-surface aria-selected:text-aerial-link aria-selected:border-aerial-link/40"
-            >
-              Beta
-            </button>
-            <button
-              type="button"
-              role="tab"
               data-channel-tab="stable"
-              aria-selected="false"
+              aria-selected={String(defaultChannel === 'stable')}
               class="cursor-pointer rounded-full border border-transparent px-4 py-1.5 text-sm font-medium text-aerial-text-muted transition-colors aria-selected:bg-aerial-surface aria-selected:text-aerial-accent aria-selected:border-aerial-accent/40"
             >
               Stable
             </button>
+            <button
+              type="button"
+              role="tab"
+              data-channel-tab="beta"
+              aria-selected={String(defaultChannel === 'beta')}
+              class="cursor-pointer rounded-full border border-transparent px-4 py-1.5 text-sm font-medium text-aerial-text-muted transition-colors aria-selected:bg-aerial-surface aria-selected:text-aerial-link aria-selected:border-aerial-link/40"
+            >
+              Beta
+            </button>
           </div>
           {
             ([
-              ['beta', betaNotes],
               ['stable', stableNotes],
+              ['beta', betaNotes],
             ] as const).map(([channel, list]) => (
               <div
                 data-channel-panel={channel}
-                class:list={['space-y-4', channel === 'stable' && 'hidden']}
+                class:list={['space-y-4', channel !== defaultChannel && 'hidden']}
               >
                 {list.length === 0 && (
                   <p class="text-aerial-text-muted">No releases in this channel yet.</p>
@@ -140,7 +149,7 @@ const stableNotes = notes.filter((n) => channelOf(n.version) === 'stable');
                         {n.pubDateLabel && (
                           <span class="text-sm text-aerial-text-dim">{n.pubDateLabel}</span>
                         )}
-                        {i === 0 && (
+                        {n.version === latestVersion && (
                           <span class="text-[10px] font-semibold uppercase tracking-widest text-aerial-accent border border-aerial-accent/40 rounded px-1.5 py-0.5">
                             Latest
                           </span>

@@ -1,9 +1,9 @@
 ---
-question: I'm coming from Aerial 3 — what carries over?
+question: I'm coming from Aerial 3. What carries over?
 category: Getting started
 order: 17
 ---
 
-On first launch, the migration wizard offers to move your downloaded video cache into Aerial 4's new location — that's the data that carries over. Preferences, overlays, and source list start fresh, because Aerial 4 ships with a new screensaver extension, a new settings file, and a new overlay system.
+Your downloaded videos. On first launch the setup assistant looks for Aerial 3's data and offers to move the video cache into Aerial 4's folder, including a custom cache location if you had set one. On macOS 27 you may be asked to grant access to the old folder first, and if the move fails, Aerial offers it again later so you can at least reclaim the space.
 
-The first-launch wizard picks sensible defaults for you: the Modern overlay preset, 4K 240 fps video format, and optional Wallpaper Continuity. You can re-run it later from Settings if you skipped through.
+Settings, overlays and sources start fresh, because the screensaver, the settings file and the overlay system are all new in Aerial 4. The assistant gets you going with an overlay preset (Modern or Classic) and your choice of wallpaper mode, and everything can be changed later in Settings.

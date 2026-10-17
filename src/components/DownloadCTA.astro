@@ -1,6 +1,6 @@
 ---
 import type { AppcastRelease } from '../lib/appcast';
-import { BETA_MIN_MACOS, BETA_RECOMMENDED_ON } from '../lib/appcast';
+import { BETA_MIN_MACOS, BETA_RECOMMENDED_ON, macosLabel } from '../lib/appcast';
 
 interface Props {
   release: AppcastRelease;
@@ -8,9 +8,6 @@ interface Props {
   tone?: 'solid' | 'outline';
   showMeta?: boolean;
   align?: 'start' | 'center';
-  /** When set (and release is stable), renders a pointer line sending
-   *  Golden Gate users to the beta. Callers pass it only when a beta exists. */
-  betaPointerHref?: string;
 }
 
 const {
@@ -19,7 +16,6 @@ const {
   tone = 'solid',
   showMeta = true,
   align = 'start',
-  betaPointerHref,
 } = Astro.props;
 
 const sizeClass =
@@ -42,7 +38,14 @@ const toneClasses =
 const alignClass = align === 'center' ? 'items-center text-center' : 'items-start text-left';
 
 const sizeMb = release.downloadSize ? Math.round(release.downloadSize / 1024 / 1024) : 0;
-const showBetaPointer = betaPointerHref && release.channel === 'stable';
+// Beta items keep a permissive minimumSystemVersion in the appcast for
+// Sparkle's sake, so their real requirement is the website constant.
+const requirement =
+  release.channel === 'beta' ? macosLabel(BETA_MIN_MACOS) : macosLabel(release.minSystemVersion);
+const secondLine =
+  release.channel === 'beta' && BETA_RECOMMENDED_ON
+    ? `Recommended on ${BETA_RECOMMENDED_ON}`
+    : 'Apple Silicon and Intel';
 ---
 
 <div class:list={['flex flex-col gap-3', alignClass]}>
@@ -70,27 +73,9 @@ const showBetaPointer = betaPointerHref && release.channel === 'stable';
     showMeta && (
       <p class="text-xs text-aerial-text-dim">
         {sizeMb > 0 && <>{sizeMb}&nbsp;MB · </>}
-        {release.channel === 'beta' ? (
-          <>
-            Released {release.pubDateLabel} · Requires macOS&nbsp;{BETA_MIN_MACOS}+
-            <br />
-            Recommended for {BETA_RECOMMENDED_ON}
-          </>
-        ) : (
-          <>
-            Released {release.pubDateLabel} · macOS&nbsp;{release.minSystemVersion}+
-            <br />
-            Apple Silicon and Intel
-          </>
-        )}
-      </p>
-    )
-  }
-  {
-    showBetaPointer && (
-      <p class="text-xs text-aerial-text-dim">
-        On {BETA_RECOMMENDED_ON}? We recommend{' '}
-        <a href={betaPointerHref} class="text-aerial-link hover:text-aerial-link-hi">the beta</a>.
+        Released {release.pubDateLabel} · {requirement} or later
+        <br />
+        {secondLine}
       </p>
     )
   }

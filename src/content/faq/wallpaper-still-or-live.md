@@ -1,8 +1,9 @@
 ---
-question: Still or Live wallpaper — what's the difference?
+question: Still or Live wallpaper, what's the difference?
 category: Wallpaper
 order: 62
-badge: Beta
 ---
 
-On first launch, the 4.1 beta asks you to pick a mode. **Still** works the way macOS wallpapers normally do: a frame from the current video, updated as scenes change. **Live** plays the video itself, pausing automatically based on how much of your desktop is covered by windows. Switch between the two anytime with the wallpaper Play/Pause button in the Aerial menu bar.
+When you first open Aerial, it asks what you want: **No wallpaper** (just the screensaver), **Still wallpaper** or **Live wallpaper**. Still works the way Apple's own video wallpapers do once paused: a frame from the current video, refreshed when the video changes. Live plays the video, and pauses on its own when windows cover most of the desktop.
+
+You can switch between still and live at any time from the Wallpaper card in the popover, and change the choice itself later in Settings.

@@ -4,6 +4,6 @@ category: Accessibility
 order: 59
 ---
 
-Yes. Aerial 4 was built with VoiceOver in mind — accessibility labels are wired through the menu bar popover, video library, Expansions, settings panels, and the first-launch wizard. VoiceOver also automatically announces video changes ("Now playing: *name*") and download completions, so you can keep track of playback without opening anything.
+Yes. Aerial 4 was built with VoiceOver in mind: the menu bar popover, the Video Library, Expansions, every settings panel and the setup assistant carry proper labels, and VoiceOver announces when a download finishes.
 
-VoiceOver support is still a relatively young feature, so there are probably rough edges I haven't caught yet. **If you rely on VoiceOver, please reach out with feedback** — what works, what's confusing, what's missing. I want to make it as good as I can.
+VoiceOver support is still young, and I'm sure there are rough edges I haven't caught. **If you rely on VoiceOver, please tell me** what works, what's confusing and what's missing. I want to get this right.

@@ -4,6 +4,6 @@ category: Wallpaper
 order: 67
 ---
 
-Settings → Wallpaper → **Pause when wallpaper is hidden** auto-pauses playback when windows cover most of the screen — default 60% coverage, adjustable. This saves GPU and CPU when you can't see the video anyway, and playback resumes at your configured speed as soon as you uncover the desktop.
+Settings › Wallpaper → **Pause when wallpaper is hidden** pauses playback when windows cover most of the screen, 60% by default and adjustable. There's no point decoding video nobody can see, so this saves GPU and CPU, and playback resumes at your chosen speed as soon as you uncover the desktop. The same panel shows which apps are covering it right now and lets you ignore the ones that shouldn't count.
 
-**4.1 beta:** you can now see exactly which apps are triggering the pause — and exclude the ones that shouldn't count — in Settings › Wallpaper.
+The wallpaper can also pause on battery, under thermal pressure, in Low Power Mode and while your camera is on, each with its own switch in that panel. Click the popover's play button to override a pause for the current session.

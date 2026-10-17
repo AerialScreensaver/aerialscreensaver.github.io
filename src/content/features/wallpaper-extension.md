@@ -1,10 +1,9 @@
 ---
 title: A real macOS wallpaper
-summary: With Aerial 4.1, Aerial registers as a native wallpaper — it shows up in System Settings like any built-in one. Video plays as your actual desktop, nothing underneath, and keeps playing on the login screen after your Mac wakes.
+summary: Aerial is a native macOS wallpaper. It shows up in System Settings like the built-in ones, the video is your actual desktop with nothing underneath, and it keeps playing on the login screen after your Mac wakes.
 order: 1
 homepage: true
 featuresPage: false
-badge: Beta
 anchor: desktop-wallpaper
 video: login-screen.mp4
 videoPoster: login-screen.jpg

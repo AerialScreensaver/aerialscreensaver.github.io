@@ -5,19 +5,27 @@ import CommandBlock from '../../components/CommandBlock.astro';
 import {
   getLatestStable,
   getLatestBeta,
+  getLegacyStable,
   BETA_MIN_MACOS,
-  BETA_RECOMMENDED_ON,
+  macosLabel,
 } from '../../lib/appcast';
 
 const base = import.meta.env.BASE_URL;
 const link = (path: string) => `${base.replace(/\/$/, '')}${path}`;
 const stable = await getLatestStable();
 const beta = await getLatestBeta();
+const legacy = await getLegacyStable();
+
+const stableRequirement = macosLabel(stable.minSystemVersion);
+const legacyRequirement = legacy ? macosLabel(legacy.minSystemVersion) : '';
+const legacyNotesHref = legacy ? `${link('/release-notes')}#${legacy.version}` : '';
+
+const arrow = `<svg class="h-3 w-3" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg>`;
 ---
 
 <Base
   title={`Download Aerial ${stable.version}`}
-  description={`Aerial ${stable.version} for macOS. Free, open source, auto-updates via Sparkle. macOS ${stable.minSystemVersion}+.${beta ? ` Beta ${beta.version} also available.` : ''}`}
+  description={`Aerial ${stable.version} for macOS. Free, open source, auto-updates via Sparkle. ${stableRequirement} or later.${beta ? ` Beta ${beta.version} also available.` : ''}`}
 >
   <section class="mx-auto max-w-3xl px-6 pt-24 pb-16">
     <p class="text-sm font-semibold uppercase tracking-widest text-aerial-accent">Download</p>
@@ -25,8 +33,9 @@ const beta = await getLatestBeta();
       Aerial {stable.version}
     </h1>
     <p class="mt-6 text-aerial-text-muted text-lg leading-relaxed">
-      One zip. Drag the app into <code class="text-aerial-text">/Applications</code>. Open it once
-      and follow instructions.
+      One zip. Drag <code class="text-aerial-text">Aerial.app</code> into
+      <code class="text-aerial-text">/Applications</code>, open it, and the setup assistant takes
+      it from there.
     </p>
 
     <div class="mt-10 flex flex-col items-start gap-6">
@@ -36,9 +45,9 @@ const beta = await getLatestBeta();
             <div id="beta" class="scroll-mt-24">
               <DownloadCTA release={beta} variant="large" />
               <p class="mt-4 text-aerial-text-muted text-sm leading-relaxed max-w-md">
-                Aerial {beta.version} is the current beta — newest features first, occasional
-                rough edges. It requires macOS {BETA_MIN_MACOS} or later, and it's the build we
-                recommend on {BETA_RECOMMENDED_ON}. Betas auto-update to newer betas via Sparkle.
+                Aerial {beta.version} is the current beta. It gets new features first and may
+                have rough edges. It requires {macosLabel(BETA_MIN_MACOS)} or later, and it
+                updates itself to newer betas through Sparkle.
                 <a href={beta.releaseNotesUrl} class="text-aerial-link hover:text-aerial-link-hi">
                   What's new in {beta.version} →
                 </a>
@@ -62,29 +71,36 @@ const beta = await getLatestBeta();
     <div class="mt-14">
       <h2 class="text-aerial-text font-semibold text-lg">Or install with Homebrew</h2>
       <p class="mt-3 text-aerial-text-muted text-sm leading-relaxed">
-        Prefer the command line? Aerial is on <a href="https://brew.sh" class="text-aerial-link">Homebrew</a>.
-        Pick one — you don't need both.
+        Aerial is on <a href="https://brew.sh" class="text-aerial-link">Homebrew</a>.
+        {legacy
+          ? ` The cask installs the right build for your macOS: the current release on ${stableRequirement} and later, Aerial ${legacy.version} on ${legacyRequirement}.`
+          : ''}
       </p>
 
-      <div class="mt-5 grid gap-5 md:grid-cols-2">
-        <div>
-          <CommandBlock command="brew install aerial@beta" />
-          <p class="mt-2.5 text-aerial-text-muted text-sm leading-relaxed">
-            <strong class="text-aerial-text">Beta.</strong> Installs prerelease builds when one is
-            available, latest if not — newest features, bugs expected.
-          </p>
-        </div>
+      <div class:list={['mt-5 grid gap-5', beta && 'md:grid-cols-2']}>
         <div>
           <CommandBlock command="brew install aerial" />
           <p class="mt-2.5 text-aerial-text-muted text-sm leading-relaxed">
-            <strong class="text-aerial-text">Stable.</strong> Installs the latest stable version.
+            <strong class="text-aerial-text">Stable.</strong> The latest release.
           </p>
         </div>
+        {
+          beta && (
+            <div>
+              <CommandBlock command="brew install aerial@beta" />
+              <p class="mt-2.5 text-aerial-text-muted text-sm leading-relaxed">
+                <strong class="text-aerial-text">Beta.</strong> The current beta when there is
+                one, the latest release otherwise. Pick one cask, not both.
+              </p>
+            </div>
+          )
+        }
       </div>
 
       <p class="mt-6 rounded-lg border border-aerial-border bg-aerial-surface/40 px-4 py-3 text-aerial-text-muted text-sm leading-relaxed">
-        <strong class="text-aerial-text">Upgrading from Aerial 3.6.3?</strong> Launch the app once
-        after installing — it will install and enable the new Aerial&nbsp;4 screensaver which is now distributed as an App Extension.
+        <strong class="text-aerial-text">Coming from Aerial 3?</strong> Open the app once after
+        installing. It offers to move your downloaded videos over, then sets up the new
+        screensaver and wallpaper for you.
       </p>
     </div>
 
@@ -92,17 +108,18 @@ const beta = await getLatestBeta();
       <div class="rounded-xl border border-aerial-border bg-aerial-surface/50 p-6">
         <h2 class="text-aerial-text font-semibold">Compatibility</h2>
         <ul class="mt-3 space-y-1 text-aerial-text-muted">
-          {beta && <li>Beta: macOS {BETA_MIN_MACOS} (Tahoe) or later</li>}
-          <li>Stable: macOS {stable.minSystemVersion} (Sequoia) or later</li>
+          {beta && <li>Beta: {macosLabel(BETA_MIN_MACOS)} or later</li>}
+          <li>Aerial {stable.version}: {stableRequirement} or later</li>
           <li>Apple Silicon and Intel</li>
-          <li>Single-display and multi-display setups</li>
+          <li>One display or many</li>
         </ul>
       </div>
       <div class="rounded-xl border border-aerial-border bg-aerial-surface/50 p-6">
         <h2 class="text-aerial-text font-semibold">Updates</h2>
         <p class="mt-3 text-aerial-text-muted">
-          Aerial uses <a href="https://sparkle-project.org/" class="text-aerial-link">Sparkle</a> for
-          background auto-updates.
+          Aerial updates itself through
+          <a href="https://sparkle-project.org/" class="text-aerial-link">Sparkle</a>. You can
+          switch between the stable and beta channels in Settings › Auto Updates.
         </p>
       </div>
     </div>
@@ -111,82 +128,101 @@ const beta = await getLatestBeta();
       <h2 class="text-aerial-text font-semibold mb-3">After installing</h2>
       <ol class="list-decimal list-inside space-y-2">
         <li>Open <code class="text-aerial-text">Aerial.app</code> from <code class="text-aerial-text">/Applications</code>.</li>
-        <li>Follow instructions to setup how you want Aerial to work, then customize what you want to see by checking the video library, or configure the various settings, all accessible from the icon in your menu bar.</li>
+        <li>
+          The setup assistant asks three things: screensaver only, still wallpaper or live
+          wallpaper; which overlay style you want; and whether Aerial should live in your menu
+          bar or in the Dock. Everything can be changed later in Settings.
+        </li>
+        <li>
+          Then pick what plays from the Video Library, or just let the Apple videos rotate.
+        </li>
       </ol>
       <p class="mt-6">
-        Stuck? Check the <a href={link('/faq')} class="text-aerial-link">FAQ</a> or open an issue on
+        Stuck? Check the <a href={link('/faq')} class="text-aerial-link">FAQ</a>, ask on
+        <a href="https://discord.com/invite/TPuA5WG" class="text-aerial-link">Discord</a>, or open an issue on
         <a href="https://github.com/AerialScreensaver/Aerial/issues" class="text-aerial-link">GitHub</a>.
       </p>
     </div>
 
-    <div class="mt-16 border-t border-aerial-border pt-10">
+    <div id="older" class="mt-16 border-t border-aerial-border pt-10 scroll-mt-24">
       <h2 class="text-aerial-text font-semibold text-lg">On an older Mac?</h2>
       <p class="mt-3 text-aerial-text-muted text-sm leading-relaxed">
-        Aerial {stable.version} requires macOS {stable.minSystemVersion} (Sequoia) or later. If
-        you're on an older system, two legacy builds are still available — neither is maintained,
-        and neither will receive new features or fixes.
+        Aerial {stable.version} requires {stableRequirement} or later.
+        {legacy
+          ? ` Aerial ${legacy.version} is the last version for ${legacyRequirement}, and two much older builds are still around for Macs that can't run that either. Neither of those two is maintained.`
+          : ' Two older builds are still around for Macs that can\'t run it. Neither is maintained.'}
       </p>
 
       <div class="mt-6 grid gap-4 md:grid-cols-2 text-sm">
+        {
+          legacy && (
+            <div class="rounded-xl border border-aerial-accent/40 bg-aerial-accent/[0.06] p-5 md:col-span-2">
+              <h3 class="text-aerial-text font-semibold">Aerial {legacy.version} for {legacyRequirement}</h3>
+              <p class="mt-2 text-aerial-text-muted leading-relaxed">
+                The last release of the 4.0 line. It has the screensaver, the overlay editor,
+                playlists, live feeds and your own videos, but not the native wallpaper
+                extension, which needs macOS 26. Sparkle won't offer it the 4.1 update, so it
+                stays put until you upgrade macOS.
+              </p>
+              <div class="mt-4 flex flex-wrap items-center gap-5">
+                <a
+                  href={legacy.downloadUrl}
+                  class="inline-flex items-center gap-2 text-aerial-link hover:text-aerial-link-hi"
+                >
+                  Download Aerial {legacy.version}
+                  <Fragment set:html={arrow} />
+                </a>
+                <a href={legacyNotesHref} class="text-aerial-text-muted hover:text-aerial-text">
+                  Release notes
+                </a>
+              </div>
+            </div>
+          )
+        }
+
         <div class="rounded-xl border border-aerial-border bg-aerial-surface/40 p-5">
           <h3 class="text-aerial-text font-semibold">Aerial Companion 1.5.2</h3>
           <p class="mt-2 text-aerial-text-muted leading-relaxed">
-            The last build of the previous-generation app, for Macs that can't run macOS 15.
+            For Macs that can't run macOS 15. This is the previous generation, from when the app
+            and the screensaver were two separate pieces, hence the name.
           </p>
           <p class="mt-3 text-aerial-text-dim text-xs leading-relaxed">
             <strong class="text-aerial-text-muted">Important:</strong> after installing, open
-            Companion's settings and <strong class="text-aerial-text-muted">disable
-            auto-updates</strong> — otherwise it will prompt you to upgrade to a version your Mac
-            can't run.
+            its settings and <strong class="text-aerial-text-muted">disable auto-updates</strong>,
+            otherwise it will offer you versions your Mac can't run.
           </p>
           <a
             href="https://github.com/AerialScreensaver/Aerial/releases/download/v1.5.2/Aerial.Companion.zip"
             class="mt-4 inline-flex items-center gap-2 text-aerial-link hover:text-aerial-link-hi"
           >
             Download Aerial Companion 1.5.2
-            <svg class="h-3 w-3" viewBox="0 0 12 12" aria-hidden="true">
-              <path
-                d="M4.5 2.5 8 6l-3.5 3.5"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                fill="none"></path>
-            </svg>
+            <Fragment set:html={arrow} />
           </a>
         </div>
 
         <div class="rounded-xl border border-aerial-border bg-aerial-surface/40 p-5">
           <h3 class="text-aerial-text font-semibold">Aerial 3.6.3 (.saver)</h3>
           <p class="mt-2 text-aerial-text-muted leading-relaxed">
-            The classic standalone screensaver bundle from the original repository, for the oldest
-            macOS versions.
+            The standalone screensaver bundle from the original repository, for the oldest macOS
+            versions.
           </p>
           <p class="mt-3 text-aerial-text-dim text-xs leading-relaxed">
-            No companion app, no auto-updates — just the <code class="text-aerial-text-muted">.saver</code>
-            installed via System Preferences.
+            No app and no auto-updates: you install the <code class="text-aerial-text-muted">.saver</code>
+            from System Preferences.
           </p>
           <a
             href="https://github.com/JohnCoates/Aerial/releases/download/v3.6.3/Aerial.saver.zip"
             class="mt-4 inline-flex items-center gap-2 text-aerial-link hover:text-aerial-link-hi"
           >
             Download Aerial 3.6.3
-            <svg class="h-3 w-3" viewBox="0 0 12 12" aria-hidden="true">
-              <path
-                d="M4.5 2.5 8 6l-3.5 3.5"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                fill="none"></path>
-            </svg>
+            <Fragment set:html={arrow} />
           </a>
         </div>
       </div>
     </div>
 
     <div class="mt-16 text-xs text-aerial-text-dim">
-      <p>Direct download URL{beta && 's'} (also used by Sparkle):</p>
+      <p>Direct download URL{beta || legacy ? 's' : ''} (the same ones Sparkle uses):</p>
       {
         beta && (
           <p class="mt-1">
@@ -197,6 +233,13 @@ const beta = await getLatestBeta();
       <p class="mt-1">
         Stable: <a href={stable.downloadUrl} class="break-all text-aerial-text-muted">{stable.downloadUrl}</a>
       </p>
+      {
+        legacy && (
+          <p class="mt-1">
+            {legacyRequirement}: <a href={legacy.downloadUrl} class="break-all text-aerial-text-muted">{legacy.downloadUrl}</a>
+          </p>
+        )
+      }
     </div>
   </section>
 </Base>
