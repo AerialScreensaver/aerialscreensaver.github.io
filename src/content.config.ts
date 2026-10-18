@@ -1,5 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { docsLoader } from '@astrojs/starlight/loaders';
+import { docsSchema } from '@astrojs/starlight/schema';
 
 const features = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/features' }),
@@ -44,4 +46,20 @@ const faq = defineCollection({
   }),
 });
 
-export const collections = { features, faq };
+
+// Developer documentation rendered by Starlight (src/content/docs/**).
+// The extra fields feed the article header in src/components/starlight/PageTitle.astro;
+// see docs/WRITING.md for the conventions.
+const docs = defineCollection({
+  loader: docsLoader(),
+  schema: docsSchema({
+    extend: z.object({
+      kind: z.enum(['sample-code', 'article']).optional(), // eyebrow label
+      availability: z.array(z.string()).default([]), // e.g. ['macOS 14.0+', 'Xcode 15+']
+      module: z.string().optional(), // e.g. 'ScreenSaver'
+      repo: z.string().url().optional(), // GitHub URL of the sample project
+    }),
+  }),
+});
+
+export const collections = { features, faq, docs };

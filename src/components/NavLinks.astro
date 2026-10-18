@@ -1,0 +1,75 @@
+---
+/**
+ * The row inside the site header: logo, section links, Download button.
+ *
+ * - `site`: used by Nav.astro inside its sticky wrapper; brings its own
+ *   container width and padding.
+ * - `docs`: used by the Starlight Header override, where Starlight's fixed
+ *   header box already provides height, padding, background and border.
+ *
+ * Docs pages have no Tailwind preflight, so links carry explicit colour and
+ * `no-underline` classes instead of relying on the reset.
+ */
+import { navLinks, hrefFor, isActive, withBase } from '../data/siteLinks';
+
+interface Props {
+  variant?: 'site' | 'docs';
+}
+
+const { variant = 'site' } = Astro.props;
+const current = Astro.url.pathname;
+---
+
+<div
+  class:list={[
+    'flex items-center justify-between gap-6',
+    variant === 'site' ? 'mx-auto max-w-6xl px-6 py-4' : 'h-full w-full',
+  ]}
+>
+  <a
+    href={withBase('/')}
+    class="flex items-center gap-2 text-aerial-text no-underline font-semibold tracking-tight text-lg hover:text-aerial-accent-hi transition-colors"
+  >
+    <img
+      src={withBase('/aerial-icon-64.png')}
+      srcset={`${withBase('/aerial-icon-64.png')} 1x, ${withBase('/icon-192.png')} 3x`}
+      width="32"
+      height="32"
+      alt=""
+      class="h-8 w-8"
+    />
+    <span>Aerial</span>
+  </a>
+
+  <nav class="hidden md:flex items-center gap-6 text-sm" aria-label="Site">
+    {
+      navLinks.map((item) => {
+        const active = isActive(current, item);
+        return (
+          <a
+            href={hrefFor(item)}
+            target={item.external ? '_blank' : undefined}
+            rel={item.external ? 'noopener noreferrer' : undefined}
+            aria-current={active ? 'page' : undefined}
+            class:list={[
+              'no-underline transition-colors',
+              active ? 'text-aerial-accent' : 'text-aerial-text-muted hover:text-aerial-text',
+            ]}
+          >
+            {item.label}
+          </a>
+        );
+      })
+    }
+  </nav>
+
+  <a
+    href={withBase('/download')}
+    class:list={[
+      'px-4 py-2 rounded-md bg-aerial-accent text-aerial-bg-deep no-underline font-medium text-sm hover:bg-aerial-accent-hi transition-colors',
+      variant === 'docs' && 'hidden sm:inline-flex',
+    ]}
+  >
+    Download
+  </a>
+</div>

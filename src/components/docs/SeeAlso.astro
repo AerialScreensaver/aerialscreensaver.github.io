@@ -1,0 +1,19 @@
+---
+/**
+ * "See also" block: a stack of Starlight <LinkCard>s, optionally under a small
+ * group label (Apple groups related links by topic). Keep the `## See also`
+ * heading in the MDX itself so it appears in the table of contents.
+ */
+interface Props {
+  label?: string;
+}
+
+const { label } = Astro.props;
+---
+
+<section class="not-content my-6">
+  {label && <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-aerial-link">{label}</p>}
+  <div class="grid gap-3">
+    <slot />
+  </div>
+</section>

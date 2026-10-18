@@ -1,0 +1,32 @@
+---
+/**
+ * House callout for behaviour that was observed rather than documented by
+ * Apple: reverse-engineered classes, pluginkit quirks, thumbnail caching.
+ *
+ * Word the body as an observation ("in testing", "appears to"), never as an
+ * API contract, and name the macOS version it was seen on via `on`.
+ */
+import { Aside } from '@astrojs/starlight/components';
+
+interface Props {
+  /** The macOS version the behaviour was observed on, e.g. "macOS 15.4". */
+  on?: string;
+}
+
+const { on } = Astro.props;
+const title = on ? `Observed behavior (${on})` : 'Observed behavior';
+---
+
+<div class="observed">
+  <Aside type="note" title={title} icon="magnifier"><slot /></Aside>
+</div>
+
+<style is:global>
+  /* Retint the note aside to the purple family so observed facts read
+     differently from notes. Variable names mirror Starlight's Aside.astro. */
+  .observed .starlight-aside {
+    --sl-color-asides-text-accent: var(--sl-color-purple-high);
+    --sl-color-asides-border: var(--sl-color-purple);
+    --sl-color-asides-bg: var(--sl-color-purple-low);
+  }
+</style>

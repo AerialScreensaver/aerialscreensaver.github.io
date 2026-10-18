@@ -1,0 +1,348 @@
+---
+title: Add a configuration sheet and persist settings
+description: Present an Options sheet from System Settings, end it the way the framework expects, and store settings that both instances of the extension read.
+kind: article
+availability: ['macOS 14.0+', 'Xcode 15+']
+module: ScreenSaver
+repo: https://github.com/AerialScreensaver/AppexSaverMinimal
+sidebar:
+  label: Add a configuration sheet
+  order: 3
+---
+import { Aside, Steps, LinkCard } from '@astrojs/starlight/components';
+import Observed from '../../../components/docs/Observed.astro';
+import SeeAlso from '../../../components/docs/SeeAlso.astro';
+
+<Aside type="caution" title="Private extension point">
+This page is part of a series on a private extension point that Apple has not published for third-party use. Read the notice at the top of [Build a screensaver as an app extension](/developers/appex-screensaver/) before relying on it.
+</Aside>
+
+## Overview
+
+A `.saver` returns a window from `configureSheet` and the engine presents it. An app-extension screensaver provides a view controller instead, and System Settings presents it in a sheet of its own: the sheet window belongs to System Settings, the controls inside it belong to your extension, and the two meet through a remote view. That split decides how the sheet ends and where the settings live.
+
+The sample's sheet offers two settings, a cycle speed and a switch for the version label. This article shows how the sample declares the sheet, builds it on the framework's configuration class, ends it, stores the settings with `ScreenSaverDefaults`, and applies them in the running screensaver, including in the instance that was already running when the sheet changed them.
+
+## Declare the sheet
+
+Two keys in the extension's `Info.plist` announce the sheet; see [Declare the extension point](/developers/appex-screensaver/#declare-the-extension-point) for the whole file:
+
+```xml title="AppexSaverMinimalExtension/Info.plist"
+	<key>SSEHasConfigureSheet</key>
+	<true/>
+	<key>ScreenSaverConfigurationSheetViewControllerClass</key>
+	<string>$(PRODUCT_MODULE_NAME).AppexSaverMinimalConfigurationViewController</string>
+```
+
+With `SSEHasConfigureSheet` set, System Settings shows an Options button next to the screensaver and instantiates the named class when the button is clicked.
+
+## Subclass the configuration view controller
+
+The class must inherit from `ScreenSaverConfigurationViewController`, declared in the sample's private header. The framework calls `configureSheetWillPresent()` on it before the sheet appears, and your code calls `configureSheetDidEnd()` to close it:
+
+```swift title="AppexSaverMinimalExtension/AppexSaverMinimalConfigurationViewController.swift" {8,66-71,106-113}
+import AppKit
+import ScreenSaver
+
+private let logger = AppexLog.logger("Configuration")
+
+@objc(AppexSaverMinimalConfigurationViewController)
+class AppexSaverMinimalConfigurationViewController: ScreenSaverConfigurationViewController {
+
+    private let settings = AppexSaverSettings.shared
+    /// Values when the sheet opened, restored on Cancel.
+    private var snapshot: AppexSaverSettings.Snapshot?
+
+    private let speedPopUp = NSPopUpButton(frame: .zero, pullsDown: false)
+    private let labelCheckbox = NSButton(checkboxWithTitle: "Show version label", target: nil, action: nil)
+
+    // More…
+
+    override func loadView() {
+        logger.info("loadView()")
+
+        let title = NSTextField(labelWithString: "AppexSaverMinimal")
+        title.font = .systemFont(ofSize: 15, weight: .semibold)
+
+        speedPopUp.addItems(withTitles: ["Slow (6 seconds)", "Normal (3 seconds)", "Fast (1 second)"])
+        speedPopUp.target = self
+        speedPopUp.action = #selector(speedChanged(_:))
+
+        labelCheckbox.target = self
+        labelCheckbox.action = #selector(labelToggled(_:))
+
+        let grid = NSGridView(views: [
+            [NSTextField(labelWithString: "Cycle speed:"), speedPopUp],
+            [NSGridCell.emptyContentView, labelCheckbox],
+        ])
+        grid.rowAlignment = .firstBaseline
+        grid.column(at: 0).xPlacement = .trailing
+
+        let cancel = NSButton(title: "Cancel", target: self, action: #selector(cancelPressed(_:)))
+        cancel.keyEquivalent = "\u{1b}"
+        let ok = NSButton(title: "OK", target: self, action: #selector(okPressed(_:)))
+        ok.keyEquivalent = "\r"
+        let buttons = NSStackView(views: [cancel, ok])
+        buttons.orientation = .horizontal
+        buttons.spacing = 12
+
+        let root = NSView(frame: NSRect(x: 0, y: 0, width: 380, height: 170))
+        for subview in [title, grid, buttons] {
+            subview.translatesAutoresizingMaskIntoConstraints = false
+            root.addSubview(subview)
+        }
+        NSLayoutConstraint.activate([
+            title.topAnchor.constraint(equalTo: root.topAnchor, constant: 20),
+            title.leadingAnchor.constraint(equalTo: root.leadingAnchor, constant: 20),
+            grid.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 16),
+            grid.leadingAnchor.constraint(equalTo: root.leadingAnchor, constant: 20),
+            grid.trailingAnchor.constraint(lessThanOrEqualTo: root.trailingAnchor, constant: -20),
+            buttons.topAnchor.constraint(greaterThanOrEqualTo: grid.bottomAnchor, constant: 20),
+            buttons.trailingAnchor.constraint(equalTo: root.trailingAnchor, constant: -20),
+            buttons.bottomAnchor.constraint(equalTo: root.bottomAnchor, constant: -20),
+        ])
+
+        self.view = root
+        self.preferredContentSize = root.frame.size
+        reloadControls()
+    }
+
+    /// The framework calls this right before System Settings shows the sheet.
+    override func configureSheetWillPresent() {
+        logger.info("configureSheetWillPresent()")
+        super.configureSheetWillPresent()
+        snapshot = settings.snapshot()
+        reloadControls()
+    }
+
+    private func reloadControls() {
+        let index = AppexSaverSettings.cycleIntervals.firstIndex(of: settings.cycleInterval) ?? 1
+        speedPopUp.selectItem(at: index)
+        labelCheckbox.state = settings.showsVersionLabel ? .on : .off
+    }
+
+    // MARK: - Actions
+
+    /// Changes apply immediately so the preview next to the sheet reflects them;
+    /// Cancel restores the snapshot taken when the sheet opened.
+    @objc private func speedChanged(_ sender: Any?) {
+        let index = speedPopUp.indexOfSelectedItem
+        guard AppexSaverSettings.cycleIntervals.indices.contains(index) else { return }
+        settings.cycleInterval = AppexSaverSettings.cycleIntervals[index]
+    }
+
+    @objc private func labelToggled(_ sender: Any?) {
+        settings.showsVersionLabel = labelCheckbox.state == .on
+    }
+
+    @objc private func okPressed(_ sender: Any?) {
+        logger.info("OK")
+        endSheet()
+    }
+
+    @objc private func cancelPressed(_ sender: Any?) {
+        logger.info("Cancel")
+        if let snapshot {
+            settings.restore(snapshot)
+        }
+        endSheet()
+    }
+
+    private func endSheet() {
+        // The sheet window belongs to System Settings and this view is a remote
+        // view inside it: `view.window?.sheetParent` is nil, and `dismiss(_:)`
+        // would only empty the remote view while the sheet stays up.
+        // `configureSheetDidEnd()` asks the host to end the sheet.
+        logger.info("endSheet() -> configureSheetDidEnd()")
+        configureSheetDidEnd()
+    }
+}
+```
+
+`preferredContentSize` is what the host reads to size the sheet, so set it from the view's own frame. The controls apply their values as they change, which keeps the preview next to the sheet honest, and Cancel restores the snapshot that `configureSheetWillPresent()` took.
+
+The one line that is specific to the extension point is the last one. From inside the sheet, `view.window` is the service's own window, not the sheet, so it has no `sheetParent` to end. Calling `dismiss(_:)` on the controller is worse than useless.
+
+<Observed on="macOS 27.2">
+An earlier version of the sample subclassed `NSViewController` and dismissed itself with `dismiss(_:)`. The sheet stayed open with an empty grey area where the controls had been, and the next click inside it raised an uncaught exception in the extension process, which AppKit turned into a crash. With `configureSheetDidEnd()` the sheet closes at once, on OK and on Cancel.
+</Observed>
+
+If you prefer SwiftUI for the controls, build an [`NSHostingController`](https://developer.apple.com/documentation/swiftui/nshostingcontroller) with your view and use its view as `self.view`, with the same `preferredContentSize`; the subclass and the two framework hooks stay as they are.
+
+## Store settings with ScreenSaverDefaults
+
+Apple's documentation for [`ScreenSaverDefaults`](https://developer.apple.com/documentation/screensaver/screensaverdefaults) explains why a screensaver should not use `UserDefaults.standard`: "Because multiple apps can load a screen saver, you can't use the standard UserDefaults object to store preferences." The advice holds for an app extension, with a twist: the sheet and the screensaver are two instances of the same extension, in two processes, sharing one sandbox container. The sample wraps the store in one class:
+
+```swift title="AppexSaverMinimalExtension/AppexSaverSettings.swift" {17-24,30-35,55-61}
+final class AppexSaverSettings: NSObject {
+
+    static let shared = AppexSaverSettings()
+
+    /// Posted on the main queue after a value changes in this process or in the
+    /// other instance of the extension, so a live view (the wallpaper or the
+    /// System Settings preview while the sheet is open) can apply it at once.
+    static let didChangeNotification = Notification.Name("net.aerialscreensaver.AppexSaverMinimal.settingsDidChange")
+
+    // More…
+
+    private let defaults: UserDefaults
+    private var isObserving = false
+    private let moduleName: String
+    private let logger = AppexLog.logger("Settings")
+
+    private override init() {
+        // The module name must be this bundle's identifier: inside the sandbox,
+        // cfprefsd lets the extension write only its own preference domain.
+        let module = Bundle(for: AppexSaverSettings.self).bundleIdentifier
+            ?? "net.aerialscreensaver.AppexSaverMinimal.Extension"
+        moduleName = module
+        defaults = ScreenSaverDefaults(forModuleWithName: module) ?? .standard
+        defaults.register(defaults: [
+            Key.cycleInterval: 3.0,
+            Key.showsVersionLabel: true,
+        ])
+        super.init()
+        // The sheet runs in the instance System Settings hosts, while the live
+        // wallpaper and the screensaver run in the instance the Wallpaper agent
+        // hosts. Both read the same domain. UserDefaults.didChangeNotification
+        // is only posted for writes made in the same process; key-value
+        // observing on the defaults object reports writes from any process.
+        for key in [Key.cycleInterval, Key.showsVersionLabel] {
+            defaults.addObserver(self, forKeyPath: key, options: [.new], context: nil)
+        }
+        isObserving = true
+    }
+
+    // More…
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?,
+                               change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        guard keyPath == Key.cycleInterval || keyPath == Key.showsVersionLabel else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+            return
+        }
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: Self.didChangeNotification, object: self)
+        }
+    }
+
+    /// Re-reads the store before a view applies it.
+    func reload() {
+        defaults.synchronize()
+    }
+
+    /// Seconds between two colours.
+    var cycleInterval: TimeInterval {
+        get { defaults.double(forKey: Key.cycleInterval) }
+        set {
+            defaults.set(newValue, forKey: Key.cycleInterval)
+            didChange()
+        }
+    }
+
+    // More…
+
+    private func didChange() {
+        defaults.synchronize()
+    }
+}
+```
+
+Three decisions are in this file. The module name is the extension's bundle identifier, because inside the sandbox the preferences daemon lets the extension write its own domain and nothing else. Change notifications come from key-value observing rather than from [`UserDefaults.didChangeNotification`](https://developer.apple.com/documentation/foundation/userdefaults/didchangenotification), which Apple documents as posted only for changes made in the current process. And `reload()` calls `synchronize()` before a view reads the values.
+
+<Observed on="macOS 27.2">
+The store landed in the extension's container, at `~/Library/Containers/net.aerialscreensaver.AppexSaverMinimal.Extension/Data/Library/Preferences/ByHost/`, in a plist named after the bundle identifier and the hardware UUID. When the sheet changed a value, the agent's instance received the key-value observation within a few milliseconds, with the new value in the change dictionary. Its `ScreenSaverDefaults` object, however, kept returning the previous value until `synchronize()` ran, and the plist on disk was written later still. Without the call, a screensaver started from a hot corner right after the change ran with the old speed, and picked up the new one only after the Mac had slept and the agent had started a fresh instance.
+</Observed>
+
+Aerial 4.0 avoided the question by keeping its settings in a JSON file under `/Users/Shared/`, which both the app and the extension could reach through a sandbox exception. The defaults store needs no exception, and the measured behaviour is simple enough to handle with one call.
+
+If you are porting a `.saver`, its settings live somewhere else. A `.saver` runs inside `legacyScreenSaver`, so its `ScreenSaverDefaults` land in that extension's container, at `~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/`, under the module name it was given. Your extension's container is a different one, and reading the old values from the host app is the natural migration path, with one obstacle on macOS 27.
+
+<Observed on="macOS 27, Aerial's migration">
+On macOS 27 the legacy container is protected app data. An app that reads it gets nothing and no prompt: the dialog that would normally offer access to another app's data cannot appear, because `legacyScreenSaver` is an extension inside a framework with no app record of its own, and only Full Disk Access would open the folder. What works is user intent. Aerial presents an `NSOpenPanel` pointed at the container's `Data/Library` folder and lets the person confirm it with nothing selected; the system records the choice as an extended attribute on that folder, and from then on the app can read and move everything beneath it, across launches, with no prompt. Verified on macOS 27.2.
+</Observed>
+
+Do that work in the host app, which can present the panel, and hand the values to the extension through a location both can open, such as an [app group](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.application-groups) container, since the host app cannot write into the extension's own container. The sample has no settings to migrate, so it stops short of this; the ingredients are the ones above.
+
+## Apply settings in the screensaver
+
+The view reads the store whenever a view starts and whenever the store changes. Both paths go through one method:
+
+```swift title="AppexSaverMinimalExtension/AppexSaverMinimalView.swift" {6-7,15-19}
+    /// Called when a view starts and whenever the store changes. The Wallpaper
+    /// agent keeps one instance of the extension running across activations,
+    /// so each new view must read the store afresh rather than trust values
+    /// cached by an earlier one.
+    private func applySettings() {
+        settings.reload()
+        animator.interval = settings.cycleInterval
+        animator.showsLabel = settings.showsVersionLabel
+        logger.info("applySettings interval=\(self.animator.interval, privacy: .public) showsLabel=\(self.animator.showsLabel, privacy: .public)")
+    }
+
+    private func observeSettings() {
+        guard settingsObserver == nil else { return }
+        settingsObserver = NotificationCenter.default.addObserver(
+            forName: AppexSaverSettings.didChangeNotification, object: nil, queue: .main
+        ) { [weak self] _ in
+            self?.applySettings()
+        }
+    }
+```
+
+The animator accepts changes while running: setting `interval` restarts its timer, and `showsLabel` hides the label layer. That is what makes the picture next to the sheet react as you move the pop-up, since that picture is the agent's instance applying the same store.
+
+## Test the sheet
+
+<Steps>
+
+1. Build and run the `AppexSaverMinimal` scheme, then select the screensaver in System Settings.
+
+2. Click Options. Change the cycle speed and watch the picture above the sheet change pace; uncheck Show version label and watch the label disappear.
+
+3. Click OK. The sheet closes and the desktop picture restarts with the new values.
+
+4. Open Options again, change the speed, and click Cancel. The sheet closes and the previous values are back.
+
+5. Start the screensaver with a hot corner. It runs with the values you chose, without a restart of the extension.
+
+</Steps>
+
+To check the stored values from a terminal, read the plist in the extension's container:
+
+```sh
+plutil -p ~/Library/Containers/net.aerialscreensaver.AppexSaverMinimal.Extension/Data/Library/Preferences/ByHost/*.plist
+```
+
+## See also
+
+<SeeAlso label="This series">
+  <LinkCard
+    title="Understand the screensaver extension lifecycle"
+    description="Why two instances of the extension run at once, and what each one does."
+    href="/developers/appex-lifecycle/"
+  />
+  <LinkCard
+    title="Register, install and distribute the screensaver"
+    description="Register a development build with pluginkit, avoid duplicate registrations, provide a thumbnail, choose entitlements, and notarize the app."
+    href="/developers/appex-distribution/"
+  />
+</SeeAlso>
+
+<SeeAlso label="Apple documentation">
+  <LinkCard
+    title="ScreenSaverDefaults"
+    description="A class that defines a set of methods for saving and restoring user defaults for screen savers."
+    href="https://developer.apple.com/documentation/screensaver/screensaverdefaults"
+  />
+  <LinkCard
+    title="UserDefaults.didChangeNotification"
+    description="Posted when the current process changes the value of a setting."
+    href="https://developer.apple.com/documentation/foundation/userdefaults/didchangenotification"
+  />
+  <LinkCard
+    title="NSHostingController"
+    description="An AppKit view controller that hosts SwiftUI view hierarchy."
+    href="https://developer.apple.com/documentation/swiftui/nshostingcontroller"
+  />
+</SeeAlso>

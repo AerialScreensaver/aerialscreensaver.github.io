@@ -1,0 +1,118 @@
+/*
+  Starlight (developer docs) CSS entry. Loaded ONLY through
+  `starlight({ customCss })` in astro.config.mjs — never import it from a page.
+
+  Marketing pages use global.css (Tailwind with preflight). Starlight ships its
+  own reset, and Tailwind's preflight would break its sidebar, lists and asides,
+  so this entry pulls in Tailwind's theme + utilities only. Shared components
+  (NavLinks, DocsFooter, src/components/docs/*) must never import CSS: they rely
+  on utilities and the aerial tokens, which both entries provide.
+*/
+@layer base, starlight, theme, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities); /* no tailwindcss/preflight.css */
+@import './tokens.css' layer(theme);
+
+@layer base {
+  /* The one preflight rule the border-* utilities rely on and Starlight's reset lacks. */
+  *,
+  ::before,
+  ::after {
+    border: 0 solid;
+  }
+}
+
+:root {
+  /* ---- Palette: --sl-* <- aerial tokens (dark only; no [data-theme='light'] block on purpose) ---- */
+  --sl-color-white: var(--color-aerial-text);
+  --sl-color-gray-1: var(--color-aerial-text);
+  --sl-color-gray-2: var(--color-aerial-text-muted);
+  --sl-color-gray-3: var(--color-aerial-text-dim);
+  --sl-color-gray-4: var(--color-aerial-border);
+  --sl-color-gray-5: var(--color-aerial-surface-hi);
+  --sl-color-gray-6: var(--color-aerial-surface);
+  --sl-color-black: var(--color-aerial-bg-deep);
+
+  --sl-color-accent-low: oklch(30% 0.08 70);
+  --sl-color-accent: var(--color-aerial-accent);
+  --sl-color-accent-high: var(--color-aerial-accent-hi);
+
+  --sl-color-text: var(--color-aerial-text-muted);
+  --sl-color-text-accent: var(--color-aerial-link);
+  --sl-color-bg: var(--color-aerial-bg-deep);
+  --sl-color-bg-nav: oklch(11% 0.02 250 / 0.85); /* Nav.astro: bg-aerial-bg-deep/85 */
+  --sl-color-bg-sidebar: var(--color-aerial-bg);
+  --sl-color-bg-inline-code: var(--color-aerial-surface);
+  --sl-color-hairline: oklch(28% 0.02 250 / 0.5); /* Nav.astro: border-aerial-border/50 */
+  --sl-color-hairline-shade: oklch(28% 0.02 250 / 0.5);
+  --sl-color-hairline-light: var(--color-aerial-border);
+
+  /* Aside hues: caution -> amber family, note -> sky family, matching the site accent and links. */
+  --sl-color-orange-low: oklch(26% 0.06 70);
+  --sl-color-orange: var(--color-aerial-accent);
+  --sl-color-orange-high: var(--color-aerial-accent-hi);
+  --sl-color-blue-low: oklch(26% 0.06 230);
+  --sl-color-blue: var(--color-aerial-link);
+  --sl-color-blue-high: var(--color-aerial-link-hi);
+
+  /* ---- Type and layout ---- */
+  --sl-font: var(--font-body);
+  --sl-font-mono: var(--font-mono);
+  --sl-nav-height: 4rem; /* Nav.astro row: py-4 + 32px icon = 64px at every breakpoint */
+  --sl-nav-pad-x: 1.5rem; /* px-6 */
+  --sl-nav-pad-y: 0;
+  --sl-sidebar-pad-x: 1.5rem; /* aligns sidebar text with the logo */
+  --sl-content-width: 48rem; /* max-w-3xl, the width of the FAQ/legal/release-notes columns */
+}
+
+/* ---- Site chrome parity (see global.css @layer base) ---- */
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection {
+  background-color: var(--color-aerial-accent);
+  color: var(--color-aerial-bg-deep);
+}
+.sl-markdown-content :is(h1, h2, h3, h4, h5, h6) {
+  letter-spacing: -0.02em;
+}
+/* Translucent, blurred header like Nav.astro. `.page > header.header` is Starlight's PageFrame box. */
+.page > header.header {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+/* Current page in the sidebar: amber text like the active nav link, not Starlight's filled pill. */
+.sidebar-content a[aria-current='page'],
+.sidebar-content a[aria-current='page']:hover,
+.sidebar-content a[aria-current='page']:focus {
+  background-color: color-mix(in oklch, var(--color-aerial-accent) 12%, transparent);
+  color: var(--color-aerial-accent);
+}
+
+/* ---- Links to Apple's developer documentation get an "Apple" pill, styled like
+   the availability badges in the article header (PageTitle.astro). Scoped to
+   prose, lists and tables so link cards and code frames stay untouched. The
+   pill is inline-block so the link's underline does not run under it, and the
+   link itself does not wrap so the pill never lands alone on the next line
+   (keep these link texts short). ---- */
+.sl-markdown-content :is(p, li, td) a[href^="https://developer.apple.com"] {
+  white-space: nowrap;
+}
+.sl-markdown-content :is(p, li, td) a[href^="https://developer.apple.com"]::after {
+  content: "Apple";
+  display: inline-block;
+  margin-inline-start: 0.35em;
+  padding: 0.05em 0.5em;
+  border: 1px solid var(--color-aerial-border);
+  border-radius: 9999px;
+  background-color: color-mix(in oklch, var(--color-aerial-surface) 60%, transparent);
+  color: var(--color-aerial-text-muted);
+  font-family: var(--font-body);
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  line-height: 1.4;
+  vertical-align: 0.15em;
+  text-decoration: none;
+}

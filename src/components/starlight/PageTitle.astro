@@ -1,0 +1,53 @@
+---
+/**
+ * Starlight `PageTitle` override implementing the article header anatomy:
+ * eyebrow (kind, module, availability badges), title, abstract, repo link.
+ *
+ * The extra fields come from the extended `docs` schema in src/content.config.ts.
+ * `id="_top"` is required: Starlight's skip link and "Overview" TOC entry target it.
+ */
+const { entry } = Astro.locals.starlightRoute;
+const { title, description, kind, availability = [], module: moduleName, repo } = entry.data;
+
+const KIND_LABEL: Record<string, string> = {
+  'sample-code': 'Sample code',
+  article: 'Article',
+};
+const kindLabel = kind ? (KIND_LABEL[kind] ?? kind) : undefined;
+const hasEyebrow = Boolean(kindLabel || moduleName || availability.length > 0);
+---
+
+{
+  hasEyebrow && (
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
+      {kindLabel && (
+        <span class="font-semibold uppercase tracking-widest text-aerial-accent">{kindLabel}</span>
+      )}
+      {moduleName && <span class="font-mono text-aerial-text-dim">{moduleName}</span>}
+      {availability.map((item) => (
+        <span class="rounded-full border border-aerial-border bg-aerial-surface/60 px-2 py-0.5 text-[11px] font-semibold tracking-wide text-aerial-text-muted">
+          {item}
+        </span>
+      ))}
+    </div>
+  )
+}
+<h1
+  id="_top"
+  class:list={[
+    'text-4xl md:text-5xl font-bold tracking-tight text-aerial-text',
+    hasEyebrow ? 'mt-3' : 'mt-1',
+  ]}
+>
+  {title}
+</h1>
+{description && <p class="mt-5 text-lg leading-relaxed text-aerial-text-muted">{description}</p>}
+{
+  repo && (
+    <p class="mt-4 text-sm">
+      <a href={repo} class="text-aerial-link no-underline hover:text-aerial-link-hi">
+        View the sample on GitHub →
+      </a>
+    </p>
+  )
+}

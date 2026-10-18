@@ -1,0 +1,234 @@
+---
+title: Register, install and distribute the screensaver
+description: Register a development build with pluginkit, avoid duplicate registrations, provide a thumbnail, choose entitlements, and notarize the app that carries the screensaver.
+kind: article
+availability: ['macOS 14.0+', 'Xcode 15+']
+module: ScreenSaver
+repo: https://github.com/AerialScreensaver/AppexSaverMinimal
+sidebar:
+  label: Register, install and distribute
+  order: 4
+---
+import { Aside, Steps, LinkCard } from '@astrojs/starlight/components';
+import Observed from '../../../components/docs/Observed.astro';
+import SeeAlso from '../../../components/docs/SeeAlso.astro';
+
+<Aside type="caution" title="Private extension point">
+This page is part of a series on a private extension point that Apple has not published for third-party use. Read the notice at the top of [Build a screensaver as an app extension](/developers/appex-screensaver/) before relying on it.
+</Aside>
+
+## Overview
+
+A `.saver` is installed by copying it into a Screen Savers folder. An app-extension screensaver is installed by installing its app: the system's extension registry finds the extension inside the app and lists it in System Settings. During development the same registry has to find the copy you built a moment ago, and it is here that most of the trouble with this extension point happens. This article covers the registry, the development loop, the thumbnail, the entitlements the extension needs, and the steps to ship.
+
+## Understand how macOS discovers extensions
+
+PlugInKit keeps a per-user database of app extensions and the apps that contain them. Its daemon, `pkd`, scans the Applications folder and the apps that have been launched, records each extension it finds under the extension's bundle identifier and version, and answers hosts that ask for the extensions of a given point. The `pluginkit` command-line tool queries and edits that database. Its manual page describes it as managing "the PlugInKit subsystem for the current user" with "limited interventions for debugging and development".
+
+To see what the registry knows about screensavers:
+
+```sh
+pluginkit -m -v -p com.apple.screensaver
+```
+
+Each line is one registration: an election mark, the bundle identifier with its version, a UUID, the registration date and the path. The marks are `+` for a copy the system will use, `-` for one the user disabled, `!` for one a debugger chose, `=` for a superseded copy and `?` for unknown; a blank mark is the normal case.
+
+<Observed on="macOS 27.2">
+On the test Mac the query listed the twelve screensavers that ship with the system, `legacyScreenSaver` in its two architectures, and three third-party registrations, including the sample's build in Xcode's DerivedData folder.
+</Observed>
+
+## Register a development build
+
+The sample's host target has a build phase named Register Extensions that runs after signing:
+
+```sh title="Register Extensions build phase"
+find "$CODESIGNING_FOLDER_PATH" -name '*.appex' -exec pluginkit -a {} \;
+```
+
+`pluginkit -a` adds the extension at that path to the database, even though the DerivedData folder is not a location the daemon scans on its own. Every build re-registers the same path, which keeps the entry's version and date current. The phase needs `ENABLE_USER_SCRIPT_SANDBOXING` set to `NO` on the target, because a sandboxed script cannot talk to the daemon.
+
+Check the result with the identifier:
+
+```sh
+pluginkit -m -v -D -A -i net.aerialscreensaver.AppexSaverMinimal.Extension
+```
+
+`-D` lists every physical copy and `-A` every version. One line is the answer you want. The host app's Install button runs the same `pluginkit -a` on the embedded extension, and Uninstall runs `pluginkit -r`, which removes a registration the daemon may add back the next time it scans.
+
+After a rebuild, the instances of the extension that are already running keep the old code. Restart the Wallpaper agent, which comes back on its own within a second, redraws the desktop and starts a fresh instance with the new build; quit and reopen System Settings to replace the pane's instance:
+
+```sh
+killall WallpaperAgent
+```
+
+The sample's host app does the same through PaperSaver when it enables the screensaver, which is why that button also refreshes the running copy.
+
+## Avoid duplicate registrations
+
+The registry can hold several copies of the same extension: a build in DerivedData, an archive, a copy of the app in the Applications folder. Which one the system loads is the registry's choice, and a wrong choice is hard to spot from the symptoms alone: the screensaver may run an older build than the one you think you are testing, or initialise and never receive a view controller.
+
+The plain query lists one copy per identifier, the one the registry has elected. To see every registered copy and every version, ask for all of them:
+
+```sh
+pluginkit -m -v -A -D -i net.aerialscreensaver.AppexSaverMinimal.Extension
+```
+
+More than one line means more than one registration. Keep one location per machine. Either develop from DerivedData and never copy the app to the Applications folder, or add a build phase that copies the app there and always run that copy. If you have mixed the two, remove the registration you do not want:
+
+```sh
+pluginkit -r /Applications/AppexSaverMinimal.app/Contents/PlugIns/AppexSaverMinimalExtension.appex
+```
+
+The sample logs the path it was loaded from in its principal class's initializer, which is the fastest way to confirm which copy a host picked.
+
+## Enable the screensaver
+
+Registration lists the screensaver; selecting it is a separate step. In System Settings, pick it in the Wallpaper pane on macOS 26 and later, or in the Screen Saver pane before that. From code, the sample uses the [PaperSaver](https://github.com/AerialScreensaver/PaperSaver) package, which writes the wallpaper store that System Settings reads and restarts the Wallpaper agent:
+
+```swift title="AppexSaverMinimal/PluginManager.swift"
+    /// PaperSaver identifies an app-extension screensaver by the `.appex` file
+    /// stem (the extension target's PRODUCT_NAME), not by CFBundleDisplayName.
+    private let paperSaverModuleName = "AppexSaverMinimalExtension"
+
+    // More…
+
+    /// Enable this screensaver as the active screensaver on every display.
+    func enableAsScreensaver() async {
+        isCheckingScreensaver = true
+        screensaverError = nil
+
+        do {
+            try await paperSaver.setScreensaverEverywhere(module: paperSaverModuleName)
+            checkScreensaverStatus()
+        } catch {
+            screensaverError = error.localizedDescription
+            isCheckingScreensaver = false
+        }
+    }
+```
+
+The selection is per display and per Space, so a query for the active screensaver can return several names; the sample treats its screensaver as active if the name appears anywhere.
+
+## Provide a thumbnail
+
+System Settings shows each screensaver with a landscape thumbnail. The sample ships one as an asset-catalog image set named `thumbnail`, at 107 by 65 points, with a 2× variant of 214 by 130 pixels. Square images do not appear.
+
+System Settings caches the thumbnail, and the cache is long-lived: in Aerial's experience a replaced image can keep showing the old one for days, through restarts of the pane and of the Mac. Do not judge a new thumbnail on the machine you develop on. Verify it on a virtual machine or on a second Mac that has never seen the previous image, or accept that the development Mac will catch up on its own schedule.
+
+<Observed on="macOS 27.2">
+The system's screensavers ship their thumbnails only inside their compiled asset catalog, with `CFBundleIconFile` naming the set. No file holding the thumbnail cache was identified for this series, so there is no cache to clear by hand.
+</Observed>
+
+## Sign and sandbox the extension
+
+An app extension must be sandboxed, and the sample's extension is. Beyond [App Sandbox](https://developer.apple.com/documentation/security/app-sandbox), its entitlements file carries two Mach service lookups:
+
+```xml title="AppexSaverMinimalExtension/AppexSaverMinimalExtension.entitlements" {5-6,10-14}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>com.apple.security.app-sandbox</key>
+	<true/>
+	<!-- Apple's own screensavers carry these two lookups. On macOS 27.2 the
+	     sample renders without them; they stay for the macOS 14 and 15
+	     releases the sample also targets. -->
+	<key>com.apple.security.temporary-exception.mach-lookup.global-name</key>
+	<array>
+		<string>com.apple.CARenderServer</string>
+		<string>com.apple.CoreDisplay.master</string>
+	</array>
+</dict>
+</plist>
+```
+
+The [temporary exception](https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/EntitlementKeyReference/Chapters/AppSandboxTemporaryExceptionEntitlements.html) for Mach lookups is the mechanism Apple's archived entitlement reference documents for services the sandbox would otherwise refuse. The two names are the ones the system's own screensavers carry.
+
+<Observed on="macOS 27.2">
+Flurry and Hello are signed with the sandbox, these two lookups and a third for the URL cache; neither carries a library-validation exception or a ViewBridge lookup. The sample rendered on both displays with the sandbox entitlement alone, with no denial in the log. An earlier version of the sample also carried `com.apple.security.cs.disable-library-validation`, which has no effect on a target without the Hardened Runtime, and network entitlements it never used; both are gone.
+</Observed>
+
+Keep the entitlements to the smallest set that works on the oldest release you support, and read the signed set rather than the file, because Xcode adds entitlements from build settings:
+
+```sh
+codesign -d --entitlements :- AppexSaverMinimal.app/Contents/PlugIns/AppexSaverMinimalExtension.appex
+```
+
+The host app is not sandboxed, so that it can run `pluginkit`, and it enables the [Hardened Runtime](https://developer.apple.com/documentation/security/hardened-runtime), which notarization requires.
+
+## Notarize and ship
+
+The deliverable is the app, and it ships outside the Mac App Store: the store does not accept apps that use private API, which this extension point is. Archive the app, export it with Developer ID, and notarize it:
+
+<Steps>
+
+1. In Xcode, choose Product → Archive, then export the archive from the Organizer with Developer ID distribution.
+
+2. Store your App Store Connect credentials once:
+
+   ```sh
+   xcrun notarytool store-credentials "AC_PASSWORD" \
+     --apple-id "your@email.com" \
+     --team-id "TEAMID" \
+     --password "app-specific-password"
+   ```
+
+3. Submit the zipped app and wait for the result:
+
+   ```sh
+   xcrun notarytool submit "AppexSaverMinimal.app.zip" \
+     --keychain-profile "AC_PASSWORD" \
+     --wait
+   ```
+
+4. Staple the ticket to the app and verify it:
+
+   ```sh
+   xcrun stapler staple "AppexSaverMinimal.app"
+   xcrun stapler validate "AppexSaverMinimal.app"
+   ```
+
+</Steps>
+
+Apple's guide to [notarizing macOS software](https://developer.apple.com/documentation/security/notarizing-macos-software-before-distribution) covers the rest, including the entitlements plug-ins need. When people copy the app to their Applications folder and launch it once, the registry finds the extension and System Settings lists the screensaver.
+
+## Troubleshoot
+
+- **The screensaver is not listed.** Check the registration with `pluginkit -m -v -i` and the bundle identifier; then check that the extension's `Info.plist` names existing classes, because a wrong `ScreenSaverViewControllerClass` makes the framework log "ScreenSaverViewControllerClass is NULL".
+- **The screensaver stays black.** Look for a second registration with `pluginkit -m -v -A`, and read the loaded path the sample logs at launch.
+- **A rebuild changes nothing.** Restart the Wallpaper agent with `killall WallpaperAgent` and reopen System Settings.
+- **The Options button does nothing or the sheet never closes.** The configuration class must inherit from `ScreenSaverConfigurationViewController` and end the sheet with `configureSheetDidEnd()`; see [Add a configuration sheet and persist settings](/developers/appex-configuration-sheet/).
+- **The extension crashes before your code runs.** Add `NSExtensionContextClass` to the property list; see [Declare the extension point](/developers/appex-screensaver/#declare-the-extension-point).
+
+## See also
+
+<SeeAlso label="This series">
+  <LinkCard
+    title="Build a screensaver as an app extension"
+    description="The sample's property list, its three framework subclasses, and its rendering."
+    href="/developers/appex-screensaver/"
+  />
+  <LinkCard
+    title="Understand the screensaver extension lifecycle"
+    description="Which processes host the extension and what it receives when the screensaver starts and ends."
+    href="/developers/appex-lifecycle/"
+  />
+</SeeAlso>
+
+<SeeAlso label="Apple documentation">
+  <LinkCard
+    title="App Sandbox"
+    description="Restrict access to system resources and user data in macOS apps to contain damage if an app becomes compromised."
+    href="https://developer.apple.com/documentation/security/app-sandbox"
+  />
+  <LinkCard
+    title="Hardened Runtime"
+    description="Manage security protections and resource access for your macOS apps."
+    href="https://developer.apple.com/documentation/security/hardened-runtime"
+  />
+  <LinkCard
+    title="Notarizing macOS software before distribution"
+    description="Give users even more confidence in your macOS software by submitting it to Apple for notarization."
+    href="https://developer.apple.com/documentation/security/notarizing-macos-software-before-distribution"
+  />
+</SeeAlso>

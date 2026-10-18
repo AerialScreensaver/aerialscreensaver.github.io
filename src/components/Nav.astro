@@ -1,21 +1,16 @@
 ---
+/**
+ * Sticky site header for the marketing pages. The row itself (logo, section
+ * links, Download button) lives in NavLinks.astro so the developer-docs header
+ * (src/components/starlight/Header.astro) renders the same navigation.
+ */
+import NavLinks from './NavLinks.astro';
+
 interface Props {
   hideBackdrop?: boolean;
 }
 
 const { hideBackdrop = false } = Astro.props;
-const base = import.meta.env.BASE_URL;
-const link = (path: string) => `${base.replace(/\/$/, '')}${path}`;
-
-const items = [
-  { href: link('/features'), label: 'Features' },
-  { href: link('/expansions'), label: 'Expansions' },
-  { href: link('/release-notes'), label: 'Release notes' },
-  { href: link('/faq'), label: 'FAQ' },
-  { href: 'https://github.com/AerialScreensaver/Aerial', label: 'GitHub', external: true },
-];
-
-const current = Astro.url.pathname.replace(/\/$/, '');
 ---
 
 <header
@@ -25,48 +20,5 @@ const current = Astro.url.pathname.replace(/\/$/, '');
   ]}
   style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"
 >
-  <div class="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between gap-6">
-    <a
-      href={link('/')}
-      class="flex items-center gap-2 text-aerial-text font-semibold tracking-tight text-lg hover:text-aerial-accent-hi transition-colors"
-    >
-      <img
-        src={link('/aerial-icon-64.png')}
-        srcset={`${link('/aerial-icon-64.png')} 1x, ${link('/icon-192.png')} 3x`}
-        width="32"
-        height="32"
-        alt=""
-        class="h-8 w-8"
-      />
-      <span>Aerial</span>
-    </a>
-
-    <nav class="hidden md:flex items-center gap-6 text-sm">
-      {
-        items.map((item) => {
-          const active = !item.external && current === item.href.replace(/\/$/, '');
-          return (
-            <a
-              href={item.href}
-              target={item.external ? '_blank' : undefined}
-              rel={item.external ? 'noopener noreferrer' : undefined}
-              class:list={[
-                'transition-colors',
-                active ? 'text-aerial-accent' : 'text-aerial-text-muted hover:text-aerial-text',
-              ]}
-            >
-              {item.label}
-            </a>
-          );
-        })
-      }
-    </nav>
-
-    <a
-      href={link('/download')}
-      class="px-4 py-2 rounded-md bg-aerial-accent text-aerial-bg-deep font-medium text-sm hover:bg-aerial-accent-hi transition-colors"
-    >
-      Download
-    </a>
-  </div>
+  <NavLinks variant="site" />
 </header>

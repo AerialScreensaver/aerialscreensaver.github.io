@@ -1,0 +1,38 @@
+---
+title: Developers
+description: Sample code and technical notes for developers building macOS screensavers, from the Aerial project.
+tableOfContents: false
+sidebar:
+  label: Overview
+  order: 0
+---
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Aerial has shipped as a `.saver` plug-in, as an app-extension screensaver, and now as a wallpaper extension. This section collects what that work taught, as sample code and notes for developers building their own macOS screensavers.
+
+## Screensaver extensions
+
+Since macOS 10.15 (2019), the screensavers that ship with the system started moving from being `.saver` plug-ins to app extensions. To date, Apple has not published that extension point for third-party developers. This series documents the [AppexSaverMinimal](https://github.com/AerialScreensaver/AppexSaverMinimal) sample project through observations made from the system's own bundles. It has only been tested on macOS 14 up to macOS 27.
+
+<CardGrid>
+  <LinkCard
+    title="Build a screensaver as an app extension"
+    description="Package a macOS screensaver as an app extension hosted by a regular app, provide its view through the ScreenSaver framework's extension classes, and share rendering code with an in-app preview."
+    href="/developers/appex-screensaver/"
+  />
+  <LinkCard
+    title="Understand the screensaver extension lifecycle"
+    description="Learn which processes host an app-extension screensaver, how one instance serves every display and outlives its views, and what the extension receives when the screensaver starts and ends."
+    href="/developers/appex-lifecycle/"
+  />
+  <LinkCard
+    title="Add a configuration sheet and persist settings"
+    description="Present an Options sheet from System Settings, end it the way the framework expects, and store settings that both instances of the extension read."
+    href="/developers/appex-configuration-sheet/"
+  />
+  <LinkCard
+    title="Register, install and distribute the screensaver"
+    description="Register a development build with pluginkit, avoid duplicate registrations, provide a thumbnail, choose entitlements, and notarize the app that carries the screensaver."
+    href="/developers/appex-distribution/"
+  />
+</CardGrid>

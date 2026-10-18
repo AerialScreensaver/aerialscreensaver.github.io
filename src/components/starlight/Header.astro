@@ -1,0 +1,15 @@
+---
+/**
+ * Starlight `Header` override: the Aerial site navigation inside Starlight's
+ * fixed header box. PageFrame supplies the box's height, padding, background
+ * and bottom border; the matching --sl-nav-* values and the backdrop blur live
+ * in src/styles/starlight.css.
+ *
+ * When Pagefind search is enabled again (`pagefind: true` in astro.config.mjs),
+ * render Starlight's search button here too:
+ *   import Search from '@astrojs/starlight/components/Search.astro';
+ */
+import NavLinks from '../NavLinks.astro';
+---
+
+<NavLinks variant="docs" />

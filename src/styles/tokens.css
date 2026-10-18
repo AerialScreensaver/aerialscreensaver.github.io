@@ -1,0 +1,28 @@
+/*
+  Aerial design tokens, shared by both CSS entries:
+  - src/styles/global.css   (marketing pages, full Tailwind incl. preflight)
+  - src/styles/starlight.css (developer docs, Starlight + Tailwind utilities)
+  `@theme static` emits every token as a :root custom property even when no
+  utility uses it, because starlight.css maps Starlight's --sl-* onto them.
+*/
+@theme static {
+  /* Brand palette — cinematic dark, evoking Apple's aerials.
+     OKLCH for perceptually-uniform tones. */
+  --color-aerial-bg-deep: oklch(11% 0.02 250);
+  --color-aerial-bg: oklch(15% 0.02 250);
+  --color-aerial-surface: oklch(19% 0.02 250);
+  --color-aerial-surface-hi: oklch(24% 0.02 250);
+  --color-aerial-border: oklch(28% 0.02 250);
+  --color-aerial-text: oklch(96% 0.005 250);
+  --color-aerial-text-muted: oklch(72% 0.015 250);
+  --color-aerial-text-dim: oklch(52% 0.015 250);
+  --color-aerial-accent: oklch(78% 0.15 70);
+  --color-aerial-accent-hi: oklch(86% 0.13 70);
+  --color-aerial-link: oklch(80% 0.11 230);
+  --color-aerial-link-hi: oklch(88% 0.09 230);
+
+  /* Typography */
+  --font-display: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}

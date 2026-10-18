@@ -1,0 +1,48 @@
+---
+/**
+ * Captioned figure for the developer docs.
+ *
+ * Accepts a local image import (ImageMetadata, optimised by astro:assets), a
+ * public URL, or a video (`video` with an optional `poster`). Describe what the
+ * figure shows in the prose *before* it appears; the caption is one sentence in
+ * sentence case ending with a period.
+ */
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: string | ImageMetadata;
+  alt: string;
+  caption?: string;
+  video?: boolean;
+  poster?: string;
+}
+
+const { src, alt, caption, video = false, poster } = Astro.props;
+const isMetadata = typeof src !== 'string';
+---
+
+<figure class="not-content my-8">
+  <div class="overflow-hidden rounded-xl border border-aerial-border bg-aerial-surface">
+    {
+      video ? (
+        <video
+          src={src as string}
+          poster={poster}
+          controls
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-label={alt}
+          class="block w-full"
+        />
+      ) : isMetadata ? (
+        <Image src={src as ImageMetadata} alt={alt} class="block w-full" />
+      ) : (
+        <img src={src as string} alt={alt} loading="lazy" decoding="async" class="block w-full" />
+      )
+    }
+  </div>
+  {caption && <figcaption class="mt-2 text-sm text-aerial-text-dim">{caption}</figcaption>}
+</figure>

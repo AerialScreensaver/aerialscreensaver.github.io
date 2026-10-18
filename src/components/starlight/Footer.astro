@@ -1,0 +1,11 @@
+---
+/**
+ * Starlight `Footer` override: keep Starlight's footer (edit link, prev/next
+ * pagination) and append the compact Aerial footer inside the content column.
+ */
+import Default from '@astrojs/starlight/components/Footer.astro';
+import DocsFooter from '../DocsFooter.astro';
+---
+
+<Default {...Astro.props}><slot /></Default>
+<DocsFooter />

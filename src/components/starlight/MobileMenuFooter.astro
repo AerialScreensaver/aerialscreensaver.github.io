@@ -1,0 +1,27 @@
+---
+/**
+ * Starlight `MobileMenuFooter` override: the bottom of the mobile sidebar
+ * drawer. Replaces the theme and language pickers with the site links, so
+ * phone users (where the header links are hidden) can leave the docs section.
+ */
+import { navLinks, hrefFor, withBase } from '../../data/siteLinks';
+---
+
+<nav aria-label="Aerial site" class="mt-4 border-t border-aerial-border/50 pt-4 text-sm">
+  <ul class="m-0 list-none space-y-2 p-0">
+    {
+      navLinks.map((item) => (
+        <li>
+          <a href={hrefFor(item)} class="text-aerial-text-muted no-underline hover:text-aerial-text">
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+    <li>
+      <a href={withBase('/download')} class="font-medium text-aerial-accent no-underline hover:text-aerial-accent-hi">
+        Download Aerial
+      </a>
+    </li>
+  </ul>
+</nav>

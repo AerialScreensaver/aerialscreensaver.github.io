@@ -1,6 +1,6 @@
 ---
-const base = import.meta.env.BASE_URL;
-const link = (path: string) => `${base.replace(/\/$/, '')}${path}`;
+import { projectLinks, communityLinks, hrefFor, withBase } from '../data/siteLinks';
+
 const year = new Date().getFullYear();
 ---
 
@@ -9,8 +9,8 @@ const year = new Date().getFullYear();
     <div class="md:col-span-2">
       <div class="flex items-center gap-2 text-aerial-text font-semibold text-base">
         <img
-          src={link('/aerial-icon-64.png')}
-          srcset={`${link('/aerial-icon-64.png')} 1x, ${link('/icon-192.png')} 3x`}
+          src={withBase('/aerial-icon-64.png')}
+          srcset={`${withBase('/aerial-icon-64.png')} 1x, ${withBase('/icon-192.png')} 3x`}
           width="28"
           height="28"
           alt=""
@@ -23,44 +23,37 @@ const year = new Date().getFullYear();
         from Le Havre, France 🇫🇷. Supported by your ☕️. If you enjoy it, you can
         <a href="https://ko-fi.com/A0A32385Y" class="text-aerial-link hover:text-aerial-link-hi">
           buy me a coffee (or a few)
-        </a>, or pick up an <a href={link('/expansions')} class="text-aerial-link hover:text-aerial-link-hi">expansion pack</a>: their authors contribute back to the project.
+        </a>, or pick up an <a href={withBase('/expansions')} class="text-aerial-link hover:text-aerial-link-hi">expansion pack</a>: their authors contribute back to the project.
       </p>
     </div>
 
     <div>
       <div class="text-aerial-text font-semibold mb-3">Project</div>
       <ul class="space-y-2 text-aerial-text-muted">
-        <li><a href={link('/features')} class="hover:text-aerial-text">Features</a></li>
-        <li><a href={link('/release-notes')} class="hover:text-aerial-text">Release notes</a></li>
-        <li><a href={link('/expansions')} class="hover:text-aerial-text">Expansions</a></li>
-        <li><a href={link('/faq')} class="hover:text-aerial-text">FAQ</a></li>
-        <li><a href={link('/legal')} class="hover:text-aerial-text">Legal</a></li>
+        {
+          projectLinks.map((item) => (
+            <li>
+              <a href={hrefFor(item)} class="hover:text-aerial-text">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
 
     <div>
       <div class="text-aerial-text font-semibold mb-3">Source &amp; community</div>
       <ul class="space-y-2 text-aerial-text-muted">
-        <li>
-          <a href="https://github.com/AerialScreensaver/Aerial" class="hover:text-aerial-text">
-            Aerial on GitHub
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/JohnCoates/Aerial" class="hover:text-aerial-text">
-            Original repository (2015)
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/AerialScreensaver/Aerial/issues" class="hover:text-aerial-text">
-            Report an issue
-          </a>
-        </li>
-        <li>
-          <a href="https://discord.com/invite/TPuA5WG" class="hover:text-aerial-text">
-            Join the Discord
-          </a>
-        </li>
+        {
+          communityLinks.map((item) => (
+            <li>
+              <a href={hrefFor(item)} class="hover:text-aerial-text">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </div>

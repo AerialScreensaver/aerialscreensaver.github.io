@@ -1,0 +1,205 @@
+---
+title: Understand the screensaver extension lifecycle
+description: Learn which processes host an app-extension screensaver, how one instance serves every display and outlives its views, and what the extension receives when the screensaver starts and ends.
+kind: article
+availability: ['macOS 14.0+', 'Xcode 15+']
+module: ScreenSaver
+repo: https://github.com/AerialScreensaver/AppexSaverMinimal
+sidebar:
+  label: Understand the lifecycle
+  order: 2
+---
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+import Observed from '../../../components/docs/Observed.astro';
+import SeeAlso from '../../../components/docs/SeeAlso.astro';
+
+<Aside type="caution" title="Private extension point">
+This page is part of a series on a private extension point that Apple has not published for third-party use. Read the notice at the top of [Build a screensaver as an app extension](/developers/appex-screensaver/) before relying on it.
+</Aside>
+
+## Overview
+
+A `.saver` bundle has one host, the screensaver engine, and the public [ScreenSaver framework documentation](https://developer.apple.com/documentation/screensaver) describes the eight steps it takes to run one. An app-extension screensaver has several hosts, each of which starts its own copy of your extension, keeps it alive for its own reasons and ends it on its own schedule. This article follows those copies with the instrumented build of AppexSaverMinimal: its Debug diagnostics log the process, each window's geometry as the host sizes it, every animation call and every notification the system sends.
+
+Everything below was measured on macOS 27.2 with two displays attached. The hosts changed between macOS 14 and macOS 26, so where Aerial's experience on the earlier releases differs, the text says so.
+
+## Meet the hosts
+
+Three programs take part, and two of them run your code.
+
+**System Settings' Wallpaper pane.** On macOS 26 and later the screensaver settings live in the Wallpaper pane, implemented by a settings extension named `Wallpaper`. Selecting your screensaver there starts two instances of your extension at once, not one. The pane hosts the first and keeps it for as long as the pane is open: its view controller is created but its window is never sized, and it is the instance that hosts the Options sheet. The second is started by the Wallpaper agent, described next, and is the one that draws. Plan for both from the start; this pair is not new to macOS 27, and Aerial's own screensaver saw it on macOS 26.
+
+**The Wallpaper agent.** The process that draws the desktop, `WallpaperAgent`, also runs the screensaver. When a screensaver is selected it starts its instance of your extension, asks it for one view per display, and shows those views as the desktop picture. When the screensaver starts, the same windows stay where they are and the lock screen appears above them. This instance is the one people see.
+
+**The engine.** `ScreenSaverEngine.app` still exists, and launching it still starts the screensaver, but it no longer hosts anything: it asks the login framework to start the screensaver, and the Wallpaper agent takes over.
+
+<Observed on="macOS 27.2">
+Selecting the sample in System Settings launched two processes named `AppexSaverMinimalExtension` within the same second, each with its own principal object, view controller and settings store. The system labels them in Activity Monitor and in `NSRunningApplication` with their host: "AppexSaverMinimal (Wallpaper (System Settings))" for the pane's instance and "AppexSaverMinimal (Wallpaper)" for the agent's. Running `open -a ScreenSaverEngine` logged `SACScreenSaverStartNow` in the engine, then "Take Assertion … contentType: screenSaver" for each display in `WallpaperAgent`, which created a `WallpaperScreenSaverWindow` per display and loaded the extension into its own instance.
+</Observed>
+
+Both instances run under `launchd` as XPC services, sandboxed, with the extension's container as their home directory, and their `NSApp` is `NSViewServiceApplication`: the extension is a view service, and its views reach the host through remote views.
+
+## Follow one activation
+
+The log below is the agent's instance starting the screensaver on two displays, trimmed to the lines that matter. Times are relative to the host's request.
+
+```text
+   0 ms  WallpaperAgent   loadViewForFrame:isPreview:completionBlock: -- beginUsing: AppexSaverMinimalExtension
+   3 ms  WallpaperAgent   PlugInKit: activating plugin net.aerialscreensaver.AppexSaverMinimal.Extension(1.0)
+ 376 ms  Extension        AppexSaverMinimalExtension.init()                        ← principal object, request 1
+ 402 ms  Extension        ViewController loadView()                                ← display 1
+ 420 ms  Extension        viewDidMoveToWindow() hasWindow=true  window 0×0 at (0, 0)
+ 425 ms  Extension        ViewController loadView()                                ← display 2
+ 427 ms  Extension        viewDidMoveToWindow() hasWindow=true  window 0×0 at (0, 0)
+ 442 ms  Extension        remoteViewSizeChanged(2560×1440)      window at (0, 0)
+ 445 ms  Extension        remoteViewSizeChanged(1920×1080)      window at (2560, 0)
+ 446 ms  Extension        startAnimation()                                         ← each view
+ 447 ms  Extension        animateOneFrame()                                        ← once, timer off
+  40 s   Extension        DNC com.apple.screensaver.willstop
+  40 s   Extension        DNC com.apple.screensaver.didstop
+  40 s   Extension        viewDidMoveToWindow() hasWindow=false, deinit            ← each view; no stopAnimation()
+```
+
+Four points differ from the documented `.saver` sequence. The view is created before the host knows where it goes, so sizing is a separate step that arrives through the remote view. The animation starts only after that step, so a view that waits for a non-zero size before doing expensive setup is safe. The end of the screensaver is announced by distributed notifications before the views are torn down. And the views created for the session are released without `stopAnimation()`: the last calls each one receives are `viewDidMoveToWindow()` with a `nil` window, then `deinit`.
+
+## Handle several displays
+
+One instance of the extension serves every display. The agent asks the view controller class for one controller per screen, each with its own view and its own window, and starts and stops them together. Static state in your extension, singletons included, is therefore shared by all displays, and it survives from one activation to the next because the process does.
+
+<Observed on="macOS 27.2">
+On two displays the agent's instance created two view controllers 23 milliseconds apart, in the same process, and the framework's manager object reported two view controllers. The process stayed alive across six activations over two minutes; each activation created new controllers and views, and the previous ones were released about 400 milliseconds after `willstop`.
+</Observed>
+
+Treat each view as independent: let it own its timers and layers, and read the display it landed on from `window.screen` after the resize rather than from `NSScreen.main`. The two windows are attached at the main display's origin and move to their own display when the host sizes them.
+
+<Observed on="macOS 14 and 15, Aerial 4.0">
+In Aerial's experience on those releases the migration was slower and more variable: the host placed every screensaver window on the main display and moved each one to its real screen 30 to 200 milliseconds later, with `window.screen` correct at that point while `window.frame` could still carry the main display's size. Aerial waited for `NSWindow.didChangeScreenNotification` or 250 milliseconds, whichever came first, before deciding anything per display. On macOS 27.2 the resize call makes that wait unnecessary, but the pattern still costs nothing.
+</Observed>
+
+## Start and stop animation
+
+The host sends `startAnimation` to the view controller, and the framework forwards it to your `ScreenSaverView`. Whether it also runs the per-frame timer depends on `SSENeedsAnimationTimer`. `stopAnimation` is another matter: the host does not send it to the views it releases at the end of a session, so a screensaver must not depend on it.
+
+| `SSENeedsAnimationTimer` | `startAnimation()` | `animateOneFrame()` | `stopAnimation()` |
+|---|---|---|---|
+| `false` | once per view, after sizing | once, when the animation starts | not sent to the views being released |
+| `true` | once per view, after sizing | repeatedly, every `animationTimeInterval` | not sent to the views being released |
+
+<Observed on="macOS 27.2">
+With the timer on and `animationTimeInterval` at 1/60, each of the two views received 60 calls per second. With `animationTimeInterval` left unset, the view reported 1/30. In every run, the views created for a session were released without `stopAnimation()`: the sequence was `willstop`, then `viewDidMoveToWindow()` with a `nil` window, then `deinit`. The `stopAnimation()` calls that did arrive went to views the long-lived instance kept alive, in no fixed order relative to that teardown, and when a session started those kept views received `startAnimation()` again while already animating.
+</Observed>
+
+The sample starts its animator from `viewDidMoveToWindow()` as well, because a view that joins a window should draw whether or not the host sends `startAnimation()` first, and because that is what Aerial needed on earlier releases. It stops the animator there too, when the window goes away, with `deinit` as the backstop. Treat `stopAnimation()` as a courtesy: never make it the place where you release resources or save state.
+
+<Observed on="macOS 14 and 15, Aerial 4.0">
+Aerial's view carried this comment: "In the screensaver extension context, `startAnimation()` and `stopAnimation()` are NOT reliably called. All playback logic is handled in `viewDidMoveToWindow()` instead." On macOS 27.2 both calls arrived every time; a view that works from either path is the safe choice across releases.
+</Observed>
+
+## Tell the preview from the full screen
+
+A `.saver` learns from its initializer whether it is the small preview in System Settings. An app-extension screensaver creates its own view, so `isPreview` is whatever you pass, and the system's screensavers pass `false`. The question is what you would do with the flag.
+
+<Observed on="macOS 27.2">
+The pane's instance received a view controller whose window was never sized: it stayed at zero by zero for the life of the instance, and the framework's manager object in that process reported `isPreview` as true. The live picture of the screensaver in the pane, and in the Options sheet, is the agent's instance, rendered at full display size as the desktop picture and shown scaled down. There is no small rendering of your view.
+</Observed>
+
+The practical rule is to draw the same thing in both cases. If a screensaver must behave differently when previewed, the only measurement available from the view is geometry: a window that does not cover its screen after the resize is not the full-screen screensaver.
+
+## Know when the screensaver ends
+
+The extension receives the same distributed notifications an app would. The sample's diagnostics subscribe to six:
+
+| Notification | When it arrived |
+|---|---|
+| `com.apple.screensaver.didstart` | as the screensaver started; the object is `runFromPref` when started from the pane's Preview button |
+| `com.apple.screenIsLocked` | about 150 milliseconds after `didstart` |
+| `com.apple.screensaver.willstop` | when the person woke the screensaver |
+| `com.apple.screensaver.didstop` | a few milliseconds after `willstop` |
+| `com.apple.screenLockUIIsHidden`, `com.apple.screenIsUnlocked` | after `didstop` |
+| `viewDidMoveToWindow()` with a `nil` window, then `deinit` | about 400 milliseconds after `willstop`, for each view of the session |
+| `stopAnimation()` | not received by the views being released |
+
+`willstop` is the last moment the views are guaranteed to be in place. If your screensaver saves state, that is where to flush it. Per view, the teardown signal is `viewDidMoveToWindow()` with a `nil` window; stop timers and release what the view owns there, because `stopAnimation()` will not come. Locking the Mac directly, with Control-Command-Q, delivers `com.apple.screenIsLocked` and `com.apple.screenLockUIIsShown` to the running instances, and the screensaver then starts on its own schedule.
+
+<Observed on="macOS 14 and 15, Aerial 4.0">
+Aerial flushed its playback position on `willstop`, and kept a two-second timer as a fallback for configurations where the notification was not delivered reliably. It also observed `com.apple.screenLockUIIsShown` as a second pre-death hook.
+</Observed>
+
+Ending the Options sheet also ends the current views: the agent releases the view it was showing as the desktop picture and creates a new one, which restarts the animation from its first frame. The system's own Hello screensaver does the same, so there is nothing to work around.
+
+The extension has no key focus. The lock screen owns the keyboard and the pointer, and `acceptsFirstResponder` makes no difference.
+
+## Expect the instance to outlive its views
+
+The Wallpaper agent does not end your extension's process when the screensaver ends. It releases the views and their controllers, keeps the process, and reuses it for the next session, which creates new view controllers in the same process with whatever static state the previous session left behind. Nothing marks that boundary from inside the process: the released views receive `viewDidMoveToWindow()` with a `nil` window, and the process goes on.
+
+Design for a process that lives for hours and serves many sessions:
+
+- Keep per-session state in the view or its controller, and reset anything static when a view is created rather than when one is released.
+- Stop timers and observers when the view leaves its window. A timer that outlives its view keeps running in a process the agent has every reason to keep.
+- Read settings when a view starts, not once at launch: the sheet runs in the other instance, and the store changes while this process waits. [Add a configuration sheet and persist settings](/developers/appex-configuration-sheet/) shows the pattern.
+- Persist as you go. The agent's instance receives no reliable "about to exit" call.
+
+<Observed on="macOS 27.2">
+One agent-hosted process served nineteen view controllers over two minutes of repeated activations, from a hot corner and from the pane's Preview button, and its uptime counter kept climbing while views came and went. The pane's instance, by contrast, received `SIGTERM` once the pane was done with it. Aerial's wallpaper extension, on the Wallpaper extension point, shows the same long-lived process with views that come and go.
+</Observed>
+
+## Diagnose with the unified log
+
+Both the host app and the extension log to one subsystem, `net.aerialscreensaver.AppexSaverMinimal`, with a category per class. Three details make the log usable:
+
+- Call the tool as `/usr/bin/log`: in zsh, `log` is a shell builtin and `log show` fails with "too many arguments".
+- Log lifecycle facts at `.notice` or above. In the measurements for this series, about half of the extension's `.info` lines were missing from a later `log show`, while every `.notice` line was present.
+- Mark interpolated values `privacy: .public`, or `log show` prints them as `<private>`.
+
+```sh
+/usr/bin/log show --last 10m --info --style compact \
+  --predicate 'subsystem == "net.aerialscreensaver.AppexSaverMinimal"'
+```
+
+To see the host's side, add the framework's own lines, which name the module, the view and the request:
+
+```sh
+/usr/bin/log show --last 10m --info --debug --style compact \
+  --predicate 'sender == "ScreenSaver" AND process != "AppexSaverMinimalExtension"'
+```
+
+After a rebuild, the running instances keep the old code. Restart the Wallpaper agent with `killall WallpaperAgent`; it relaunches at once, with a brief flicker of the desktop, and starts a fresh instance of the extension. Quit and reopen System Settings to replace the pane's instance.
+
+## Lessons from Aerial
+
+Aerial 4.0 ran as an app-extension screensaver on macOS 14 and 15. Four of its findings still apply.
+
+- **Windows migrate.** On those releases every screensaver window started on the main display; per-display decisions had to wait for the window to settle. The section [Handle several displays](#handle-several-displays) has the timing.
+- **Screens come and go.** People plug and unplug displays while the screensaver runs, and the host follows: a display that disappears takes its view with it, and one that appears gets a new view controller in the running process. Keep per-display state in the view, read the screen from `window.screen` when it matters, and never assume that the set of displays at launch is the set at teardown.
+- **Start and stop from the view, not from the host.** `startAnimation()` was not a reliable trigger then, and `stopAnimation()` is still not one; `viewDidMoveToWindow()` is both.
+- **One registration per machine.** A second registered copy of the extension, from an old archive or an Applications copy next to a DerivedData build, made the extension initialise without ever receiving a view controller. [Register, install and distribute the screensaver](/developers/appex-distribution/) covers the remedy.
+- **Declare the context class.** Without `NSExtensionContextClass`, a host that opened an auxiliary connection crashed the extension before its principal class ran.
+
+## See also
+
+<SeeAlso label="This series">
+  <LinkCard
+    title="Build a screensaver as an app extension"
+    description="The sample's property list, its three framework subclasses, and its rendering."
+    href="/developers/appex-screensaver/"
+  />
+  <LinkCard
+    title="Add a configuration sheet and persist settings"
+    description="Present an Options sheet from System Settings, end it the way the framework expects, and store settings both instances of the extension can read."
+    href="/developers/appex-configuration-sheet/"
+  />
+</SeeAlso>
+
+<SeeAlso label="Apple documentation">
+  <LinkCard
+    title="ScreenSaver framework"
+    description="Includes the eight steps the system takes to run a .saver bundle, for comparison."
+    href="https://developer.apple.com/documentation/screensaver"
+  />
+  <LinkCard
+    title="ScreenSaverView"
+    description="The public view class, its animation timer and its preview flag."
+    href="https://developer.apple.com/documentation/screensaver/screensaverview"
+  />
+</SeeAlso>

@@ -1,0 +1,55 @@
+---
+/**
+ * Compact footer for the developer-docs (Starlight) pages.
+ *
+ * Rendered inside the content column by src/components/starlight/Footer.astro,
+ * after Starlight's own prev/next pagination. The full-width Footer.astro cannot
+ * be used there: Starlight's sidebar is a fixed, full-height pane, so anything
+ * placed under the page frame would sit beneath it. Both footers read their
+ * links from src/data/siteLinks.ts.
+ */
+import { projectLinks, communityLinks, hrefFor } from '../data/siteLinks';
+
+const year = new Date().getFullYear();
+---
+
+<div class="not-content mt-16 border-t border-aerial-border/60 pt-8 text-sm">
+  <div class="grid gap-8 sm:grid-cols-2">
+    <div>
+      <div class="mb-3 font-semibold text-aerial-text">Project</div>
+      <ul class="m-0 list-none space-y-2 p-0">
+        {
+          projectLinks.map((item) => (
+            <li>
+              <a href={hrefFor(item)} class="text-aerial-text-muted no-underline hover:text-aerial-text">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
+      <div class="mb-3 font-semibold text-aerial-text">Source &amp; community</div>
+      <ul class="m-0 list-none space-y-2 p-0">
+        {
+          communityLinks.map((item) => (
+            <li>
+              <a href={hrefFor(item)} class="text-aerial-text-muted no-underline hover:text-aerial-text">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-8 space-y-2 border-t border-aerial-border/40 pt-6 text-xs text-aerial-text-dim">
+    <p>
+      © {year} Guillaume Louel. Aerial is licensed under MIT. Auto-updates powered by
+      <a href="https://sparkle-project.org/" class="text-aerial-text-muted no-underline hover:text-aerial-text">Sparkle</a>.
+    </p>
+    <p>Apple, macOS, tvOS, Apple TV and Mac are trademarks of Apple Inc. Aerial is not affiliated with Apple.</p>
+  </div>
+</div>
