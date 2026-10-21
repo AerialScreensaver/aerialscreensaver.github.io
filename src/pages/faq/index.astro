@@ -51,8 +51,13 @@ for (const entry of all) {
             {entries.map((entry) => {
               const r = rendered.get(entry.id)!;
               const Content = r.Content;
+              // The id is the file name, so /faq/#<file-name> links to this
+              // answer: renaming a file breaks links to it.
               return (
-                <details class="group rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 transition-colors">
+                <details
+                  id={entry.id}
+                  class="group scroll-mt-24 rounded-xl border border-aerial-border bg-aerial-surface/40 px-6 py-5 open:bg-aerial-surface/70 transition-colors"
+                >
                   <summary class="cursor-pointer list-none flex items-start justify-between gap-4 font-medium text-aerial-text">
                     <span>
                       {entry.data.question}
@@ -68,6 +73,11 @@ for (const entry of all) {
                   <div class="mt-4 prose prose-invert max-w-none text-aerial-text-muted leading-relaxed">
                     <Content />
                   </div>
+                  <div class="mt-6 pt-4 border-t border-aerial-border/40 text-xs text-aerial-text-dim">
+                    <a href={`#${entry.id}`} class="text-aerial-text-muted hover:text-aerial-text">
+                      Link to this answer
+                    </a>
+                  </div>
                 </details>
               );
             })}
@@ -76,4 +86,32 @@ for (const entry of all) {
       ))
     }
   </div>
+
+  <script>
+    // An answer hash (e.g. #macos-version) targets a collapsed card: expand it
+    // and re-scroll now that its content is laid out.
+    function openFromHash() {
+      const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (target instanceof HTMLDetailsElement) {
+        target.open = true;
+        target.scrollIntoView();
+      }
+    }
+
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+
+    // Keep the address bar on the last opened answer so it can be copied as is.
+    // `toggle` doesn't bubble, hence the capture listener.
+    document.addEventListener(
+      'toggle',
+      (e) => {
+        const details = e.target;
+        if (details instanceof HTMLDetailsElement && details.open && details.id) {
+          history.replaceState(null, '', `#${details.id}`);
+        }
+      },
+      true,
+    );
+  </script>
 </Base>
