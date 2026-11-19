@@ -1,7 +1,7 @@
 What's new :
-- Add new dark blur/light blur options for menubar replacement. You can manually configure the blur and tint strength
-- Fix memory issue when you poweroff your monitor manually 
-- Possible fix for Metal crash on sleep
+- Fix battery spam in logs
+- Fix cache trimming so it doesn't trim videos in your current user made playlist
+- Many, many, fixes for live streaming, and mixing local videos and live streams in the same playlists. Include fix for excessive memory usage/not correcty responding to feeds that are unavailable or stalling. 
 
 Important : 
 - Requires macOS 26/27. See Aerial's website for older systems. 
